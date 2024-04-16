@@ -6,7 +6,7 @@ Some of these topics will have hyperlinks pointing to the official Microsoft doc
 
 ## Introduction to C# + .NET
 
--What is a Full Stack Developer?
+- What is a Full Stack Developer?
 - [What is C#?](https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/)
 - [What is .NET?](https://learn.microsoft.com/en-us/dotnet/core/introduction)
 - [The .NET SDK](https://learn.microsoft.com/en-us/dotnet/core/sdk)
