@@ -25,7 +25,7 @@ class Program
     static void Main(string[] args)
     {//These curly braces denote logical blocks of code
     
-        //As a language, C# doesnt care about indentations, just line endings and 
+        //As a language, C# doesn't care about indentations, just line endings and 
         //logical blocks of code.
         Console.WriteLine("Hello, World!"); 
         Console.WriteLine("Some other thing");
