@@ -1,0 +1,5 @@
+C:\Users\JonathanDeLaCruz\Documents\Revature\240415-CC-Geico-NET\trainer-code\Week1\firstConsole\obj\Debug\net8.0\firstConsole.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\JonathanDeLaCruz\Documents\Revature\240415-CC-Geico-NET\trainer-code\Week1\firstConsole\obj\Debug\net8.0\firstConsole.AssemblyInfoInputs.cache
+C:\Users\JonathanDeLaCruz\Documents\Revature\240415-CC-Geico-NET\trainer-code\Week1\firstConsole\obj\Debug\net8.0\firstConsole.AssemblyInfo.cs
+C:\Users\JonathanDeLaCruz\Documents\Revature\240415-CC-Geico-NET\trainer-code\Week1\firstConsole\obj\Debug\net8.0\firstConsole.csproj.CoreCompileInputs.cache
+C:\Users\JonathanDeLaCruz\Documents\Revature\240415-CC-Geico-NET\trainer-code\Week1\firstConsole\obj\Debug\net8.0\firstConsole.sourcelink.json
