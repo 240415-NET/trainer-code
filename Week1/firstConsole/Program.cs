@@ -98,7 +98,7 @@ class Program
         //conditional statements
         
         //User input via console, using Console.Readline()
-        Console.WriteLine("Please enter a number:");
+        Console.WriteLine("Please enter a number for the IF-ELSE:");
         
         //Returning user input by explicitly storing values in variables
         //string userInput = Console.ReadLine();
@@ -125,7 +125,68 @@ class Program
             Console.WriteLine("newInt is.... a number");
         }
 
+        //We can address the above logic in a cleaner manner using a SWITCH statement
+        Console.WriteLine("Please enter a number for the SWITCH:"); 
+        int switchInt = Convert.ToInt32(Console.ReadLine());
 
+        switch (switchInt)
+        {
+            case 1 or 2: //If switchInt is equal to 1, run the code below until we hit the break statement
+                Console.WriteLine("switchInt is equal to 1!");
+                break;
+            case >= 8 and <= 12: 
+                Console.WriteLine("switchInt is greater than 7!");
+                break;
+            case < 0:
+                Console.WriteLine("switchInt is negative!");
+                break;
+            default:
+                Console.WriteLine("switchInt is.... a number.");
+                break;
+        }
+
+        //If statements can be used to evaluate against two separate variables
+        if (newInt > 3 && switchInt > 3)
+        {
+            Console.WriteLine("Both variables are");
+            //We can even nest conditions like math using parenthesis... this can quickly get complicated!
+        }else if (newInt < -2 && !(newInt == 5 || switchInt == 2))
+        {
+            Console.WriteLine("This one is more complex...");
+        }
+
+        newInt = 5;
+
+        //loops 
+        //this is our FOR loop
+        for (int i = 0; i < newInt; i++)
+        {
+            //This code will run, as long as the above condition is met
+            //Here, we use string concatenation to add in the value of i + 1 to our string, for formatting purposes
+            Console.WriteLine(i+1 + ". This is coming from my For loop");
+        }
+
+        newInt = 10;
+        //bool flag = true;
+        //while loop - checks a condition THEN runs the code
+        while (newInt > 0)
+        {
+            Console.WriteLine(newInt);
+            //flag = false;
+            //Remember to include some way for the loop to end. We do not want to create infinite loops. 
+            //newInt = newInt - 1;
+            newInt--;
+            //newInt -= 2; 
+        }
+
+        //do-while loop - Runs the code THEN checks the condition
+        //it will always run ATLEAST ONCE
+        newInt = 0;
+        do
+        {
+            Console.WriteLine("This is from inside my do-while loop!");
+        }
+        while(newInt > 0);
 
     }//We begin a logical block with { and end it with a }
 
