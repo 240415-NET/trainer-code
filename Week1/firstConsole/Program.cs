@@ -30,7 +30,7 @@ class Program
         Console.WriteLine("Hello, World!"); 
         Console.WriteLine("Some other thing");
 
-        //This is how we decalre a variable 
+        //This is how we declare a variable 
         //We have the type, then the variable's name, and finally a value.
         //(type) (name) = (value);
         int age = 5;
@@ -62,12 +62,68 @@ class Program
 
         //decimal types - double and float
         double weight = 201.4;
+        //numeric type conversion - explicit and implicit
+        double someDecimal = 4.99999999;
+
+        //We need to explicitly convert between a Double -> an Int
+        //because we WILL lose data when we do so
+        int someInteger = (int) someDecimal;
+
+        //We can implicitly convert between Integer -> Double
+        //because we will not lose data
+        int someOtherInteger = 5;
+        double someOtherDouble = someOtherInteger;
+
 
         //char - single character
         //Double quotes in C# are used for string values, single quotes are for char values
         char userSelection = 'a';
 
         Console.WriteLine(age); 
+
+        //Logical operators - return true or false booleans
+        // (condition 1) || (condition 2) - logical OR operator, if either condition is true the result is true
+        // (condition 1) && (condition 2) - logical AND operator, if both conditions are true, the result is true
+        // (!condition 1) - the logical NOT operator, if this condition is true, we return false
+
+        // comparison operators - return true or false booleans
+        // == - equal to, returns true if both values are equal
+        // != - NOT equal to, returns true if values aren't equal
+        // > - greater than
+        // < - less than
+        // >= - greater than or equal to
+        // <= - less than or equal to
+
+        //control flow basics
+        //conditional statements
+        
+        //User input via console, using Console.Readline()
+        Console.WriteLine("Please enter a number:");
+        
+        //Returning user input by explicitly storing values in variables
+        //string userInput = Console.ReadLine();
+        //int newInt = Convert.ToInt32(userInput);
+        
+        //returning user inputted integer value, using nested method calls
+        int newInt = Convert.ToInt32(Console.ReadLine());
+
+        //if-else if-else
+        if (newInt == 4)
+        {
+            Console.WriteLine("newInt equals 4!");
+        }
+        else if ( newInt >= 8)
+        {
+            Console.WriteLine("newInt is greater than 7!");
+        }
+        else if (newInt < 0)
+        {
+            Console.WriteLine("newInt is negative!");
+        }
+        else
+        {
+            Console.WriteLine("newInt is.... a number");
+        }
 
 
 
