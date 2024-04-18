@@ -1,0 +1,24 @@
+For this activity, I want you to print out the number 1-100 (inclusive, as in include the number 100)
+
+If a number is divisible by 3, print "fizz" instead of the number. So
+
+1
+2
+fizz
+4
+etc
+
+If a number is divisible by 5, print buzz
+
+3
+4
+buzz
+etc
+
+If a number is divisible by both, print fizzbuzz
+
+13
+14
+fizzbuzz
+16
+etc
