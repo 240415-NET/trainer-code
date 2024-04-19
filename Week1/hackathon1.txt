@@ -5,3 +5,8 @@ In this Hackathon we want to create a C# console application with the following 
 3 - Handles any exceptions that may arise during the running of the application (no hard crashing)
 4 - Continues to run until the user quits the application, from within the application (no ctrl+c)
 
+We also want to make sure this code is visible to all of us! Have someone share their screen and 
+type for the group, making sure that they are inside of their personal repo on this organization. 
+
+We want to then push this code up before we leave today. I will compile links to their repo's and 
+make a teams post with links to the different groups' work for future reference. 
