@@ -20,11 +20,16 @@ class AddingProgram
             Console.WriteLine("Please enter another number: ");
             int secondNum = Convert.ToInt32(Console.ReadLine());
 
+
             //Be mindful of scope! Because the try/catch/finally blocks all have their own individual scopes
             //We have to keep track of what lives inside of where. Here I have my numbers declared inside
             //of my try block, so Main doesn't have access to them.
 
             Console.WriteLine($"The sum of {firstNum} and {secondNum} is: {AddTwoNumbers(firstNum, secondNum)}");
+        }
+        catch (FormatException fException) //We can have multiple catches, but we want to make sure we go from More Specific to Least Specific
+        {
+            
         }
         catch (Exception myException) //catching a potential exception, doing something if/when we do
         {
@@ -59,11 +64,23 @@ class AddingProgram
     //(access modifier) (return type) (arguments) - arguments are given a type, and a name like a field
     static int AddTwoNumbers(int num1, int num2)
     {
-        //I can access arguments passed into my method within the method's block of code
-        int sum = num1 + num2;
 
-        //return allows us to return something (value, object, etc) to where this method was called
-        return sum;
+        if(num1 == num2)
+        {   
+            //I can access arguments passed into my method within the method's block of code
+            return num1 * 2;
+        }else{
+            //return allows us to return something (value, object, etc) to where this method was called
+            return num1 + num2;
+        }
+
+        //This code is unreachable - nothing will break but why did we write this code?
+        Console.WriteLine("");
+        
+        //int sum = num1 + num2;
+
+        
+        
     
     }//end AddTwoNumbers scope
 
