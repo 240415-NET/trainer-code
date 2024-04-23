@@ -1,12 +1,14 @@
 In this Hackathon we want to create a C# console application with the following requirments.
 
-1 - Prompts the user for multiple values
-2 - Save the values to an Array
+1 - Create a Class to model some sort of object
+1 - Prompt the user for values for that object
+2 - Use these values to create objects that we define (maybe use a Constructor?)
+3 - We want to store these objects in a List (or Array)
 3 - Handles any exceptions that may arise during the running of the application (no hard crashing)
-4 - Manage and update the values for the array using inputs from the User
+4 - We want to be able to manage and update the values for our objects stored in the list
 5 - Continues to run until the user quits the application, from within the application (no ctrl+c)
+
 
 The goal of this application is to create, manipulate and modify an array of a consistent data types.
 
 An potential example you can use is a grocery list, that a user can add items to, and then update if they have bought it or not.
-

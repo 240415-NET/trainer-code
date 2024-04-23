@@ -21,7 +21,7 @@ public class Dog
     public string breed {get; set;}
 
     //The {get; set;} shorthand is a shorthand for this.
-    private int age
+    public int age
     {
         get { return age; }
         set { age = value; }
