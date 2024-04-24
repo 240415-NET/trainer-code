@@ -17,8 +17,14 @@ public class Dog
     private protected - Access is limited to the containing class or types derived from the containing class within the current assembly.
     */    
 
+
+    // Instance Fields
     public string name {get; set;}
     public string breed {get; set;}
+
+    // Static Fields
+    public static int legs = 4;
+    public static bool hasTail = true;
 
     //The {get; set;} shorthand is a shorthand for this.
     public int age
