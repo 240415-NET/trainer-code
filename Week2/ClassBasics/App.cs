@@ -170,6 +170,16 @@ namespace ClassBasics
             GermanShepherd hans = new GermanShepherd("Hans", 35, true, true, 2);
 
             animal.Speak();
+            lassie.Speak();
+            pancake.Speak();
+            hans.Speak();
+
+            lassie.WagTail();
+
+            hans.WagTail();
+
+            GermanShepherd NoTailDog = new GermanShepherd("No Tail", 55, true, false, 33);
+            NoTailDog.WagTail();
 
         }
 
@@ -212,6 +222,8 @@ namespace ClassBasics
                 this.Speech = Speech;
             }
 
+            // This method is overridable because the keyword virtual is assigned to it
+            // other keywords that can be used include "abstract"
             public virtual void Speak(){
                 Console.WriteLine($"{Name} says {Speech}");
             }
@@ -238,6 +250,11 @@ namespace ClassBasics
                 Console.WriteLine($"Dog with name {Name} says {Speech}");
             }
 
+            public virtual void WagTail()
+            {
+                Console.WriteLine($"{Name} wags their tail");
+            }
+
         }
 
         public class GermanShepherd : Dog
@@ -255,6 +272,15 @@ namespace ClassBasics
             public override void Speak()
             {
                 Console.WriteLine($"German Shepherd called {Name} says {Speech}");
+            }
+
+            public override void WagTail()
+            {
+                if (HasFullTail){
+                    base.WagTail();
+                }else{
+                    Console.WriteLine($"{Name} wags his nub");
+                }
             }
         }
     }
