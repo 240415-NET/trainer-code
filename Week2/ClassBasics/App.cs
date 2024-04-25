@@ -248,16 +248,31 @@ namespace ClassBasics
             }
         }
 
+        // This is how you inherit from a parent class
+        // SubClass : ParentClass
         public class Dog : Animal
         {
             public int TeethCount {get;set;}
             public bool IsDomesticated {get;set;}
+
+            // We are required to use the base keyword to use the parent constructor in order to create the child class
+            // We refer to the parent by using the keyword base
+            // We refer to the current class with the keyword this
+            // This is a similar notation to using this: and constructor overloading
             public Dog(string Name, int TeethCount, bool IsDomesticated, string Speech) : base(Name, Speech){
-                this.TeethCount = TeethCount;
-                this.IsDomesticated = IsDomesticated;
+                SetTeethCountAndIsDomesticated(TeethCount, IsDomesticated);
             }
 
             public Dog(int TeethCount, bool IsDomesticated) : base("Lassie", "Timmy fell down the well!"){
+                SetTeethCountAndIsDomesticated(TeethCount, IsDomesticated);
+            }
+
+
+            // Helper method
+            // This is an example of abstraction
+            // As this method is private, it is only visible and usuable from within the class itself
+            // The only way to interact with this method is to use the constructors of the class itself
+            private void SetTeethCountAndIsDomesticated(int TeethCount, bool IsDomesticated){
                 this.TeethCount = TeethCount;
                 this.IsDomesticated = IsDomesticated;
             }
