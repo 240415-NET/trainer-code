@@ -7,7 +7,7 @@ namespace ClassBasics
 
             // App.ClassesExample();
             // App.TodoItemExample();
-            // App.PillarsExample();
+            App.PillarsExample();
 
         }
 
@@ -132,7 +132,43 @@ namespace ClassBasics
     
         public static void PillarsExample()
         {
+            /**
+                Polymorphism
 
+                    - Polymorphism allows emthods to do different things based on the object that is acting on them
+                    - This can be achieved by method overriding
+                        - Where a child class can provide their own specific implementation of a method already provided by one of its parent classes
+                        - For example, overriding the ToString() method
+                    - This can be achieved by method overloading
+                        - Where multiple methods can have the same name but different parameters or order of parameters
+                            - Unique method signatures
+                                - A method signature is the 'return_type method_name(parameter_list)'
+                                - What matters for overloading is the method_name being consistent, but the parameter list being different
+            */
+
+            PolymorphismExample polymorphismExample = new PolymorphismExample();
+            Console.WriteLine(polymorphismExample.Add(1, 2));
+            Console.WriteLine(polymorphismExample.Add(1.5f, 2.23432f));
+            Console.WriteLine(polymorphismExample.Add(long.MaxValue / 2, long.MinValue / 5));
+        }
+
+
+        public class PolymorphismExample
+        {
+            public int Add(int a, int b)
+            {
+                return a + b;
+            }
+
+            public float Add(float a, float b)
+            {
+                return a + b;
+            }
+
+            public long Add(long a, long b)
+            {
+                return a + b;
+            }
         }
     }
 }
