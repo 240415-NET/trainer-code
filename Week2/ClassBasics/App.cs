@@ -167,10 +167,10 @@ namespace ClassBasics
             Animal animal = new Animal("Monkey", "Ooh Ooh Ahh Ahh");
             Dog lassie = new Dog(42, true);
             Dog pancake = new Dog("Pancake", 30, true, "Woof!");
-            GermanShepherd hans = new GermanShepherd("Hans", 35, true, true, 42);
+            GermanShepherd hans = new GermanShepherd("Hans", 35, true, true, 2);
 
             animal.Speak();
-            
+
         }
 
 
