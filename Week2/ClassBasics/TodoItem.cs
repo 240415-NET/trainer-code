@@ -1,6 +1,6 @@
 using System.Runtime.InteropServices;
 
-namespace ClassBasics.TodoList
+namespace ClassBasics
 {
     public class TodoItem
     {
@@ -113,55 +113,6 @@ namespace ClassBasics.TodoList
             }
 
             return $"{Description} - {DueDate}\nEstimated Time: {EstimatedTime}\nStatus: {CurrentStatus}";
-        }
-
-        public static void Main(string[] args){
-
-            // TodoItem item1 = new TodoItem();
-
-            // Console.WriteLine(item1);
-
-            // TodoItem item2 = new TodoItem("Get Milk", 60, "4/25/2024", false);
-
-            // Console.WriteLine(item2);
-
-            List<TodoItem> todoItems = new List<TodoItem>();
-
-            Console.WriteLine(new TodoItem("Sharpen my pencil", 5));
-            Console.WriteLine(new TodoItem("Sharpen my pencil", 5, "5/25/2024"));
-            Console.WriteLine(new TodoItem("Sharpen my pencil", 5, "5/25/2024", true));
-
-            // new TodoItem();
-
-            for (int i = 0; i < 1; i++)
-            {
-                Console.WriteLine("Type Description:\n");
-
-                string description = Console.ReadLine();
-
-                Console.WriteLine("Estimated Time:\n");
-
-                int estimatedTime = int.Parse(Console.ReadLine());
-
-                Console.WriteLine("Due Date:\n");
-
-                string dueDate = Console.ReadLine();
-
-                TodoItem newItem = new TodoItem(description, estimatedTime, dueDate);
-
-                todoItems.Add(newItem);
-            }
-
-
-            foreach(var item in todoItems){
-                Console.WriteLine(item);
-            }
-
-            // Organizing my UI into a class
-            // Adding validation and checks for userinput and saving to my object
-            // Adding a way to add items individually, instead of 6 at a time
-            // etc
-
         }
     }
 }
