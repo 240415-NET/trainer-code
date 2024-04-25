@@ -128,7 +128,7 @@ namespace ClassBasics.TodoList
             List<TodoItem> todoItems = new List<TodoItem>();
 
             Console.WriteLine(new TodoItem("Sharpen my pencil", 5));
-            Console.WriteLine(new TodoItem("Sharpen my pencil", 5, "5/25/2024"));
+            Console.WriteLine(new TodoItem("5/25/2024", 5, "Sharpen my pencil"));
             Console.WriteLine(new TodoItem("Sharpen my pencil", 5, "5/25/2024", true));
 
             // new TodoItem();
