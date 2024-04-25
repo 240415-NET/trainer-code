@@ -181,6 +181,21 @@ namespace ClassBasics
             GermanShepherd NoTailDog = new GermanShepherd("No Tail", 55, true, false, 33);
             NoTailDog.WagTail();
 
+            /*
+                Encapsulation
+
+                    - Encapsulation is about keeping the data (attributes) and the methods (behaviors) that act on the data in a single unit or class
+                    - It also involves restricting access to some components of an object
+            */
+
+            EncapsulationExample encapsulationExample = new EncapsulationExample(hans);
+            encapsulationExample.PrintAnimalStats();
+
+            encapsulationExample.Animal = lassie;
+            encapsulationExample.PrintAnimalStats();
+
+            encapsulationExample.Animal = animal;
+            encapsulationExample.PrintAnimalStats();
         }
 
 
@@ -227,6 +242,10 @@ namespace ClassBasics
             public virtual void Speak(){
                 Console.WriteLine($"{Name} says {Speech}");
             }
+
+            public virtual string GetAnimalStats(){
+                return $"This animal has the name: {Name} and will say the phrase: {Speech}";
+            }
         }
 
         public class Dog : Animal
@@ -255,6 +274,11 @@ namespace ClassBasics
                 Console.WriteLine($"{Name} wags their tail");
             }
 
+            public override string GetAnimalStats()
+            {
+                return base.GetAnimalStats() + $"{Name} has this many teeth: {TeethCount} and domesticated status is {IsDomesticated}";
+            }
+
         }
 
         public class GermanShepherd : Dog
@@ -281,6 +305,32 @@ namespace ClassBasics
                 }else{
                     Console.WriteLine($"{Name} wags his nub");
                 }
+            }
+
+            public override string GetAnimalStats()
+            {
+                return base.GetAnimalStats() + $"{Name} full tail status is {HasFullTail} and number of dog show wins is {DogShowWins}";
+            }
+        }
+
+
+        // UI class
+        public class EncapsulationExample
+        {
+            public Animal Animal;
+
+            public EncapsulationExample(GermanShepherd Animal){
+                this.Animal = Animal;
+            }
+            public EncapsulationExample(Animal Animal){
+                this.Animal = Animal;
+            }
+            public EncapsulationExample(Dog Animal){
+                this.Animal = Animal;
+            }
+
+            public void PrintAnimalStats(){
+                Console.WriteLine(Animal.GetAnimalStats());
             }
         }
     }
