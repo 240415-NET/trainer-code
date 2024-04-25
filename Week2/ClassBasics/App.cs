@@ -173,7 +173,6 @@ namespace ClassBasics
             lassie.Speak();
             pancake.Speak();
             hans.Speak();
-
             lassie.WagTail();
 
             hans.WagTail();
@@ -277,6 +276,10 @@ namespace ClassBasics
                 this.IsDomesticated = IsDomesticated;
             }
 
+            // Overriding the inherited virtual methods from the parent class
+            // The override keyword is necessary to override
+            // If you do not explictily use the keyword override, you are shadowing the inherited method
+            // This will work, but as a developer you are being vague with your intentions whihc is not good practice
             public override void Speak()
             {
                 // base.Speak();
@@ -330,6 +333,9 @@ namespace ClassBasics
 
 
         // UI class
+        // This class is responsible for taking in an animal type object and printing out the animal stats that it receives from the object
+        // Because we are using the parent datatype, we can only assign objects that are of the parent type or children of the parent
+        // This is a combination of Inheritance and Polymorphism (Constructor Overloading, and Datatype Overloading)
         public class EncapsulationExample
         {
             public Animal Animal;
