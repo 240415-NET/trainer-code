@@ -13,17 +13,49 @@ namespace ClassBasics.TodoList
 
         private bool Status = false; // false is incomplete
 
-        public TodoItem(){
+        // This is the default constructor that any class will create automatically if no other constructor is provided by the developer
+        // If this constructor is created by the developer, it is also referred to as a No-Args Constructor
 
-        }
+        // public TodoItem(){
 
-        public TodoItem(string Description, int EstimatedTime, string DueDate, bool Status)
+        // }
+
+        // This is an All-Args constructor
+
+        // public TodoItem(string Description, int EstimatedTime, string DueDate, bool Status)
+        // {
+        //     this.Description = Description;
+        //     this.EstimatedTime = EstimatedTime;
+        //     this.DueDate = DueDate;
+        //     this.Status = Status;
+        // }
+
+
+        // These are all examples of Constructor overloading
+        // All of these will make an object, but based on the arguments provieded when the object is created, a different constructor will be called
+        // Only one constructor can be called to create an object
+        // Console.WriteLine(new TodoItem("Sharpen my pencil", 5));
+        public TodoItem(string Description, int EstimatedTime)
         {
             this.Description = Description;
             this.EstimatedTime = EstimatedTime;
+            this.DueDate = $"{DateTime.Now}";
+        }
+
+        // The : this() is used as a shorthand to minimise the amount of code that needs to be written
+        // We can use other constructors inside the class and how they implement their methods instead of rewriting inside each of them
+        // Console.WriteLine(new TodoItem("Sharpen my pencil", 5, "5/25/2024"));
+        public TodoItem(string Description, int EstimatedTime, string DueDate) : this(Description, EstimatedTime)
+        {
             this.DueDate = DueDate;
+        }
+
+        // Console.WriteLine(new TodoItem("Sharpen my pencil", 5, "5/25/2024", true));
+        public TodoItem(string Description, int EstimatedTime, string DueDate, bool Status) : this(Description, EstimatedTime, DueDate)
+        {
             this.Status = Status;
         }
+
 
         // My methods are how I will interact with the objects, and how the objects will interact with each other
         public string GetDescription(){
@@ -87,8 +119,13 @@ namespace ClassBasics.TodoList
 
             // Console.WriteLine(item2);
 
-
             List<TodoItem> todoItems = new List<TodoItem>();
+
+            Console.WriteLine(new TodoItem("Sharpen my pencil", 5));
+            Console.WriteLine(new TodoItem("Sharpen my pencil", 5, "5/25/2024"));
+            Console.WriteLine(new TodoItem("Sharpen my pencil", 5, "5/25/2024", true));
+
+            // new TodoItem();
 
             for (int i = 0; i < 1; i++)
             {
@@ -104,7 +141,7 @@ namespace ClassBasics.TodoList
 
                 string dueDate = Console.ReadLine();
 
-                TodoItem newItem = new TodoItem(description, estimatedTime, dueDate, false);
+                TodoItem newItem = new TodoItem(description, estimatedTime, dueDate);
 
                 todoItems.Add(newItem);
             }
