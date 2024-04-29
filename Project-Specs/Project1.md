@@ -2,7 +2,7 @@
 
 ## Overview (Due: 5/24/24 Friday)
 
-For this individual project, you'll create a console application, where the application will be interacting with users via terminal. The project will conclude with a 5 minute presentation of working software to trainers and colleagues.
+For this individual project, you'll create a console application, where the application will be interacting with users via terminal. The project will conclude with a 5 minute presentation of working software to trainers and colleagues. Your code will be hosted on your personal repository on our class's Github Organization.
 
 ## Requirements
 
