@@ -21,3 +21,8 @@ For this individual project, you'll create a console application, where the appl
 - dependency injection
 - The application should log errors and system events to a file or a DB table
 - Basic user authentication and authorization (admins vs normal users with passwords)
+
+## For Monday 5/6/24
+
+- Push a folder to your personal GitHub repository on the organization with the console app created (dotnet new console)
+- Upload a .txt or .md file to your personal github repo titled "Project1Proposal" or something like that. 
