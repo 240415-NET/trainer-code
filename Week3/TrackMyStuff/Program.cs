@@ -10,7 +10,7 @@ class Program
     {
         Console.WriteLine("Hello, World!");
 
-
+        Pet pancake = new Pet("pancake", "dog", 11);
 
     }
 }
