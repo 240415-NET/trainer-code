@@ -1,0 +1,66 @@
+I want to... 
+
+- Create a C# Console App
+- User interactions through the console with exception handling
+- Single User
+- Persist data to a local file on my machine* 
+- Separate things into 3-4 Layers
+
+Application Ideas
+
+- Home Inventory/Receipt tracker (More code)
+	- Accounts for more than one user's stuff
+	- Different categories of items (Furniture, Clothes, etc)
+		- Storing the original value of the items
+		- description 
+		- Date of Purchase on the items 
+
+
+(Saving this for later)
+- Drivers on auto policies (Less classes/models, but we have to account for relationships.)
+	- Individual policy objects/info (One to many)
+	- Drivers associated with that policy
+
+
+Track My Stuff! 
+
+- Models (What are we trying to store/work with)
+	- User
+		- userId (int)
+		- userName (string)
+
+	- Item - Things Common to most/all item types
+		- itemId (int/maybe guid)
+		- ownerId (int referencing someone's userId)
+		- item category (string)
+		- Original Cost	(double)
+		- Purchaes Date (DateTime) 
+		- Description (string)
+
+	
+	- Pets - extends our base Item class
+		- name (string)
+		- species (string)
+		- age (int)
+	
+	- Documents - extends our base Item class
+		- Document Type (string)
+		- Expiration Date (DateTime)
+	
+	
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
