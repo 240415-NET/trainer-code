@@ -25,10 +25,9 @@ public class Menu
 
                 switch (userChoice)
                 {
-                    case 1: // Creating a new user
+                    case 1: // Creating a new user profile
                         
                         break;
-
                     case 2:
                         
                         break;
