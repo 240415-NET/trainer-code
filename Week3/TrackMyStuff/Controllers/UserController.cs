@@ -7,6 +7,23 @@ namespace TrackMyStuff.Controllers;
 public class UserController
 {
     
+    //This function handles the business logic related to creating a new 
+    //user profile, using the User class
+
+    //This function will take input from another function in the presentation layer for the username
+    //It will then, create the user object that we will eventually store
+    //And it will pass that created user object to the data access layer
+    public static void CreateUser(string userName)
+    {
+        
+    }
+
+    //This function will *eventually* be used to check if a given username already exists in our data store
+    public static bool UserExists(string userName)
+    {
+
+        return false;
+    }
 
     
     
