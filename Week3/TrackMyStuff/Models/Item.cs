@@ -9,7 +9,7 @@ public class Item
     public DateTime purchaseDate {get; set;}
     public string description {get; set;}
 
-    //Constructor 
+    //Constructors 
     public Item() { }
     
     public Item(int _userId, int _itemId, string _category, double _originalCost, 

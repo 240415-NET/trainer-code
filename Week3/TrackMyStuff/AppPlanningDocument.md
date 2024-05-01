@@ -6,7 +6,7 @@
 - User interactions through the console with exception handling
 - Single User
 - Persist data to a local file on my machine*
-- Separate things into 3-4 Layers
+- Separate my code/logic into 3-4 layers. (Presentation (UI the user sees), Data Access (Communicating with our data store), Controllers/Business Logic, Models)
 
 ## Application Ideas
 
@@ -49,3 +49,13 @@
 - Documents - inherit/extends our base Item class
   - Document Type (string)
   - Expiration Date (DateTime)
+
+### User Stories/Features
+
+- As a User I want to be able to create a profile and log in
+  - Present options via a menu in the console to the user (Presentation layer)
+  - We want to take their input and either (Presentation layer)
+    - create a new profile with a given username, and an auto-generated userID (business logic/controller)
+      - we need to then store this profile in our data store (data access layer)
+    - OR we want to pull up their information (business logic/controller)
+      - we need to reach into our data store (file, or DB, etc) and grab their profile and associated info (data access layer). 
