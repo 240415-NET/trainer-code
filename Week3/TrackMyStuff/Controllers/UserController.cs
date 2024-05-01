@@ -1,3 +1,5 @@
+using TrackMyStuff.Models;
+
 namespace TrackMyStuff.Controllers;
 
 //This is my "controller"
@@ -15,7 +17,11 @@ public class UserController
     //And it will pass that created user object to the data access layer
     public static void CreateUser(string userName)
     {
-        
+        //Creating the user
+        User newUser = new User(userName);
+
+        //.. eventually, we will come here and call a Data Access Layer method to store the user
+
     }
 
     //This function will *eventually* be used to check if a given username already exists in our data store
