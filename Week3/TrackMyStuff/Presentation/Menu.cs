@@ -25,7 +25,21 @@ public class Menu
 
                 switch (userChoice)
                 {
-                    
+                    case 1: // Creating a new user
+                        
+                        break;
+
+                    case 2:
+                        
+                        break;
+
+                    case 3: //User chooses to exit the program
+                        return; //This return exits this method, and returns us to where it was called.
+
+                    default: // If the user enters an integer that is not 1, 2, or 3
+                        Console.WriteLine("Please enter a valid choice!");
+                        validInput = false;
+                        break;
                 }
 
             }
