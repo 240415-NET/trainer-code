@@ -47,5 +47,5 @@
   - age (int)
 
 - Documents - inherit/extends our base Item class
-- Document Type (string)
-- Expiration Date (DateTime)
+  - Document Type (string)
+  - Expiration Date (DateTime)
