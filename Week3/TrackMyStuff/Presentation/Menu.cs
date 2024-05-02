@@ -52,6 +52,52 @@ public class Menu
 
         
     }
+
+    //This method handles the prompts for creating a new user profile
+    public static void UserCreationMenu() 
+    {
+        //We want to ask for a user name
+
+        //We want to make sure the user did not just hit enter and provide an empty string
+
+        //We want to call the Controller's UserExists() method to see if a given username is already taken
+
+        //If it is taken, we prompt the user to try again with a new username. 
+
+        //Pass the username to the controller
+
+        /*
+            Lets sketch out the logic here
+
+            We are going to need a boolean "flag" 
+
+            do-while loop checking against our flag
+                {
+                    check if the given input is null or empty
+                        if-else to check if our input is null or empty
+                    
+                    assuming our input is valid according to our business rules (since we set 
+                    the requirement that you cannot have a blank username)
+
+                    we then want to check if a given username exists using the UserExists method 
+                    in the UserController
+                        if the name isn't taken, great
+                        if the name IS taken, then prompt the user to try again
+                } 
+            We stay in the do-while until the input passes both checks.
+        */
+
+        //Declaring our flag boolean outside of our loop, setting it to true
+        bool validInput = true;
+
+        do
+        {
+            Console.WriteLine("Please enter a username: ");
+
+            
+        } while (!validInput); //Continue running the above block UNTIL input is valid
+
+    }
     
     
 }
