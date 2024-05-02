@@ -38,7 +38,7 @@ public class Menu
                         return; //This return exits this method, and returns us to where it was called.
 
                     default: // If the user enters an integer that is not 1, 2, or 3
-                        Console.WriteLine("Please enter a valid choice!");
+                        Console.WriteLine("Please enter a valid choice (from the default)!");
                         validInput = false;
                         break;
                 }
@@ -47,7 +47,9 @@ public class Menu
             catch (Exception ex) 
             {   
                 validInput = false;
-                Console.WriteLine("Please enter a valid choice!");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                Console.WriteLine("Please enter a valid choice! (from the catch)");
             }
 
         } while (!validInput);

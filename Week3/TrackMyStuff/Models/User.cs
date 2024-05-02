@@ -10,8 +10,8 @@ public class User
 
     //We are using a prebuilt data type from the default System library to generate a truly unique
     //userId
-    public Guid userId {get; private set;}
-    public string userName {get; private set;}
+    public Guid userId {get; set;}
+    public string userName {get; set;}
 
     //Constructors
 
