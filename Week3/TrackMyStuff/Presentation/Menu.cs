@@ -28,7 +28,7 @@ public class Menu
                 switch (userChoice)
                 {
                     case 1: // Creating a new user profile
-                        
+                        UserCreationMenu();
                         break;
                     case 2:
                         
