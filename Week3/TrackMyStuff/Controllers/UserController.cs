@@ -1,4 +1,5 @@
 using TrackMyStuff.Models;
+using TrackMyStuff.Data;
 
 namespace TrackMyStuff.Controllers;
 
@@ -24,7 +25,7 @@ public class UserController
         Console.WriteLine($"{newUser.userId}");
 
         //.. eventually, we will come here and call a Data Access Layer method to store the user
-
+        UserStorage.StoreUser(newUser);
     }
 
     //This function will *eventually* be used to check if a given username already exists in our data store
