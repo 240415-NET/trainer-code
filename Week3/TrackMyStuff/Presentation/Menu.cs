@@ -1,3 +1,5 @@
+using TrackMyStuff.Controllers;
+
 namespace TrackMyStuff.Presentation;
 
 public class Menu
@@ -58,7 +60,7 @@ public class Menu
     {
         //We want to ask for a user name
 
-        //We want to make sure the user did not just hit enter and provide an empty string
+        //We want to make sure the user did not just hit enter and provide a null or empty string
 
         //We want to call the Controller's UserExists() method to see if a given username is already taken
 
@@ -89,12 +91,36 @@ public class Menu
 
         //Declaring our flag boolean outside of our loop, setting it to true
         bool validInput = true;
+        string userInput = "";
 
         do
-        {
+        {   
+            //Prompting the user for a username
             Console.WriteLine("Please enter a username: ");
 
-            
+            //The ?? is called the null-coalescing operator
+            //If the input comes back null, then we manually set it to an empty string - to avoid 
+            //the possibility of this userInput string ever being null. 
+            userInput = Console.ReadLine() ?? "";
+
+            //Here we are going to trim the string, to remove any leading or trailing spaces
+            userInput = userInput.Trim();
+
+            //If else to check both of our conditions - empty string and existing username
+            if(String.IsNullOrEmpty(userInput))
+            {
+                Console.WriteLine("Username cannot be blank, please try again.");
+                validInput = false;
+            }else if(UserController.UserExists(userInput))
+            {
+                Console.WriteLine("Username already exists, please choose another.");
+                validInput = false;
+            }else{ //If neither check trips we simply call CreateUser from the UserController!
+                UserController.CreateUser(userInput);
+                Console.WriteLine("Profile created!");
+                validInput = true;
+            }
+
         } while (!validInput); //Continue running the above block UNTIL input is valid
 
     }

@@ -18,6 +18,10 @@ public class UserController
     {
         //Creating the user
         User newUser = new User(userName);
+        
+        //Adding a WriteLine to just verify that we got here from the presentation layer
+        Console.WriteLine($"User {newUser.userName} created using CreateUser()!");
+        Console.WriteLine($"{newUser.userId}");
 
         //.. eventually, we will come here and call a Data Access Layer method to store the user
 
@@ -26,7 +30,7 @@ public class UserController
     //This function will *eventually* be used to check if a given username already exists in our data store
     public static bool UserExists(string userName)
     {
-        
+
         return false;
     }
 
