@@ -52,10 +52,10 @@
 
 ### User Stories/Features
 
-- As a User I want to be able to create a profile and log in
-  - Present options via a menu in the console to the user (Presentation layer)
+- ~~As a User I want to be able to create a profile and log in~~
+  - ~~Present options via a menu in the console to the user (Presentation layer)~~
   - We want to take their input and either (Presentation layer)
-    - create a new profile with a given username, and an auto-generated userID (business logic/controller)
+    - ~~create a new profile with a given username, and an auto-generated userID (business logic/controller)~~
       - we need to then store this profile in our data store (data access layer)
     - OR we want to pull up their information (business logic/controller)
-      - we need to reach into our data store (file, or DB, etc) and grab their profile and associated info (data access layer). 
+      - we need to reach into our data store (file, or DB, etc) and grab their profile and associated info (data access layer).

@@ -11,15 +11,14 @@ public class UserController
     
     //This function handles the business logic related to creating a new 
     //user profile, using the User class
-
-    //This function will take input from another function in the presentation layer for the username
+    //It will take input from another function in the presentation layer for the username.
     //It will then, create the user object that we will eventually store
     //And it will pass that created user object to the data access layer
     public static void CreateUser(string userName)
     {
         //Creating the user
         User newUser = new User(userName);
-
+        
         //.. eventually, we will come here and call a Data Access Layer method to store the user
 
     }
