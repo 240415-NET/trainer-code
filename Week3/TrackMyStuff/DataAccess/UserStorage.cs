@@ -61,14 +61,6 @@ public class UserStorage
             File.WriteAllText(filePath, jsonUsersListString);
         }
 
-
-        //If it does, we want to append the object to the file
-        
-        // If it doesn't, create the file and store our object
-
     }
-
-
-
 
 }

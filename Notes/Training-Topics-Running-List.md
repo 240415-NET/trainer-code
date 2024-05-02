@@ -50,3 +50,14 @@
 - Overriding/Overloading
 - Getters/Setters
 - Access Modifiers
+
+## C# TrackMyStuff
+
+- JSON (what is it?)
+- File IO (creating/working with files from our code)
+- Data persistance (storing things while the program is not running)
+- Serialization (C# Object -> text)
+- Deserialization (Text -> C# object)
+- N-Tier architecture (Presentation, Controller, Data Access, Models)
+- Null Coalescing operator - ??
+- String.IsNullOrEmpty() methods
