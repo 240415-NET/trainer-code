@@ -10,28 +10,50 @@ public class UserStorage
     {   
         //String representing our file path and name. This can take just a file name,
         //Or it can take absolute or relative file paths. 
-        string filePath = "UsersFile.json";
+        //Filepaths begin at the root directory of the application, in our case the 
+        //TrackMyStuff folder that holds our entire console app
+        //Here we used a relative file path starting at TrackMyStuff to go into
+        //Our DataAccess folder, and create the UsersFile.json inside that folder
+        string filePath = "./DataAccess/UsersFile.json";
 
-        //Creating a blank list to use later
-        List<User> usersList = new List<User>();
+        Console.WriteLine();
 
         //We want to create a JSON file from our method if one does not already exist
         if(File.Exists(filePath))
         {
+            //We need to deserialize the existing json text string in our file, and store it in our list.
+
             //Here we will probably read the file for a collection of users, and then add our user
             //and rewrite the file
+            //When we deserialize we have to be explicit with our type, the Deserialize method
+            //NEEDS to know what kind of object it's going to create.
+            List<User> existingUsersList = JsonSerializer.Deserialize<List<User>>(filePath);
+
+            //Once we deserialize our exisitng JSON text from the file into a new List<User> object
+            //We will then simply add it to the list, using the Add() method
+            existingUsersList.Add(user);
+
+            //Here we will serialize our list of users, into a JSON text string
+            string jsonExistingUsersListString = JsonSerializer.Serialize(existingUsersList);
+
+            //Now we will store our jsonUsersString to our file
+            File.WriteAllText(filePath, jsonExistingUsersListString);
+
+            
         }
         else if (!File.Exists(filePath)) //The first time the program runs, the file probably doesn't exist
         {
+            //Creating a blank list to use later
+            List<User> initialUsersList = new List<User>();
+
             //Adding our user to our list, PRIOR to serializing it
-            usersList.Add(user);
+            initialUsersList.Add(user);
 
             //Here we will serialize our list of users, into a JSON text string
-            string jsonUsersListString = JsonSerializer.Serialize(usersList);
+            string jsonUsersListString = JsonSerializer.Serialize(initialUsersList);
 
             //Now we will store our jsonUsersString to our file
             File.WriteAllText(filePath, jsonUsersListString);
-            
         }
 
 
