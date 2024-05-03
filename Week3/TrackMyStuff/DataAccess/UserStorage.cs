@@ -5,6 +5,12 @@ namespace TrackMyStuff.Data;
 
 public class UserStorage 
 {
+    //If I find myself re-using the same string or object etc, I can go ahead
+    //and make it a member of my class. This way I can reuse this same data without
+    //having to continuously re-initialize it.
+    //The underscore is a common convention to denote variables that are common
+    //to the entire class
+    public static string filePath = "UsersFile.json";
 
     public static void StoreUser(User user)
     {   
@@ -14,15 +20,16 @@ public class UserStorage
         //TrackMyStuff folder that holds our entire console app
         //Here we used a relative file path starting at TrackMyStuff to go into
         //Our DataAccess folder, and create the UsersFile.json inside that folder
-        string filePath = "UsersFile.json";
+        //string filePath = "UsersFile.json";
 
-        Console.WriteLine("Entered StoreUser()");
+        //Console.WriteLine("Entered StoreUser()");
 
         //We want to create a JSON file from our method if one does not already exist
         if(File.Exists(filePath))
         {
             //We need to deserialize the existing json text string in our file, and store it in our list.
-            Console.WriteLine("Entered IF FILE EXISTS logic block");
+            //Console.WriteLine("Entered IF FILE EXISTS logic block");
+            
             //Here we will probably read the file for a collection of users, and then add our user
             //and rewrite the file
             //When we deserialize we have to be explicit with our type, the Deserialize method
@@ -60,6 +67,39 @@ public class UserStorage
             //Now we will store our jsonUsersString to our file
             File.WriteAllText(filePath, jsonUsersListString);
         }
+
+    }
+
+    public static User FindUser(string usernameToFind)
+    {
+
+        try{
+
+            //First, read the string back from our .json file
+            string existingUsersJson = File.ReadAllText(filePath);
+
+            //Then, we need to serialize the string back into a List of User objects
+            List<User> existingUsersList = JsonSerializer.Deserialize<List<User>>(existingUsersJson);
+
+            //Then, we need to check if there is a user object with the given username 
+            //that came in as an argument when the method was called inside of our list
+            //To do this we are going to use a LINQ method to query our collection called Where()
+            User foundUser = existingUsersList.Where(u => u.userName == usernameToFind);
+
+
+
+            //If it exists, return that user
+
+
+            //If it doesn't... do something else 
+
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+        }
+        
+        
 
     }
 

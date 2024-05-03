@@ -57,6 +57,6 @@
   - We want to take their input and either (Presentation layer)
     - ~~create a new profile with a given username, and an auto-generated userID (business logic/controller)~~
       - ~~ we need to then store this profile in our data store (data access layer) ~~
-      - ~~if a given username already exists, prompt the user to provide a different username~~
+      - if a given username already exists, prompt the user to provide a different username
     - OR we want to pull up their information (business logic/controller)
       - we need to reach into our data store (file, or DB, etc) and grab their profile and associated info (data access layer).
