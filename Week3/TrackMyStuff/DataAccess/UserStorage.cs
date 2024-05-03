@@ -72,6 +72,8 @@ public class UserStorage
 
     public static User FindUser(string usernameToFind)
     {
+        //User object to store a user if they are found or NULL if they are not
+        User foundUser = new User();
 
         try{
 
@@ -83,15 +85,31 @@ public class UserStorage
 
             //Then, we need to check if there is a user object with the given username 
             //that came in as an argument when the method was called inside of our list
-            //To do this we are going to use a LINQ method to query our collection called Where()
-            User foundUser = existingUsersList.Where(u => u.userName == usernameToFind);
+            //To do this we are going to use a LINQ method to query our collection called FirstOrDefault()
+            //Inside the parenthesis is a lambda method or anonymous function 
+            //Lambda expressions have the same basic syntax ((parameters) => expression_or_statement_block)
 
+            //This => is called the lambda operator - so it is not actually functioning as any sort of 
+            //comparator 
 
+            //To the left of the => (lambda operator) is the input to our anonymous function or method
+            //To the right, is the code that will be executed or evaluated against when the lambda runs
+            foundUser = existingUsersList.FirstOrDefault(user => user.userName == usernameToFind);
+
+            //The above lambda function is essentially iterating through and querying the list for us, 
+            //as if we were doing the foreach loop below
+            // foreach (User user in existingUsersList){
+            //     if(user.userName == usernameToFind)
+            //     {
+            //         return user;
+            //     }
+            // }
 
             //If it exists, return that user
-
+            
 
             //If it doesn't... do something else 
+
 
         }
         catch (Exception e)
@@ -99,7 +117,7 @@ public class UserStorage
             Console.WriteLine(e.Message);
         }
         
-        
+        return foundUser;
 
     }
 

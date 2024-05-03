@@ -33,7 +33,10 @@ public class UserController
     {
         //We will need to write some method in our UserStorage.cs (Data Access Layer) that can find a user
         //if they exist
-    
+        if(UserStorage.FindUser(userName) != null)
+        {
+            return true;
+        }
 
         return false;
     }
