@@ -41,6 +41,12 @@ public class UserController
         return false;
     }
 
-    
+    // This function returns user information from our data layer
+    public static User ReturnUser (string userName)
+
+    {
+        User existingUser = UserStorage.FindUser(userName);
+        return existingUser;
+    }
     
 }
