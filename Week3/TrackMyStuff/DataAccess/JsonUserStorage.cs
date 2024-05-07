@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace TrackMyStuff.Data;
 
-public class UserStorage 
+public class JsonUserStorage 
 {
     //If I find myself re-using the same string or object etc, I can go ahead
     //and make it a member of my class. This way I can reuse this same data without
