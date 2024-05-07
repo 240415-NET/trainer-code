@@ -12,6 +12,8 @@ public class JsonUserStorage : IUserStorageRepo
     //to the entire class
     public static string filePath = "UsersFile.json";
 
+    //Changed my methods to be instance methods instead of class methods
+
     public void StoreUser(User user)
     {   
         //String representing our file path and name. This can take just a file name,
