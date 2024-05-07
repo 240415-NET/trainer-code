@@ -9,6 +9,8 @@ namespace TrackMyStuff.Controllers;
 //later on during training. 
 public class UserController
 {
+
+    private static IUserStorageRepo _userData = new JsonUserStorage();
     
     //This function handles the business logic related to creating a new 
     //user profile, using the User class
@@ -25,7 +27,7 @@ public class UserController
         //Console.WriteLine($"{newUser.userId}");
 
         //.. eventually, we will come here and call a Data Access Layer method to store the user
-        UserStorage.StoreUser(newUser);
+        _userData.StoreUser(newUser);
     }
 
     //This function will *eventually* be used to check if a given username already exists in our data store
@@ -33,7 +35,7 @@ public class UserController
     {
         //We will need to write some method in our UserStorage.cs (Data Access Layer) that can find a user
         //if they exist
-        if(UserStorage.FindUser(userName) != null)
+        if(_userData.FindUser(userName) != null)
         {
             return true;
         }
@@ -45,7 +47,7 @@ public class UserController
     public static User ReturnUser (string userName)
 
     {
-        User existingUser = UserStorage.FindUser(userName);
+        User existingUser = _userData.FindUser(userName);
         return existingUser;
     }
     
