@@ -3,7 +3,7 @@ using System.Text.Json;
 
 namespace TrackMyStuff.Data;
 
-public class JsonUserStorage 
+public class JsonUserStorage : IUserStorageRepo
 {
     //If I find myself re-using the same string or object etc, I can go ahead
     //and make it a member of my class. This way I can reuse this same data without
@@ -12,7 +12,7 @@ public class JsonUserStorage
     //to the entire class
     public static string filePath = "UsersFile.json";
 
-    public static void StoreUser(User user)
+    public void StoreUser(User user)
     {   
         //String representing our file path and name. This can take just a file name,
         //Or it can take absolute or relative file paths. 
@@ -70,7 +70,7 @@ public class JsonUserStorage
 
     }
 
-    public static User FindUser(string usernameToFind)
+    public User FindUser(string usernameToFind)
     {
         //User object to store a user if they are found or NULL if they are not
         User foundUser = new User();

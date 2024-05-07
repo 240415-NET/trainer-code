@@ -9,6 +9,12 @@ namespace TrackMyStuff.Controllers;
 //later on during training. 
 public class UserController
 {
+    //Here, we will add an object to do data access stuff with
+    //We CANNOT instantiate an object representation of an interface
+    //We CAN however, create an object of a class that implements that interface,
+    //and store it in a variable of the interface's "type"
+    private static IUserStorageRepo _userData = new JsonUserStorage();
+
     
     //This function handles the business logic related to creating a new 
     //user profile, using the User class
@@ -25,7 +31,7 @@ public class UserController
         //Console.WriteLine($"{newUser.userId}");
 
         //.. eventually, we will come here and call a Data Access Layer method to store the user
-        UserStorage.StoreUser(newUser);
+        _userData.StoreUser(newUser);
     }
 
     //This function will *eventually* be used to check if a given username already exists in our data store
@@ -33,7 +39,7 @@ public class UserController
     {
         //We will need to write some method in our UserStorage.cs (Data Access Layer) that can find a user
         //if they exist
-        if(UserStorage.FindUser(userName) != null)
+        if(_userData.FindUser(userName) != null)
         {
             return true;
         }
