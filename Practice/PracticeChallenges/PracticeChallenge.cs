@@ -4,6 +4,7 @@ class PracticeChallenge
     // Return the sum of two integers.
     public static int Sum(int a, int b)
     {
+
         return a + b;
     }
 
@@ -12,7 +13,18 @@ class PracticeChallenge
     // Basic formula for average is <sum of all elements> / <number of elements>
     public static double ArrayAverage(double[] arr)
     {
-        return 0; // Placeholder return
+        
+        double sum = 0;
+        double average = 0;
+
+        for(int i = 0; i < arr.Length; i++)
+        {
+            sum += arr[i];
+        }
+
+        average = sum / arr.Length;
+
+        return average; // Placeholder return
     }
 
     // 2. Count the number of passing grades.
