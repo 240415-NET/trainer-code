@@ -10,7 +10,12 @@ namespace TrackMyStuff.Controllers;
 public class UserController
 {
 
+    //Here, we will add an object to do data access stuff with
+    //We CANNOT instantiate an object representation of an interface
+    //We CAN however, create an object of a class that implements that interface,
+    //and store it in a variable of the interface's "type"
     private static IUserStorageRepo _userData = new JsonUserStorage();
+
     
     //This function handles the business logic related to creating a new 
     //user profile, using the User class

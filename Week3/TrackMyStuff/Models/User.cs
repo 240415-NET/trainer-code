@@ -1,6 +1,6 @@
 namespace TrackMyStuff.Models;
 
-public class User
+public class User 
 {
     //Fields
     
