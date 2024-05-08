@@ -2,6 +2,8 @@
 
 ## Presentation Layer
 -ItemCreation method should be made
+-ItemCreation should be passed the currentUser
+-User log in will call item functionality menu and pass Current User to persist data
 ## Controllers
 -New controller to:
     -Create Item
