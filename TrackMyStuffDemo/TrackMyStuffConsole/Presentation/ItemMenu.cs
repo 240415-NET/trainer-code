@@ -104,6 +104,22 @@ public class ItemMenu
     }
     public static void NewOther(User user)
     {
+        //Need to add try-catch!
 
+        string category; 
+        double originalCost; 
+        DateTime purchaseDate; 
+        string description;
+
+        Console.WriteLine("Please enter the category for your item. (i.e. Furniture, Appliance, etc.)");
+        category = Console.ReadLine().Trim();
+        Console.WriteLine("What was the original cost for your item? Please enter just the number with no currency sign");
+        originalCost = double.Parse(Console.ReadLine().Trim());
+        Console.WriteLine("What was the original purchase date of the item?");
+        purchaseDate = DateTime.Parse(Console.ReadLine().Trim());
+        Console.WriteLine("Enter a description of the item. (i.e. Brown sleeper sofa)");
+        description = Console.ReadLine().Trim();
+
+        ItemController.CreateItem(user,category,originalCost,purchaseDate,description);
     }
 }
