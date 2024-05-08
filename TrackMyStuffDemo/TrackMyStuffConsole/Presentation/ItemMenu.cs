@@ -3,7 +3,7 @@ using TrackMyStuff.Models;
 
 namespace TrackMyStuff.Presentation;
 
-public class ItemFunctionMenu
+public class ItemMenu
 {
     
     public static void ItemFunctionMenu (User user)
@@ -58,33 +58,39 @@ public class ItemFunctionMenu
             }
             while (validInput == false);
         }
-        catch (Exception e)
+        catch (Exception e){
             Console.WriteLine(e.Message);
+        }
     }
 
     public static void NewItem (User user)
     {
-        string _category; 
-        double _originalCost; 
-        DateTime _purchaseDate; 
-        string _description;
+        string category; 
+        double originalCost; 
+        DateTime purchaseDate; 
+        string description;
 
         Console.Write("What is the category for the new item?\n1. Pet\n2. Document\n3. Other\n");
-        _category = Console.ReadLine().Trim();
+        category = Console.ReadLine().Trim();
         try
         {
-            switch (_category)
-            case "1":
-                NewPet(user);
-                break;
-            case "2":
-                NewDocument(user);
-                break;
-            case "3":
-                NewOther(user);
-                break;
-            default:
-                break;
+            switch (category)
+            {
+                case "1":
+                    NewPet(user);
+                    break;
+                case "2":
+                    NewDocument(user);
+                    break;
+                case "3":
+                    NewOther(user);
+                    break;
+                default:
+                    break;
+                }
+        }
+        catch (Exception e){
+            Console.WriteLine(e.Message);
         }
     }
 
@@ -98,6 +104,6 @@ public class ItemFunctionMenu
     }
     public static void NewOther(User user)
     {
-        
+
     }
 }
