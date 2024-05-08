@@ -9,6 +9,7 @@ namespace TrackMyStuff.Controllers;
 //later on during training. 
 public class UserController
 {
+
     //Here, we will add an object to do data access stuff with
     //We CANNOT instantiate an object representation of an interface
     //We CAN however, create an object of a class that implements that interface,
@@ -47,6 +48,12 @@ public class UserController
         return false;
     }
 
-    
+    // This function returns user information from our data layer
+    public static User ReturnUser (string userName)
+
+    {
+        User existingUser = _userData.FindUser(userName);
+        return existingUser;
+    }
     
 }
