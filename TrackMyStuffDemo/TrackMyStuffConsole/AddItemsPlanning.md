@@ -7,6 +7,14 @@
 ## Controllers
 - ~~New controller to:~~
     - ~~Create Item~~
-~~- New interface for data access independence~~
+- ~~New interface for data access independence~~
 ## Data Access
-~~- Need to write JSON file~~ (for Item)
+- Need to write JSON file
+    - ~~for Items~~
+    - for Pet
+    - for Document
+## Problem Solving
+- Need to address how to store subclass of Items
+    - Pet
+    - Document
+- Do we create separate files?
