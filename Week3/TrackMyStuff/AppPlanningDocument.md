@@ -12,7 +12,7 @@
 
 ### Home Inventory/Receipt tracker (More code)
 
-- Accounts for more than one user's stuff
+- Accounts for more than one user's stuff - We have successfully stored multiple users, but not their stuff (yet)
 - Different categories of items (Furniture, Clothes, etc)
 - Storing the original value of the items
 - description
@@ -52,14 +52,24 @@
 
 ### User Stories/Features
 
-- As a User I want to be able to create a profile and log in
+- ~~As a User I want to be able to create a profile and log in~~
   - ~~Present options via a menu in the console to the user (Presentation layer)~~
   - ~~ We want to take their input and either (Presentation layer) ~~
     - ~~create a new profile with a given username, and an auto-generated userID (business logic/controller)~~
       - ~~ we need to then store this profile in our data store (data access layer) ~~
       - ~~ if a given username already exists, prompt the user to provide a different username ~~
   
-#### Group Activity
+
+
+- As a user, I want to be be able to add my individual items, and have them persisted/associated to my account (Group 2)
+
+- As a user, I want to be able to remove items that I own - (Group 3)
+
+- As a user, I want to be able to modify the information of items that I own (Group 4)
+
+- As a user, I want to to be able to view the total list of items that I own and have entered. (Group 1)
+  
+#### ~~Group Activity 1~~
 
     - OR we want to pull up their information so they can LOG IN (business logic/controller)
       - we need to reach into our data store (file, or DB, etc) and grab their profile and associated info (data access layer).
@@ -75,3 +85,4 @@ Given this chunk of of our user story (Log in a user), I want each group to do t
 
   Try to push your Group's branch to the trainer-code repo
   
+#### 
