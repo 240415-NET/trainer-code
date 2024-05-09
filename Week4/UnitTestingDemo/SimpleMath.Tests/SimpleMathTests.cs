@@ -4,7 +4,8 @@ namespace SimpleMath.Tests;
 
 public class SimpleMathTests
 {   
-    
+    //This fact denotes a test method with no incoming arguments.
+    //You can write a ton of Fact tests.
     [Fact]
     public void IsPrime_InputIs1_ReturnFalse()
     {
@@ -24,6 +25,8 @@ public class SimpleMathTests
 
     }
 
+    //This test is a theory test, which allows us to pass in arguments to our test method
+    //By using InlineData, we can write one test that checks against many test cases.
     [Theory]
     [InlineData(2)]
     [InlineData(4733)]
