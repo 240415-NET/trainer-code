@@ -68,10 +68,10 @@
 - As a user, I want to be able to modify the information of items that I own (Group 4)
 
 - As a user, I want to to be able to view the total list of items that I own and have entered. (Group 1)
-  1. A collection of items List<Item,string,string> - Item, Type, FilePath(covered by the store method?)
+  1. A collection of items List<Item,string> - Item, Type
 
-  2. Method to retrieve item info from file - Returns List<Item,string,string> where UserID = GUID passed to method
-    public List<Item,string,string> GetUserItems(GUID userID)
+  2. Method to retrieve item info from file - Returns List<Item,string> where UserID = GUID passed to method
+    public List<Item,string> GetUserItems(GUID userID)
     a. Pulls list from json File that correspond to the logged in user's ID
     b. Include items added to list in the current session
 
@@ -80,10 +80,10 @@
     "PurchaseDate"
     "Category"
     "Cost"
-      a. Use a new list and not the current user's List<Item,string,string> to preserve order
+      a. Use a new list and not the current user's List<Item,string> to preserve order
 
   4. Write to Console a numbered list of Type, Description, Purchase Date, Original Cost
-    public void DisplayDescriptions(List<Item,string,string> dispList, string sortOrder = "")
+    public void DisplayDescriptions(List<Item,string> dispList, string sortOrder = "")
 
   5. Write to Console all details of selected item from list in line 4 using ToString override in class
     public void DisplayItemDetails(Item dispItemDetails)
