@@ -15,6 +15,7 @@
     - for Document
 ## Problem Solving
 - Three separate files will be created
+    - Files will be in root? directory
     - ~~Items (non-Pet, non-Document)~~
         - ~~ItemsFile.json~~
         - ~~Created by StoreItem(Item item)~~

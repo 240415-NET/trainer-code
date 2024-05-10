@@ -13,7 +13,7 @@ public class ItemMenu
 
         Console.Clear();
 
-        Console.Write("Please select from the following items:\n1. New Item\n2. Remove Item\n3. Modify\n4. View List of Items\n");
+        Console.Write("Please select from the following items:\n1. View List of Items\n2. New Item\n3. Remove Item\n4. Modify Item\n");
         try
         {
             do
@@ -23,36 +23,39 @@ public class ItemMenu
                 {
                     case "1":
                     case "1.":
-                    case "1. new":
-                    case "1. new item":
+                    case "1. list":
+                    case "1. list items":
+                    case "list":
+                    case "list items":
+                        Console.WriteLine("This will be implemented later, sorry!");
+                        break;
+                    case "2":
+                    case "2.":
+                    case "2. new":
+                    case "2. new item":
                     case "new":
                     case "new item":
                         validInput = true;
                         NewItem(user);
                         break;
-                    case "2":
-                    case "2.":
-                    case "2. remove":
-                    case "2. remove item":
+                    case "3":
+                    case "3.":
+                    case "3. remove":
+                    case "3. remove item":
                     case "remove":
                     case "remove item":
                         Console.WriteLine("This will be implemented later, sorry!");
                         break;
-                    case "3":
-                    case "3.":
-                    case "3. modify":
-                    case "3. modify item":
+                    case "4":
+                    case "4.":
+                    case "4. modify":
+                    case "4. modify item":
                     case "modify":
                     case "modify item":
                         Console.WriteLine("This will be implemented later, sorry!");
                         break;
-                    case "4":
-                    case "4.":
-                    case "4. list":
-                    case "4. list items":
-                    case "list":
-                    case "list items":
-                        Console.WriteLine("This will be implemented later, sorry!");
+                    default:
+                        Console.WriteLine("Please key valid option");
                         break;
                 }
             }
