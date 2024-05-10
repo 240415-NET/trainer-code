@@ -5,8 +5,8 @@ namespace TrackMyStuff.Presentation;
 
 public class ItemMenu
 {
-    
-    public static void ItemFunctionMenu (User user)
+
+    public static void ItemFunctionMenu(User user)
     {
         string userInput;
         bool validInput = false;
@@ -61,16 +61,17 @@ public class ItemMenu
             }
             while (validInput == false);
         }
-        catch (Exception e){
+        catch (Exception e)
+        {
             Console.WriteLine(e.Message);
         }
     }
 
-    public static void NewItem (User user)
+    public static void NewItem(User user)
     {
-        string category; 
-        double originalCost; 
-        DateTime purchaseDate; 
+        string category;
+        double originalCost;
+        DateTime purchaseDate;
         string description;
 
         Console.Write("What is the category for the new item?\n1. Pet\n2. Document\n3. Other\n");
@@ -90,14 +91,15 @@ public class ItemMenu
                     break;
                 default:
                     break;
-                }
+            }
         }
-        catch (Exception e){
+        catch (Exception e)
+        {
             Console.WriteLine(e.Message);
         }
     }
 
-    public static void NewPet (User user)
+    public static void NewPet(User user)
     {
 
     }
@@ -109,9 +111,9 @@ public class ItemMenu
     {
         //Need to add try-catch!
 
-        string category; 
-        double originalCost; 
-        DateTime purchaseDate; 
+        string category;
+        double originalCost;
+        DateTime purchaseDate;
         string description;
 
         Console.WriteLine("Please enter the category for your item. (i.e. Furniture, Appliance, etc.)");
@@ -123,6 +125,57 @@ public class ItemMenu
         Console.WriteLine("Enter a description of the item. (i.e. Brown sleeper sofa)");
         description = Console.ReadLine().Trim();
 
-        ItemController.CreateItem(user,category,originalCost,purchaseDate,description);
+        ItemController.CreateItem(user, category, originalCost, purchaseDate, description);
     }
+
+    public static void ModifyItemMenu()
+    {
+        bool isValid = false;
+        bool keepAlive = true;
+        Item itemToBeModified = new();
+        List<Item> modifyItemList = new();
+
+        //PLACEHOLDER -- GETITEMS()
+        do
+        {
+            Console.WriteLine(
+            "Please select which item you'd like to modify," +
+            "or type 0 if you are finished.");
+            try
+            {
+                int input = int.Parse(Console.ReadLine() ?? "");                 
+                //input -1 => Item // itemToBeModified = 
+                isValid = true;
+                if (keepAlive = input != 0) // if 0 is entered, keepAlive will evaluate to false and skip this code block.
+                {
+                    ModifyIndividualItemDisplay(itemToBeModified, modifyItemList);
+                }
+            }
+            catch
+            {
+                Console.WriteLine("You are so stupid!");
+                isValid = false;
+            }
+        }
+        while (!isValid && keepAlive);
+
+        ModifyItems.ModifyItemsFromList(modifyItemList);
+
+    }
+
+    public static List<Item> ModifyIndividualItemDisplay(Item itemToBeModified, List<Item> modifyItemList)
+    {
+
+        Console.WriteLine($"Current description: {itemToBeModified.description}");
+        Console.WriteLine("Please enter the new description: ");
+        string modifiedDescription = Console.ReadLine() ?? "";
+
+        //Call a method to add the modifiedItem to a List ModifyItemController.
+        ModifyItems.ModifyIndividualItem(itemToBeModified, modifiedDescription, modifyItemList);
+
+
+        return modifyItemList;
+
+    }
+
 }
