@@ -18,9 +18,11 @@ public static class ModifyItems
     {
         foreach(Item item in itemsToBeModified)
         {
-            //Remove(item.itemID) 
+            //Remove(item.itemID)
+            Console.WriteLine($"{item.itemId} was removed!"); // for testing to be removed later
 
             //Add(item)
+            Console.WriteLine($"{item.itemId} was re-added with {item.description}"); // for testing to be removed later
         }
     }
 

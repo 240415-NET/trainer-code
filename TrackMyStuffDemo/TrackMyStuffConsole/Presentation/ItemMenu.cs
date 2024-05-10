@@ -52,7 +52,7 @@ public class ItemMenu
                     case "4. modify item":
                     case "modify":
                     case "modify item":
-                        Console.WriteLine("This will be implemented later, sorry!");
+                        ModifyItemMenu(user);
                         break;
                     default:
                         Console.WriteLine("Please key valid option");
@@ -128,14 +128,14 @@ public class ItemMenu
         ItemController.CreateItem(user, category, originalCost, purchaseDate, description);
     }
 
-    public static void ModifyItemMenu()
+    public static void ModifyItemMenu(User user)
     {
         bool isValid = false;
         bool keepAlive = true;
         Item itemToBeModified = new();
         List<Item> modifyItemList = new();
 
-        //PLACEHOLDER -- GETITEMS()
+        //PLACEHOLDER -- GETITEMS(user.userId)
         do
         {
             Console.WriteLine(
@@ -148,7 +148,7 @@ public class ItemMenu
                 isValid = true;
                 if (keepAlive = input != 0) // if 0 is entered, keepAlive will evaluate to false and skip this code block.
                 {
-                    ModifyIndividualItemDisplay(itemToBeModified, modifyItemList);
+                    ModifyIndividualItemDisplay(itemToBeModified, modifyItemList, user); //will remove user later
                 }
             }
             catch
@@ -157,14 +157,16 @@ public class ItemMenu
                 isValid = false;
             }
         }
-        while (!isValid && keepAlive);
+        while (!isValid || keepAlive);
 
         ModifyItems.ModifyItemsFromList(modifyItemList);
 
     }
 
-    public static List<Item> ModifyIndividualItemDisplay(Item itemToBeModified, List<Item> modifyItemList)
+    public static List<Item> ModifyIndividualItemDisplay(Item itemToBeModified, List<Item> modifyItemList, User user)
     {
+        itemToBeModified = new Item(user.userId, "newCategory", 10.00, 
+        DateTime.Now, "Old description"); // PLACEHOLDER FOR TESTING TO BE REMOVED LATER
 
         Console.WriteLine($"Current description: {itemToBeModified.description}");
         Console.WriteLine("Please enter the new description: ");
