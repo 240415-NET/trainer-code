@@ -27,8 +27,6 @@ public class ItemMenu
                     case "1. list items":
                     case "list":
                     case "list items":
-                        Console.WriteLine(user.userId);
-                        Console.ReadKey();
                         ViewItemMenu(user.userId);
                         validInput = true;
                         break;
@@ -179,6 +177,7 @@ public class ItemMenu
     }
     public static void ViewItemMenu(Guid userID)
     {
+        Guid myReturnedGuid;
         bool exitViewMenu = false;
         do
         {
@@ -204,16 +203,24 @@ public class ItemMenu
                     switch (userChoice)
                     {
                         case 1:
-                            ViewAllItems(userID);
+                            myReturnedGuid = ViewAllItems(userID, 1);
+                            if(myReturnedGuid != Guid.Empty){ViewSpecifiedItemDetails(userID,myReturnedGuid);}
+                            Console.ReadKey();
                             break;
                         case 2:
-                            ViewMyItems(userID);
+                            myReturnedGuid = ViewMyItems(userID, 1);
+                            if(myReturnedGuid != Guid.Empty){ViewSpecifiedItemDetails(userID,myReturnedGuid);}
+                            Console.ReadKey();
                             break;
                         case 3:
-                            ViewMyPets(userID);
+                            myReturnedGuid = ViewMyPets(userID, 1);
+                            if(myReturnedGuid != Guid.Empty){ViewSpecifiedItemDetails(userID,myReturnedGuid);}
+                            Console.ReadKey();
                             break;
                         case 4:
-                            ViewMyDocuments(userID);
+                            myReturnedGuid = ViewMyDocuments(userID, 1);
+                            if(myReturnedGuid != Guid.Empty){ViewSpecifiedItemDetails(userID,myReturnedGuid);}
+                            Console.ReadKey();
                             break;
                         case 5:
                             exitViewMenu = true;
@@ -235,46 +242,234 @@ public class ItemMenu
         } while (!exitViewMenu);
     }
 
-    public static void ViewAllItems(Guid userID)
+    public static Guid ViewAllItems(Guid userID, int abbreviatedList = 0, string messageToUser = "Which item would you like to view?")
+    {
+        List<Item> allMyItems = ItemController.GetAllItems(userID);
+        if (allMyItems.Count() < 1)
+        {
+            Console.WriteLine("You have nothing...");
+        }
+        else
+        {
+            bool exitView = false;
+            do
+            {
+                Console.Clear();
+                int loopCount = 1;
+                foreach (Item item in allMyItems)
+                {
+                    if (abbreviatedList == 0)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{loopCount}: {item.AbbrToString()}");
+                    }
+                    loopCount++;
+                }
+                Console.WriteLine($"{loopCount}: Exit");
+                Console.WriteLine(messageToUser);
+                string userInput = (Console.ReadLine() ?? "").Trim();
+                try
+                {
+                    int userChoice = Convert.ToInt32(userInput);
+                    if (userChoice == loopCount)
+                    {
+                        exitView = true;
+                    }
+                    else if (userChoice <= allMyItems.Count() && userChoice > 0)
+                    {
+                        return allMyItems[userChoice - 1].itemId;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Wut? Pick a number from the list");
+                        exitView = false;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Try picking a NUMBER from the provided list.");
+                    exitView = false;
+                }
+            } while (!exitView);
+        }
+        return Guid.Empty;
+    }
+    public static Guid ViewMyItems(Guid userID, int abbreviatedList = 0, string messageToUser = "Which item would you like to view?")
+    {
+        List<Item> allMyItems = ItemController.GetItems(userID);
+        if (allMyItems.Count() < 1)
+        {
+            Console.WriteLine("You have nothing...");
+        }
+        else
+        {
+            bool exitView = false;
+            do
+            {
+                Console.Clear();
+                int loopCount = 1;
+                foreach (Item item in allMyItems)
+                {
+                    if (abbreviatedList == 0)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{loopCount}: {item.AbbrToString()}");
+                    }
+                    loopCount++;
+                }
+                Console.WriteLine($"{loopCount}: Exit");
+                Console.WriteLine(messageToUser);
+                string userInput = (Console.ReadLine() ?? "").Trim();
+                try
+                {
+                    int userChoice = Convert.ToInt32(userInput);
+                    if (userChoice == loopCount)
+                    {
+                        exitView = true;
+                    }
+                    else if (userChoice <= allMyItems.Count() && userChoice > 0)
+                    {
+                        return allMyItems[userChoice - 1].itemId;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Wut? Pick a number from the list");
+                        exitView = false;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Try picking a NUMBER from the provided list.");
+                    exitView = false;
+                }
+            } while (!exitView);
+        }
+        return Guid.Empty;
+    }
+    public static Guid ViewMyPets(Guid userID, int abbreviatedList = 0, string messageToUser = "Which item would you like to view?")
+    {
+        List<Pet> allMyPets = ItemController.GetPets(userID);
+        if (allMyPets.Count() < 1)
+        {
+            Console.WriteLine("You have nothing...");
+        }
+        else
+        {
+            bool exitView = false;
+            do
+            {
+                Console.Clear();
+                int loopCount = 1;
+                foreach (Item item in allMyPets)
+                {
+                    if (abbreviatedList == 0)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{loopCount}: {item.AbbrToString()}");
+                    }
+                    loopCount++;
+                }
+                Console.WriteLine($"{loopCount}: Exit");
+                Console.WriteLine(messageToUser);
+                string userInput = (Console.ReadLine() ?? "").Trim();
+                try
+                {
+                    int userChoice = Convert.ToInt32(userInput);
+                    if (userChoice == loopCount)
+                    {
+                        exitView = true;
+                    }
+                    else if (userChoice <= allMyPets.Count() && userChoice > 0)
+                    {
+                        return allMyPets[userChoice - 1].itemId;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Wut? Pick a number from the list");
+                        exitView = false;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Try picking a NUMBER from the provided list.");
+                    exitView = false;
+                }
+            } while (!exitView);
+        }
+        return Guid.Empty;
+    }
+    public static Guid ViewMyDocuments(Guid userID, int abbreviatedList = 0, string messageToUser = "Which item would you like to view?")
+    {
+        List<Document> allMyDocuments = ItemController.GetDocuments(userID);
+        if (allMyDocuments.Count() < 1)
+        {
+            Console.WriteLine("You have nothing...");
+        }
+        else
+        {
+            bool exitView = false;
+            do
+            {
+                Console.Clear();
+                int loopCount = 1;
+                foreach (Item item in allMyDocuments)
+                {
+                    if (abbreviatedList == 0)
+                    {
+                        Console.WriteLine(item);
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{loopCount}: {item.AbbrToString()}");
+                    }
+                    loopCount++;
+                }
+                Console.WriteLine($"{loopCount}: Exit");
+                Console.WriteLine(messageToUser);
+                string userInput = (Console.ReadLine() ?? "").Trim();
+                try
+                {
+                    int userChoice = Convert.ToInt32(userInput);
+                    if (userChoice == loopCount)
+                    {
+                        exitView = true;
+                    }
+                    else if (userChoice <= allMyDocuments.Count() && userChoice > 0)
+                    {
+                        return allMyDocuments[userChoice - 1].itemId;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Wut? Pick a number from the list");
+                        exitView = false;
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Try picking a NUMBER from the provided list.");
+                    exitView = false;
+                }
+            } while (!exitView);
+        }
+        return Guid.Empty;
+    }
+    public static void ViewSpecifiedItemDetails(Guid userID, Guid itemID)
     {
         List<Item> allMyItems = ItemController.GetAllItems(userID);
         Console.Clear();
-        foreach(Item item in allMyItems)
+        var SpecificItem = allMyItems.Where(x => x.itemId.Equals(itemID));
+        foreach (var thing in SpecificItem)
         {
-            Console.WriteLine(item);
+            Console.WriteLine(thing);
         }
-        Console.ReadKey();
     }
-    public static void ViewMyItems(Guid userID)
-    {
-        List<Item> allMyItems = ItemController.GetItems(userID);
-        Console.Clear();
-        foreach(Item item in allMyItems)
-        {
-            Console.WriteLine(item);
-        }
-        Console.ReadKey();        
-    }
-
-    public static void ViewMyPets(Guid userID)
-    {
-        List<Pet> allMyPets = ItemController.GetPets(userID);
-        Console.Clear();
-        foreach(Pet pet in allMyPets)
-        {
-            Console.WriteLine(pet);
-        }
-        Console.ReadKey();              
-    }
-    public static void ViewMyDocuments(Guid userID)
-    {
-        List<Document> allMyDocuments = ItemController.GetDocuments(userID);
-        Console.Clear();
-        foreach(Document document in allMyDocuments)
-        {
-            Console.WriteLine(document);
-        }
-        Console.ReadKey();              
-    }
-
 }

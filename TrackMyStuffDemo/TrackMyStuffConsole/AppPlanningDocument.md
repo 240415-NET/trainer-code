@@ -76,11 +76,6 @@
     b. Include items added to list in the current session
 
   3. Offer option for 4. to return sort by Purchase Date or by Category or Original Cost or default to return as entered
-    Sort Options:
-    "PurchaseDate"
-    "Category"
-    "Cost"
-      a. Use a new list and not the current user's List<Item,string> to preserve order
 
   4. Write to Console a numbered list of Type, Description, Purchase Date, Original Cost
     public void DisplayDescriptions(List<Item,string> dispList, string sortOrder = "")

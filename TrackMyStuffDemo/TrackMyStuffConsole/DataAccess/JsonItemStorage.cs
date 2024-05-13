@@ -107,30 +107,27 @@ public class JsonItemStorage : IItemStorageRepo
     {
         List<Item> myReturnList = new();
         ItemsDTO allMyStuff = JsonSerializer.Deserialize<ItemsDTO>(File.ReadAllText(filePath));
-        var userItems = allMyStuff.Items.Where(x => x.userId.Equals(userID));
-        var userPets = allMyStuff.Pets.Where(x => x.userId.Equals(userID));
-        var userDocs = allMyStuff.Documents.Where(x => x.userId.Equals(userID));
         if (listType == 4 || listType == 1)
         {
+            var userItems = allMyStuff.Items.Where(x => x.userId.Equals(userID));
             foreach (var item in userItems)
             {
-                Console.WriteLine(item);
                 myReturnList.Add(item);
             }
         }
         if (listType == 4 || listType == 2)
         {
+            var userPets = allMyStuff.Pets.Where(x => x.userId.Equals(userID));
             foreach (var pet in userPets)
             {
-                Console.WriteLine(pet);
                 myReturnList.Add(pet);
             }
         }
         if (listType == 4 || listType == 3)
         {
+            var userDocs = allMyStuff.Documents.Where(x => x.userId.Equals(userID));
             foreach (var document in userDocs)
             {
-                Console.WriteLine(document);
                 myReturnList.Add(document);
             }
         }
