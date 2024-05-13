@@ -22,5 +22,8 @@ public class Item
             description = _description;
     }
 
-
+    public override string ToString()
+    {
+        return $"Category: {category}\nOriginal Cost: {originalCost}\nPurchase Date: {purchaseDate}\nDescription: {description}";
+    }
 }

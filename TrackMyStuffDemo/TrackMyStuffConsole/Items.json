@@ -1,0 +1,17 @@
+{
+    "Items": [],
+    "Documents": [],
+    "Pets": [
+        {
+            "name": "Sweetie",
+            "species": "sugar glider",
+            "age": 1,
+            "userId": "f0a0ecd8-05c8-4e65-90b3-2c595335ac7b",
+            "itemId": "7aaf71b5-0463-4ee6-b21c-dc7796195899",
+            "category": "pet",
+            "originalCost": 1500,
+            "purchaseDate": "2024-05-09T00:00:00",
+            "description": "my very own sugar glider"
+        }
+    ]
+}

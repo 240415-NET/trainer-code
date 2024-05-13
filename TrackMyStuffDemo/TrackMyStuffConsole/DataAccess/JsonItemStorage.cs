@@ -5,12 +5,12 @@ namespace TrackMyStuff.Data;
 
 public class JsonItemStorage : IItemStorageRepo
 {
-    public static string filePath = "ItemsFile.json";
+    public static string filePath = "Items.json";
 
 
     //Changed my methods to be instance methods instead of class methods
 
-    public void StoreItem(Item newItem, Guid userGUID)
+    public void StoreItem(Item newItem)
     {
         //String representing our file path and name. This can take just a file name,
         //Or it can take absolute or relative file paths. 
@@ -46,7 +46,7 @@ public class JsonItemStorage : IItemStorageRepo
             {
                 existingLists.Pets.Add((Pet)newItem);
             }
-            if (newItem.GetType() == typeof(Document))
+            else if (newItem.GetType() == typeof(Document))
             {
                 existingLists.Documents.Add((Document)newItem);
             }
@@ -68,28 +68,28 @@ public class JsonItemStorage : IItemStorageRepo
             List<Item> itemsList = new List<Item>();
             List<Pet> petsList = new List<Pet>();
             List<Document> documentsList = new List<Document>();
-            
+
             ItemsDTO myItems = new();
 
-            // if (newItem.GetType() == typeof(Pet))
-            // {
-            //     myItems.Pets.Add((Pet)newItem);
-            // }
-            // if (newItem.GetType() == typeof(Document))
-            // {
-            //     myItems.Documents.Add((Document)newItem);
-            // }
-            // else
-            // {
-            //     myItems.Items.Add(newItem);
-            // }       
-            DateTime testing = DateTime.Now;
-            Pet mine = new Pet(userGUID,"pet",10,testing,"cat","thing","mutt",6);     
-            Document doc = new Document(userGUID,"paper",.01,testing,"it's paper!","the paper kind",testing);
-            Item item = new Item(userGUID,"thing",5,testing,"no");
-            myItems.Items.Add(item);
-            myItems.Pets.Add(mine);
-            myItems.Documents.Add(doc);
+            if (newItem.GetType() == typeof(Pet))
+            {
+                myItems.Pets.Add((Pet)newItem);
+            }
+            else if (newItem.GetType() == typeof(Document))
+            {
+                myItems.Documents.Add((Document)newItem);
+            }
+            else
+            {
+                myItems.Items.Add(newItem);
+            }
+            // DateTime testing = DateTime.Now;
+            // Pet mine = new Pet(userGUID,"pet",10,testing,"cat","thing","mutt",6);     
+            // Document doc = new Document(userGUID,"paper",.01,testing,"it's paper!","the paper kind",testing);
+            // Item item = new Item(userGUID,"thing",5,testing,"no");
+            // myItems.Items.Add(item);
+            // myItems.Pets.Add(mine);
+            // myItems.Documents.Add(doc);
 
             // myItems.Items = itemsList;
             // myItems.Pets = petsList;
@@ -103,5 +103,37 @@ public class JsonItemStorage : IItemStorageRepo
         }
 
     }
-
+    public List<Item> GetItems(Guid userID, int listType)
+    {
+        List<Item> myReturnList = new();
+        ItemsDTO allMyStuff = JsonSerializer.Deserialize<ItemsDTO>(File.ReadAllText(filePath));
+        var userItems = allMyStuff.Items.Where(x => x.userId.Equals(userID));
+        var userPets = allMyStuff.Pets.Where(x => x.userId.Equals(userID));
+        var userDocs = allMyStuff.Documents.Where(x => x.userId.Equals(userID));
+        if (listType == 4 || listType == 1)
+        {
+            foreach (var item in userItems)
+            {
+                Console.WriteLine(item);
+                myReturnList.Add(item);
+            }
+        }
+        if (listType == 4 || listType == 2)
+        {
+            foreach (var pet in userPets)
+            {
+                Console.WriteLine(pet);
+                myReturnList.Add(pet);
+            }
+        }
+        if (listType == 4 || listType == 3)
+        {
+            foreach (var document in userDocs)
+            {
+                Console.WriteLine(document);
+                myReturnList.Add(document);
+            }
+        }
+        return myReturnList;
+    }
 }
