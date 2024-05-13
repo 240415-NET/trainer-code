@@ -165,6 +165,7 @@ public static void UserLoginMenu()
                 Console.WriteLine($"Username: {existingUser.userName}");
                 Console.WriteLine($"User Id: {existingUser.userId}");
                 validInput = true;
+                ItemMenu.ItemFunctionMenu(existingUser); //new line for calling item functionality menu
             }
 
         } while (!validInput); //Continue running the above block UNTIL input is valid
