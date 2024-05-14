@@ -13,7 +13,7 @@ For this individual project, you'll create a console application, where the appl
 - The application should demonstrate good input validation
 - The application should persist data to a SQL Server DB
 - The application should communicate to DB via ADO.NET or Entity Framework Core
-- The application should have unit tests
+
 
 ## Nice to Have
 
@@ -21,6 +21,7 @@ For this individual project, you'll create a console application, where the appl
 - dependency injection
 - The application should log errors and system events to a file or a DB table
 - Basic user authentication and authorization (admins vs normal users with passwords)
+- The application should have unit tests
 
 ## For Monday 5/6/24
 
