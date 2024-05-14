@@ -74,106 +74,167 @@ public class ItemMenu
         double originalCost;
         DateTime purchaseDate;
         string description;
+        bool entrySuccess = false;
 
         Console.Write("What is the category for the new item?\n1. Pet\n2. Document\n3. Other\n");
-        category = Console.ReadLine().Trim();
-        try
+        do
         {
-            switch (category)
+            category = Console.ReadLine().Trim();
+            try
             {
-                case "1":
-                    NewPet(user);
-                    break;
-                case "2":
-                    NewDocument(user);
-                    break;
-                case "3":
-                    NewOther(user);
-                    break;
-                default:
-                    break;
+                switch (category)
+                {
+                    case "1":
+                        entrySuccess = true;
+                        NewPet(user);
+                        break;
+                    case "2":
+                        entrySuccess = true;
+                        NewDocument(user);
+                        break;
+                    case "3":
+                        entrySuccess = true;
+                        NewOther(user);
+                        break;
+                    default:
+                        Console.WriteLine("Please key a valid option");
+                        break;
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
             }
         }
-        catch (Exception e)
-        {
-            Console.WriteLine(e.Message);
-        }
+        while (entrySuccess == false);
+
     }
 
     public static void NewPet(User user)
     {
-        //Need to add try-catch!
+        bool entrySuccess = false;
+        do
+        {
+            try
+            {
+                string category;
+                double originalCost;
+                DateTime purchaseDate;
+                string description;
+                string name;
+                string species;
+                int age;
 
-        string category;
-        double originalCost;
-        DateTime purchaseDate;
-        string description;
-        string petName;
-        string petSpecies;
-        int petAge;
-
-        Console.WriteLine("Please enter the category for your item. (i.e. Furniture, Appliance, etc.)");
-        category = Console.ReadLine().Trim();
-        Console.WriteLine("What was the original cost for your item? Please enter just the number with no currency sign");
-        originalCost = double.Parse(Console.ReadLine().Trim());
-        Console.WriteLine("What was the original purchase date of the item?");
-        purchaseDate = DateTime.Parse(Console.ReadLine().Trim());
-        Console.WriteLine("Enter a description of the item. (i.e. Brown sleeper sofa)");
-        description = Console.ReadLine().Trim();
-        Console.WriteLine("Enter pet's name. (i.e. Pancake, Pyewacket)");
-        petName = Console.ReadLine().Trim();
-        Console.WriteLine("Enter pet's species");
-        petSpecies = Console.ReadLine().Trim();
-        Console.WriteLine("Enter pet's age");
-        petAge = Int32.Parse(Console.ReadLine().Trim());
-
-        ItemController.CreatePet(user, category, originalCost, purchaseDate, description, petName, petSpecies, petAge);
+                //Console.WriteLine("Please enter the category for your item. (i.e. Furniture, Appliance, etc.)");
+                category = "Pet";
+                Console.WriteLine("What is the name of your pet?");
+                name = Console.ReadLine().Trim();
+                Console.WriteLine($"What species is {name}?");
+                species = Console.ReadLine().Trim();
+                Console.WriteLine($"What is {name}'s age?");
+                age = int.Parse(Console.ReadLine().Trim());
+                Console.WriteLine($"What was the original cost for {name}? Please enter just the number with no currency sign");
+                originalCost = double.Parse(Console.ReadLine().Trim());
+                Console.WriteLine($"What was the original purchase date of {name}? Please enter with proper formatting -- i.e. 12/25/2001");
+                purchaseDate = DateTime.Parse(Console.ReadLine().Trim());
+                Console.WriteLine($"Enter a description of {name}");
+                description = Console.ReadLine().Trim();
+                /*
+                Console.WriteLine(category);
+                Console.WriteLine(originalCost);
+                Console.WriteLine(purchaseDate);
+                Console.WriteLine(description);
+                Console.WriteLine(name);
+                Console.WriteLine(species);
+                Console.WriteLine(age);
+                */
+                entrySuccess = true;
+                ItemController.CreatePet(user, category, originalCost, purchaseDate, description, name, species, age);
+            }
+            catch (Exception e)
+            {
+                //Console.Clear();
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Please key in a valid input!");
+            }
+        }
+        while (entrySuccess == false);
     }
     public static void NewDocument(User user)
     {
-        //Need to add try-catch!
+        bool entrySuccess = false;
+        do
+        {
+            try
+            {
+                string category;
+                double originalCost;
+                DateTime purchaseDate;
+                string description;
+                string documentType;
+                DateTime expirationDate;
 
-        string category;
-        double originalCost;
-        DateTime purchaseDate;
-        string description;
-        string documentType;
-        DateTime expirationDate;
-
-        Console.WriteLine("Please enter the category for your item. (i.e. Furniture, Appliance, etc.)");
-        category = Console.ReadLine().Trim();
-        Console.WriteLine("What was the original cost for your item? Please enter just the number with no currency sign");
-        originalCost = double.Parse(Console.ReadLine().Trim());
-        Console.WriteLine("What was the original purchase date of the item?");
-        purchaseDate = DateTime.Parse(Console.ReadLine().Trim());
-        Console.WriteLine("Enter a description of the item. (i.e. Brown sleeper sofa)");
-        description = Console.ReadLine().Trim();
-        Console.WriteLine("Enter document type (i.e. Will, Birth Certificate)");
-        documentType = Console.ReadLine().Trim();
-        Console.WriteLine("Enter document expiration date");
-        expirationDate = DateTime.Parse(Console.ReadLine().Trim());
-
-        ItemController.CreateDocument(user, category, originalCost, purchaseDate, description, documentType, expirationDate);
+                category = "Document";
+                Console.WriteLine("What type of document is this?");
+                documentType = Console.ReadLine().Trim();
+                Console.WriteLine("Enter a description of the document. (i.e. Ron's Will)");
+                description = Console.ReadLine().Trim();
+                Console.WriteLine("What was the original acquisition date of the document? Please enter with proper formatting -- i.e. 12/25/2001");
+                purchaseDate = DateTime.Parse(Console.ReadLine().Trim());
+                Console.WriteLine("What was the original cost for your document? Please enter just the number with no currency sign");
+                originalCost = double.Parse(Console.ReadLine().Trim());
+                Console.WriteLine("On what date will this document expire? Please enter with proper formatting -- i.e. 12/25/2001");
+                expirationDate = DateTime.Parse(Console.ReadLine().Trim());
+                /*
+                Console.WriteLine(category);
+                Console.WriteLine(originalCost);
+                Console.WriteLine(purchaseDate);
+                Console.WriteLine(description);
+                Console.WriteLine(documentType);
+                Console.WriteLine(expirationDate);
+                */
+                entrySuccess = true;
+                ItemController.CreateDocument(user, category, originalCost, purchaseDate, description, documentType, expirationDate);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                Console.WriteLine("Please key in a valid input!");
+            }
+        }
+        while (entrySuccess == false);
     }
     public static void NewOther(User user)
     {
         //Need to add try-catch!
+        bool entrySuccess = false;
+        do
+        {
+            try
+            {
+                string category;
+                double originalCost;
+                DateTime purchaseDate;
+                string description;
 
-        string category;
-        double originalCost;
-        DateTime purchaseDate;
-        string description;
-
-        Console.WriteLine("Please enter the category for your item. (i.e. Furniture, Appliance, etc.)");
-        category = Console.ReadLine().Trim();
-        Console.WriteLine("What was the original cost for your item? Please enter just the number with no currency sign");
-        originalCost = double.Parse(Console.ReadLine().Trim());
-        Console.WriteLine("What was the original purchase date of the item?");
-        purchaseDate = DateTime.Parse(Console.ReadLine().Trim());
-        Console.WriteLine("Enter a description of the item. (i.e. Brown sleeper sofa)");
-        description = Console.ReadLine().Trim();
-
-        ItemController.CreateItem(user, category, originalCost, purchaseDate, description);
+                Console.WriteLine("Please enter the category for your item. (i.e. Furniture, Appliance, etc.)");
+                category = Console.ReadLine().Trim();
+                Console.WriteLine("What was the original cost for your item? Please enter just the number with no currency sign");
+                originalCost = double.Parse(Console.ReadLine().Trim());
+                Console.WriteLine("What was the original purchase date of the item? Please enter with proper formatting -- i.e. 12/25/2001");
+                purchaseDate = DateTime.Parse(Console.ReadLine().Trim());
+                Console.WriteLine("Enter a description of the item. (i.e. Brown sleeper sofa)");
+                description = Console.ReadLine().Trim();
+                entrySuccess = true;
+                ItemController.CreateItem(user, category, originalCost, purchaseDate, description);
+            }
+            catch (Exception e)
+            {
+                Console.Clear();
+                Console.WriteLine("Please key in a valid input!");
+            }
+        }
+        while (entrySuccess == false);
     }
     public static void ViewItemMenu(Guid userID)
     {
