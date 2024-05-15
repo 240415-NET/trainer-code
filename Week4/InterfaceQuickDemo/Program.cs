@@ -1,5 +1,7 @@
 ﻿namespace InterfaceQuickDemo;
 
+using System.Linq;
+
 class Program
 {
     static void Main(string[] args)
@@ -8,6 +10,7 @@ class Program
 
         ellie.MakeHappyNoise();
 
+        
         
     }
 }
