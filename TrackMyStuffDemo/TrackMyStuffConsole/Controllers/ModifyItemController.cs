@@ -10,8 +10,7 @@ public static class ModifyItems
     public static void ModifyIndividualItem(Item itemToBeModified, string newDescription, List<Item> itemsToBeModified )
     {
         itemToBeModified.description = newDescription;
-        itemsToBeModified.Add(itemToBeModified);
-        
+        itemsToBeModified.Add(itemToBeModified);        
     }
 
     public static void ModifyItemsFromList(List<Item> itemsToBeModified)
@@ -25,5 +24,7 @@ public static class ModifyItems
             Console.WriteLine($"{item.itemId} was re-added with {item.description}"); // for testing to be removed later
         }
     }
+
+    
 
 }

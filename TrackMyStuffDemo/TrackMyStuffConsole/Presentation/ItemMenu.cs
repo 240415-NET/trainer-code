@@ -135,16 +135,25 @@ public class ItemMenu
         Item itemToBeModified = new();
         List<Item> modifyItemList = new();
 
-        //PLACEHOLDER -- GETITEMS(user.userId)
+
+
+        itemToBeModified = new Item(user.userId, "newCategory", 10.00, DateTime.Now, "Old description"); // PLACEHOLDER FOR TESTING TO BE REMOVED LATER
+
         do
         {
             Console.WriteLine(
-            "Please select which item you'd like to modify," +
+            "Please select which item you'd like to modify, " +
             "or type 0 if you are finished.");
             try
             {
-                int input = int.Parse(Console.ReadLine() ?? "");                 
+                int input = int.Parse(Console.ReadLine() ?? "");
+                               
                 //input -1 => Item // itemToBeModified = 
+                //List<Item> usersItems returned from Team 2(?) method.
+                //Func<int, Item> getItemAtIndex = index => items.ElementAtOrDefault(index);
+                //itemToBeModified =  getItemAtIndex(input); 
+       
+
                 isValid = true;
                 if (keepAlive = input != 0) // if 0 is entered, keepAlive will evaluate to false and skip this code block.
                 {
@@ -165,8 +174,7 @@ public class ItemMenu
 
     public static List<Item> ModifyIndividualItemDisplay(Item itemToBeModified, List<Item> modifyItemList, User user)
     {
-        itemToBeModified = new Item(user.userId, "newCategory", 10.00, 
-        DateTime.Now, "Old description"); // PLACEHOLDER FOR TESTING TO BE REMOVED LATER
+
 
         Console.WriteLine($"Current description: {itemToBeModified.description}");
         Console.WriteLine("Please enter the new description: ");
