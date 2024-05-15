@@ -5,7 +5,9 @@ namespace TrackMyStuff.Data;
 
 public class JsonItemStorage : IItemStorageRepo
 {
+
     public static string filePath = "Items.json";
+
     //If I find myself re-using the same string or object etc, I can go ahead
     //and make it a member of my class. This way I can reuse this same data without
     //having to continuously re-initialize it.
@@ -13,12 +15,10 @@ public class JsonItemStorage : IItemStorageRepo
     //to the entire class
 
 
-
     //Changed my methods to be instance methods instead of class methods
 
     public void StoreItem(Item newItem)
     {
-
         List<Item?> existingItemsList = DTOStorage.DeserializeItem();
 
         //Once we deserialize our exisitng JSON text from the file into a new List<item> object
@@ -53,6 +53,7 @@ public class JsonItemStorage : IItemStorageRepo
 
         DTOStorage.SerializePet(existingPetsList);
     }
+    
     public List<Item> GetItems(Guid userID, int listType)
     {
         List<Item> myReturnList = new();
@@ -84,3 +85,4 @@ public class JsonItemStorage : IItemStorageRepo
         return myReturnList;
     }
 }
+

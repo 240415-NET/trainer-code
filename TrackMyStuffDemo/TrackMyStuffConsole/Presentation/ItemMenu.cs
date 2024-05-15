@@ -5,8 +5,8 @@ namespace TrackMyStuff.Presentation;
 
 public class ItemMenu
 {
-
-    public static void ItemFunctionMenu(User user)
+    
+    public static void ItemFunctionMenu (User user)
     {
         string userInput;
         bool validInput = false;
@@ -62,11 +62,13 @@ public class ItemMenu
             }
             while (validInput == false);
         }
+
         catch (Exception e)
         {
             Console.WriteLine(e.Message);
         }
     }
+
 
     public static void NewItem(User user)
     {
@@ -204,6 +206,7 @@ public class ItemMenu
         }
         while (entrySuccess == false);
     }
+  
     public static void NewOther(User user)
     {
         //Need to add try-catch!
@@ -236,6 +239,7 @@ public class ItemMenu
         }
         while (entrySuccess == false);
     }
+  
     public static void ViewItemMenu(Guid userID)
     {
         Guid myReturnedGuid;
@@ -357,6 +361,7 @@ public class ItemMenu
         }
         return Guid.Empty;
     }
+  
     public static Guid ViewMyItems(Guid userID, int abbreviatedList = 0, string messageToUser = "Which item would you like to view?")
     {
         List<Item> allMyItems = ItemController.GetItems(userID);
@@ -413,6 +418,7 @@ public class ItemMenu
         }
         return Guid.Empty;
     }
+  
     public static Guid ViewMyPets(Guid userID, int abbreviatedList = 0, string messageToUser = "Which item would you like to view?")
     {
         List<Pet> allMyPets = ItemController.GetPets(userID);
@@ -469,6 +475,7 @@ public class ItemMenu
         }
         return Guid.Empty;
     }
+  
     public static Guid ViewMyDocuments(Guid userID, int abbreviatedList = 0, string messageToUser = "Which item would you like to view?")
     {
         List<Document> allMyDocuments = ItemController.GetDocuments(userID);
@@ -525,6 +532,7 @@ public class ItemMenu
         }
         return Guid.Empty;
     }
+  
     public static void ViewSpecifiedItemDetails(Guid userID, Guid itemID)
     {
         List<Item> allMyItems = ItemController.GetAllItems(userID);
