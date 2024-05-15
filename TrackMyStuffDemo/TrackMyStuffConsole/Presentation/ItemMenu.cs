@@ -266,22 +266,18 @@ public class ItemMenu
                         case 1:
                             myReturnedGuid = ViewAllItems(userID, 1);
                             if(myReturnedGuid != Guid.Empty){ViewSpecifiedItemDetails(userID,myReturnedGuid);}
-                            Console.ReadKey();
                             break;
                         case 2:
                             myReturnedGuid = ViewMyItems(userID, 1);
                             if(myReturnedGuid != Guid.Empty){ViewSpecifiedItemDetails(userID,myReturnedGuid);}
-                            Console.ReadKey();
                             break;
                         case 3:
                             myReturnedGuid = ViewMyPets(userID, 1);
                             if(myReturnedGuid != Guid.Empty){ViewSpecifiedItemDetails(userID,myReturnedGuid);}
-                            Console.ReadKey();
                             break;
                         case 4:
                             myReturnedGuid = ViewMyDocuments(userID, 1);
                             if(myReturnedGuid != Guid.Empty){ViewSpecifiedItemDetails(userID,myReturnedGuid);}
-                            Console.ReadKey();
                             break;
                         case 5:
                             exitViewMenu = true;
@@ -309,6 +305,7 @@ public class ItemMenu
         if (allMyItems.Count() < 1)
         {
             Console.WriteLine("You have nothing...");
+            Console.ReadKey();
         }
         else
         {
@@ -346,12 +343,14 @@ public class ItemMenu
                     else
                     {
                         Console.WriteLine("Wut? Pick a number from the list");
+                        Console.ReadKey();
                         exitView = false;
                     }
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine("Try picking a NUMBER from the provided list.");
+                    Console.ReadKey();
                     exitView = false;
                 }
             } while (!exitView);
@@ -364,6 +363,7 @@ public class ItemMenu
         if (allMyItems.Count() < 1)
         {
             Console.WriteLine("You have nothing...");
+            Console.ReadKey();
         }
         else
         {
@@ -419,6 +419,7 @@ public class ItemMenu
         if (allMyPets.Count() < 1)
         {
             Console.WriteLine("You have nothing...");
+            Console.ReadKey();
         }
         else
         {
@@ -474,6 +475,7 @@ public class ItemMenu
         if (allMyDocuments.Count() < 1)
         {
             Console.WriteLine("You have nothing...");
+            Console.ReadKey();
         }
         else
         {
@@ -532,5 +534,6 @@ public class ItemMenu
         {
             Console.WriteLine(thing);
         }
+        Console.ReadKey();
     }
 }
