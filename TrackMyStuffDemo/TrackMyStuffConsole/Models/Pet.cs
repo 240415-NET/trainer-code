@@ -21,5 +21,8 @@ public class Pet : Item //Pet inherits from our Item class as well
         species = _species;
         age = _age;
     }
-    
+    public override string ToString()
+    {
+        return $"Category: {category}\nOriginal Cost: {originalCost}\nPurchase Date: {purchaseDate}\nDescription: {description}\nSpecies: {species}\nPet Name: {name}\nPet Age: {age}";
+    }    
 }

@@ -84,6 +84,20 @@ Note: Instead of creating the method ModifyItems() in Controllers Layer, could p
 In the controller layer, we would instantiate a new object of type Item and call the ModifyItemName method
 
 - As a user, I want to to be able to view the total list of items that I own and have entered. (Group 1)
+  1. A collection of items List<Item,string> - Item, Type
+
+  2. Method to retrieve item info from file - Returns List<Item,string> where UserID = GUID passed to method
+    public List<Item,string> GetUserItems(GUID userID)
+    a. Pulls list from json File that correspond to the logged in user's ID
+    b. Include items added to list in the current session
+
+  3. Offer option for 4. to return sort by Purchase Date or by Category or Original Cost or default to return as entered
+
+  4. Write to Console a numbered list of Type, Description, Purchase Date, Original Cost
+    public void DisplayDescriptions(List<Item,string> dispList, string sortOrder = "")
+
+  5. Write to Console all details of selected item from list in line 4 using ToString override in class
+    public void DisplayItemDetails(Item dispItemDetails)
   
 #### ~~Group Activity 1~~
 
