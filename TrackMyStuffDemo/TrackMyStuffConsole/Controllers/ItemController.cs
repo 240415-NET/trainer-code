@@ -69,4 +69,32 @@ public class ItemController
         return returnList;
     }
 
+    public static void RemoveItem(Guid itemId, Guid userID)
+    {
+        ItemsDTO returnedDTO = DTOStorage.DeserializeAllItems();
+
+         if(returnedDTO != null)
+        {
+
+            foreach(Item I in returnedDTO.Items)
+            {
+                Console.WriteLine($"Index = {returnedDTO.Items.IndexOf(I)} {I.AbbrToString()} Id = {I.itemId}");
+            }
+            foreach(Document D in returnedDTO.Documents)
+            {
+                // Console.WriteLine($"Index = {VehiclesObject.Trucks.IndexOf(v) + VehiclesObject.Cars.Count} {v}");
+                Console.WriteLine($"Index = {returnedDTO.Documents.IndexOf(D) + returnedDTO.Items.Count} {D.AbbrToString()} Id = {D.itemId}");
+            }
+            foreach(Pet P in returnedDTO.Pets)
+            {
+                Console.WriteLine($"Index = {returnedDTO.Pets.IndexOf(P) + returnedDTO.Items.Count + returnedDTO.Documents.Count} {P.AbbrToString()} Id = {P.itemId}");
+            }
+        }else
+        {
+            Console.WriteLine("No items found");
+        }
+
+
+    }
+
 }

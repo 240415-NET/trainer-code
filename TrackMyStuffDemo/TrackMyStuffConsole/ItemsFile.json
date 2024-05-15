@@ -1,1 +1,10 @@
-[{"userId":"82219d8f-1d52-46d8-8a05-430c15e84be2","itemId":"423fafd1-4826-4402-8e5d-b37a07e68abe","category":"Furniture","originalCost":600,"purchaseDate":"2016-10-18T00:00:00","description":"Brown sleeper sofa"}]
+[
+    {
+        "userId": "82219d8f-1d52-46d8-8a05-430c15e84be2",
+        "itemId": "423fafd1-4826-4402-8e5d-b37a07e68abe",
+        "category": "Furniture",
+        "originalCost": 600,
+        "purchaseDate": "2016-10-18T00:00:00",
+        "description": "Brown sleeper sofa"
+    }
+]
