@@ -12,18 +12,16 @@ WHERE ArtistId = 21;
 
 -- we have joins to allow a query that accesses several tables at once.
 
--- refer to image "cross-join.png"
 
 -- pair every employee with every other employee
 -- maybe for 360 degree performance reviews
 SELECT *
 FROM Employee AS e1 CROSS JOIN Employee AS e2
 WHERE e1.EmployeeId != e2.EmployeeId;
--- cross join not sure common
+-- cross join not super common
 --   maybe... a table of all possible sandwiches
 --    bread cross join meat cross join cheese cross join topping cross join topping
 
--- refer to image "inner-left-right-full-join.png"
 
 -- every album by artist with joins
 SELECT al.Title, ar.Name
