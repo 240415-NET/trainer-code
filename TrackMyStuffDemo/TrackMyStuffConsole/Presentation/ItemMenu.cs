@@ -1,5 +1,6 @@
 using TrackMyStuff.Controllers;
 using TrackMyStuff.Models;
+using System.Linq;
 
 namespace TrackMyStuff.Presentation;
 
@@ -206,7 +207,7 @@ public class ItemMenu
         }
         while (entrySuccess == false);
     }
-  
+
     public static void NewOther(User user)
     {
         //Need to add try-catch!
@@ -239,7 +240,7 @@ public class ItemMenu
         }
         while (entrySuccess == false);
     }
-  
+
     public static void ViewItemMenu(Guid userID)
     {
         Guid myReturnedGuid;
@@ -269,19 +270,19 @@ public class ItemMenu
                     {
                         case 1:
                             myReturnedGuid = ViewAllItems(userID, 1);
-                            if(myReturnedGuid != Guid.Empty){ViewSpecifiedItemDetails(userID,myReturnedGuid);}
+                            if (myReturnedGuid != Guid.Empty) { ViewSpecifiedItemDetails(userID, myReturnedGuid); }
                             break;
                         case 2:
                             myReturnedGuid = ViewMyItems(userID, 1);
-                            if(myReturnedGuid != Guid.Empty){ViewSpecifiedItemDetails(userID,myReturnedGuid);}
+                            if (myReturnedGuid != Guid.Empty) { ViewSpecifiedItemDetails(userID, myReturnedGuid); }
                             break;
                         case 3:
                             myReturnedGuid = ViewMyPets(userID, 1);
-                            if(myReturnedGuid != Guid.Empty){ViewSpecifiedItemDetails(userID,myReturnedGuid);}
+                            if (myReturnedGuid != Guid.Empty) { ViewSpecifiedItemDetails(userID, myReturnedGuid); }
                             break;
                         case 4:
                             myReturnedGuid = ViewMyDocuments(userID, 1);
-                            if(myReturnedGuid != Guid.Empty){ViewSpecifiedItemDetails(userID,myReturnedGuid);}
+                            if (myReturnedGuid != Guid.Empty) { ViewSpecifiedItemDetails(userID, myReturnedGuid); }
                             break;
                         case 5:
                             exitViewMenu = true;
@@ -316,7 +317,7 @@ public class ItemMenu
             bool exitView = false;
             do
             {
-                Console.Clear();
+                //Console.Clear();
                 int loopCount = 1;
                 foreach (Item item in allMyItems)
                 {
@@ -342,6 +343,7 @@ public class ItemMenu
                     }
                     else if (userChoice <= allMyItems.Count() && userChoice > 0)
                     {
+                        exitView = true;
                         return allMyItems[userChoice - 1].itemId;
                     }
                     else
@@ -361,7 +363,7 @@ public class ItemMenu
         }
         return Guid.Empty;
     }
-  
+
     public static Guid ViewMyItems(Guid userID, int abbreviatedList = 0, string messageToUser = "Which item would you like to view?")
     {
         List<Item> allMyItems = ItemController.GetItems(userID);
@@ -418,7 +420,7 @@ public class ItemMenu
         }
         return Guid.Empty;
     }
-  
+
     public static Guid ViewMyPets(Guid userID, int abbreviatedList = 0, string messageToUser = "Which item would you like to view?")
     {
         List<Pet> allMyPets = ItemController.GetPets(userID);
@@ -475,7 +477,7 @@ public class ItemMenu
         }
         return Guid.Empty;
     }
-  
+
     public static Guid ViewMyDocuments(Guid userID, int abbreviatedList = 0, string messageToUser = "Which item would you like to view?")
     {
         List<Document> allMyDocuments = ItemController.GetDocuments(userID);
@@ -532,7 +534,7 @@ public class ItemMenu
         }
         return Guid.Empty;
     }
-  
+
     public static void ViewSpecifiedItemDetails(Guid userID, Guid itemID)
     {
         List<Item> allMyItems = ItemController.GetAllItems(userID);
@@ -547,47 +549,55 @@ public class ItemMenu
 
     public static void ModifyItemMenu(User user)
     {
-        bool isValid = false;
-        bool keepAlive = true;
-        Item itemToBeModified = new();
+        //bool isValid = false;
+        bool keepAlive = false;
+        //Item itemToBeModified = new();
+        List<Item> allUsersItems = ItemController.GetAllItems(user.userId);
         List<Item> modifyItemList = new();
 
-        ViewAllItems(user.userId);
-
-
-
         //itemToBeModified = new Item(user.userId, "newCategory", 10.00, DateTime.Now, "Old description"); // PLACEHOLDER FOR TESTING TO BE REMOVED LATER
-
         do
         {
-            Console.WriteLine(
-            "Please select which item you'd like to modify, " +
-            "or type 0 if you are finished.");
-            try
-            {
-                int input = int.Parse(Console.ReadLine() ?? "");
-                               
-                //input -1 => Item // itemToBeModified = 
-                //List<Item> usersItems returned from Team 2(?) method.
-                //Func<int, Item> getItemAtIndex = index => items.ElementAtOrDefault(index);
-                //itemToBeModified =  getItemAtIndex(input); 
-       
-
-                isValid = true;
-                if (keepAlive = input != 0) // if 0 is entered, keepAlive will evaluate to false and skip this code block.
-                {
-                    ModifyIndividualItemDisplay(itemToBeModified, modifyItemList, user); //will remove user later
-                }
-            }
-            catch
-            {
-                Console.WriteLine("You are so stupid!");
-                isValid = false;
-            }
+            Guid itemId = ViewAllItems(user.userId, 1, "Please select the item you'd like to modify");
+            Item? itemToBeModified = allUsersItems.FirstOrDefault(x => x.itemId.Equals(itemId));
+            ModifyIndividualItemDisplay(itemToBeModified, modifyItemList, user);
+            ModifyItems.ModifyItemsFromList(modifyItemList);
+            Console.WriteLine("Please press enter to continue modifying, or 0 to exit.");
+            string keepModifying = Console.ReadLine() ?? "";
+            keepAlive = keepModifying == "";
         }
-        while (!isValid || keepAlive);
+        while (keepAlive);
 
-        ModifyItems.ModifyItemsFromList(modifyItemList);
+
+
+        // do
+        // {
+
+        //     try
+        //     {
+        //         //int input = int.Parse(Console.ReadLine() ?? "");
+
+        //         //input -1 => Item // itemToBeModified = 
+        //         //List<Item> usersItems returned from Team 2(?) method.
+
+        //         int input = Convert.ToInt32(Console.ReadLine());
+
+
+        //         isValid = true;
+        //         if (keepAlive = input != 0) // if 0 is entered, keepAlive will evaluate to false and skip this code block.
+        //         {
+        //              //will remove user later
+        //         }
+        //     }
+        //     catch
+        //     {
+        //         Console.WriteLine("You are so stupid!");
+        //         isValid = false;
+        //     }
+        // }
+        // while (!isValid || keepAlive);
+
+        
 
     }
 
