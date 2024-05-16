@@ -77,7 +77,6 @@ public class ItemController
 
          if(returnedDTO != null)
         {
-            // Console.WriteLine($"Removing {_itemId}");
 
             //Find and remove in Items
             var subsetItems = from theItem in returnedDTO.Items
@@ -88,7 +87,7 @@ public class ItemController
             if(deleteItem.Count > 0)
             {
                 returnedDTO.Items.Remove(deleteItem[0]);
-                Console.WriteLine($"{deleteItem[0].AbbrToString()}  has been removed");
+                Console.WriteLine($"{deleteItem[0].AbbrToString()}  has been removed. Press any key to continue.");
             }
 
             //Find and remove in Documents
@@ -100,7 +99,7 @@ public class ItemController
             if(deleteDocument.Count > 0)
             {
                 returnedDTO.Documents.Remove(deleteDocument[0]);
-                Console.WriteLine($"{deleteDocument[0].AbbrToString()}  has been removed");
+                Console.WriteLine($"{deleteDocument[0].AbbrToString()}  has been removed. Press any key to continue.");
             }
 
             //Find and remove in Pets
@@ -112,23 +111,9 @@ public class ItemController
             if(deletePet.Count > 0)
             {
                 returnedDTO.Pets.Remove(deletePet[0]);
-                Console.WriteLine($"{deletePet[0].AbbrToString()}  has been removed");
+                Console.WriteLine($"{deletePet[0].AbbrToString()}  has been removed. Press any key to continue.");
             }
 
-            //print out DTO
-            // foreach(Item I in returnedDTO.Items)
-            // {
-            //     Console.WriteLine($"Index = {returnedDTO.Items.IndexOf(I)} {I.AbbrToString()} Id = {I.itemId}");
-            // }
-            // foreach(Document D in returnedDTO.Documents)
-            // {
-            //     // Console.WriteLine($"Index = {VehiclesObject.Trucks.IndexOf(v) + VehiclesObject.Cars.Count} {v}");
-            //     Console.WriteLine($"Index = {returnedDTO.Documents.IndexOf(D) + returnedDTO.Items.Count} {D.AbbrToString()} Id = {D.itemId}");
-            // }
-            // foreach(Pet P in returnedDTO.Pets)
-            // {
-            //     Console.WriteLine($"Index = {returnedDTO.Pets.IndexOf(P) + returnedDTO.Items.Count + returnedDTO.Documents.Count} {P.AbbrToString()} Id = {P.itemId}");
-            // }
 
             //Store DTO
             DTOStorage.SerializeAllItems(returnedDTO);
@@ -138,6 +123,7 @@ public class ItemController
             Console.WriteLine("No items found");
         }
 
+        Console.ReadLine();
         ItemMenu.ItemFunctionMenu(_user);
 
     }

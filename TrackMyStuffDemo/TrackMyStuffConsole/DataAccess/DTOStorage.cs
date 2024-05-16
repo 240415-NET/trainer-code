@@ -32,8 +32,8 @@ public class DTOStorage
     public static void SerializeAllItems(ItemsDTO passedListOfItems)//DTO 
     {
  
-        string refreshListOfItemss = JsonSerializer.Serialize(passedListOfItems);
-        File.WriteAllText(filePath, refreshListOfItemss);
+        string refreshListOfItems = JsonSerializer.Serialize(passedListOfItems);
+        File.WriteAllText(filePath, refreshListOfItems);
 
     }
 
