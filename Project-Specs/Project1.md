@@ -14,7 +14,6 @@ For this individual project, you'll create a console application, where the appl
 - The application should persist data to a SQL Server DB
 - The application should communicate to DB via ADO.NET or Entity Framework Core
 
-
 ## Nice to Have
 
 - n-tier architecture
