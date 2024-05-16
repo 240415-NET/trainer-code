@@ -1,6 +1,7 @@
 
 using TrackMyStuff.Models;
 using TrackMyStuff.Data;
+using TrackMyStuff.Controllers;
 
 namespace TrackMyStuff;
 
@@ -19,7 +20,7 @@ public static class ModifyItems
         IItemStorageRepo itemStorage = new JsonItemStorage();
         foreach(Item item in itemsToBeModified)
         {
-            //Remove(item.itemID)
+            ItemController.RemoveItem(item.userId, item.itemId)
             Console.WriteLine($"{item.itemId} was removed!"); // for testing to be removed later
 
             itemStorage.StoreItem(item);
