@@ -1,6 +1,7 @@
 using TrackMyStuff.Models;
 using TrackMyStuff.Data;
 using System.Diagnostics.Contracts;
+using TrackMyStuff.Presentation;
 
 
 namespace TrackMyStuff.Controllers;
@@ -69,7 +70,7 @@ public class ItemController
         return returnList;
     }
 
-    public static void RemoveItem(Guid _itemId, Guid _userID)
+    public static void RemoveItem(Guid _itemId, User _user)
     {
         //retrieve full list from JSON
         ItemsDTO returnedDTO = DTOStorage.DeserializeAllItems();
@@ -137,6 +138,7 @@ public class ItemController
             Console.WriteLine("No items found");
         }
 
+        ItemMenu.ItemFunctionMenu(_user);
 
     }
 

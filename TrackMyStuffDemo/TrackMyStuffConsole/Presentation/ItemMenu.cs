@@ -47,7 +47,7 @@ public class ItemMenu
                     case "remove item":
                         // Console.WriteLine("This will be implemented later, sorry!");
                         // Console.WriteLine(ViewAllItems(user.userId,1,"Which item would you like to delete?"));
-                        ItemController.RemoveItem(ViewAllItems(user.userId,1,"Which item would you like to delete?"), user.userId);
+                        ItemController.RemoveItem(ViewAllItems(user.userId,1,"Which item would you like to delete?"), user);
                         break;
                     case "4":
                     case "4.":
