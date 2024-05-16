@@ -55,8 +55,8 @@ public class NewItemMenu
             try
             {
                 string category;
-                double originalCost;
-                DateTime purchaseDate;
+                double originalCost = 0;
+                DateTime purchaseDate = DateTime.Parse("01-01-1970");
                 string description;
                 string name;
                 string species;
@@ -70,21 +70,26 @@ public class NewItemMenu
                 species = Console.ReadLine().Trim();
                 Console.WriteLine($"What is {name}'s age?");
                 age = int.Parse(Console.ReadLine().Trim());
-                Console.WriteLine($"What was the original cost for {name}? Please enter just the number with no currency sign");
-                originalCost = double.Parse(Console.ReadLine().Trim());
-                Console.WriteLine($"What was the original purchase date of {name}? Please enter with proper formatting -- i.e. 12/25/2001");
-                purchaseDate = DateTime.Parse(Console.ReadLine().Trim());
                 Console.WriteLine($"Enter a description of {name}");
                 description = Console.ReadLine().Trim();
-                /*
-                Console.WriteLine(category);
-                Console.WriteLine(originalCost);
-                Console.WriteLine(purchaseDate);
-                Console.WriteLine(description);
-                Console.WriteLine(name);
-                Console.WriteLine(species);
-                Console.WriteLine(age);
-                */
+                try
+                {
+                    Console.WriteLine($"What was the original cost for {name}? Please enter just the number with no currency sign");
+                    originalCost = double.Parse(Console.ReadLine().Trim());
+                }
+                catch
+                {
+                    Console.WriteLine("Please enter a valid cost without any symbols");
+                }
+                try
+                {
+                    Console.WriteLine($"What was the original purchase date of {name}? Please enter with proper formatting -- i.e. 12/25/2001");
+                    purchaseDate = DateTime.Parse(Console.ReadLine().Trim());
+                }
+                catch
+                {
+                    Console.WriteLine("Please enter a validly formatted date");
+                }
                 entrySuccess = true;
                 ItemController.CreatePet(user, category, originalCost, purchaseDate, description, name, species, age);
             }
@@ -111,31 +116,46 @@ public class NewItemMenu
             try
             {
                 string category;
-                double originalCost;
-                DateTime purchaseDate;
+                double originalCost = 0;
+                DateTime purchaseDate = DateTime.Parse("01-01-1970");
                 string description;
                 string documentType;
-                DateTime expirationDate;
+                DateTime expirationDate = DateTime.Parse("01-01-1970");
 
                 category = "Document";
                 Console.WriteLine("What type of document is this?");
                 documentType = Console.ReadLine().Trim();
                 Console.WriteLine("Enter a description of the document. (i.e. Ron's Will)");
                 description = Console.ReadLine().Trim();
-                Console.WriteLine("What was the original acquisition date of the document? Please enter with proper formatting -- i.e. 12/25/2001");
-                purchaseDate = DateTime.Parse(Console.ReadLine().Trim());
-                Console.WriteLine("What was the original cost for your document? Please enter just the number with no currency sign");
-                originalCost = double.Parse(Console.ReadLine().Trim());
-                Console.WriteLine("On what date will this document expire? Please enter with proper formatting -- i.e. 12/25/2001");
-                expirationDate = DateTime.Parse(Console.ReadLine().Trim());
-                /*
-                Console.WriteLine(category);
-                Console.WriteLine(originalCost);
-                Console.WriteLine(purchaseDate);
-                Console.WriteLine(description);
-                Console.WriteLine(documentType);
-                Console.WriteLine(expirationDate);
-                */
+
+                try
+                {
+                    Console.WriteLine("What was the original acquisition date of the document? Please enter with proper formatting -- i.e. 12/25/2001");
+                    purchaseDate = DateTime.Parse(Console.ReadLine().Trim());
+                }
+                catch
+                {
+                    Console.WriteLine("Please enter a validly formatted date");
+                }
+                try
+                {
+                    Console.WriteLine("What was the original cost for your document? Please enter just the number with no currency sign");
+                    originalCost = double.Parse(Console.ReadLine().Trim());
+                }
+                catch
+                {
+                    Console.WriteLine("Please enter a valid cost without any symbols");
+                }
+                try
+                {
+                    Console.WriteLine("On what date will this document expire? Please enter with proper formatting -- i.e. 12/25/2001");
+                    expirationDate = DateTime.Parse(Console.ReadLine().Trim());
+                }
+                catch
+                {
+                    Console.WriteLine("Please enter a validly formatted date");
+                }
+
                 entrySuccess = true;
                 ItemController.CreateDocument(user, category, originalCost, purchaseDate, description, documentType, expirationDate);
             }
@@ -153,7 +173,7 @@ public class NewItemMenu
         else
             ItemMenu.ItemFunctionMenu(user);
     }
-  
+
     public static void NewOther(User user)
     {
         //Need to add try-catch!
@@ -163,18 +183,33 @@ public class NewItemMenu
             try
             {
                 string category;
-                double originalCost;
-                DateTime purchaseDate;
+                double originalCost = 0;
+                DateTime purchaseDate = DateTime.Parse("01-01-1970");
                 string description;
 
                 Console.WriteLine("Please enter the category for your item. (i.e. Furniture, Appliance, etc.)");
                 category = Console.ReadLine().Trim();
-                Console.WriteLine("What was the original cost for your item? Please enter just the number with no currency sign");
-                originalCost = double.Parse(Console.ReadLine().Trim());
-                Console.WriteLine("What was the original purchase date of the item? Please enter with proper formatting -- i.e. 12/25/2001");
-                purchaseDate = DateTime.Parse(Console.ReadLine().Trim());
                 Console.WriteLine("Enter a description of the item. (i.e. Brown sleeper sofa)");
                 description = Console.ReadLine().Trim();
+                try
+                {
+                    Console.WriteLine("What was the original cost for your item? Please enter just the number with no currency sign");
+                    originalCost = double.Parse(Console.ReadLine().Trim());
+                }
+                catch
+                {
+                    Console.WriteLine("Please enter a valid cost without any symbols");
+                }
+                try
+                {
+                    Console.WriteLine("What was the original purchase date of the item? Please enter with proper formatting -- i.e. 12/25/2001");
+                    purchaseDate = DateTime.Parse(Console.ReadLine().Trim());
+                }
+                catch
+                {
+                    Console.WriteLine("Please enter a validly formatted date");
+                }
+
                 entrySuccess = true;
                 ItemController.CreateItem(user, category, originalCost, purchaseDate, description);
             }
