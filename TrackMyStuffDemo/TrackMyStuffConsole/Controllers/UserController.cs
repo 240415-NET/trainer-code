@@ -55,5 +55,4 @@ public class UserController
         User existingUser = _userData.FindUser(userName);
         return existingUser;
     }
-    
 }
