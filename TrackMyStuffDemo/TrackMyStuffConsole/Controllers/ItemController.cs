@@ -69,26 +69,69 @@ public class ItemController
         return returnList;
     }
 
-    public static void RemoveItem(Guid itemId, Guid userID)
+    public static void RemoveItem(Guid _itemId, Guid _userID)
     {
+        //retrieve full list from JSON
         ItemsDTO returnedDTO = DTOStorage.DeserializeAllItems();
 
          if(returnedDTO != null)
         {
+            // Console.WriteLine($"Removing {_itemId}");
 
-            foreach(Item I in returnedDTO.Items)
+            //Find and remove in Items
+            var subsetItems = from theItem in returnedDTO.Items
+                                where theItem.itemId == _itemId
+                                select theItem;
+
+            List<Item> deleteItem = subsetItems.ToList();
+            if(deleteItem.Count > 0)
             {
-                Console.WriteLine($"Index = {returnedDTO.Items.IndexOf(I)} {I.AbbrToString()} Id = {I.itemId}");
+                returnedDTO.Items.Remove(deleteItem[0]);
+                Console.WriteLine($"{deleteItem[0].AbbrToString()}  has been removed");
             }
-            foreach(Document D in returnedDTO.Documents)
+
+            //Find and remove in Documents
+            var subsetDocuments = from theDocument in returnedDTO.Documents
+                                where theDocument.itemId == _itemId
+                                select theDocument;
+
+            List<Document> deleteDocument = subsetDocuments.ToList();
+            if(deleteDocument.Count > 0)
             {
-                // Console.WriteLine($"Index = {VehiclesObject.Trucks.IndexOf(v) + VehiclesObject.Cars.Count} {v}");
-                Console.WriteLine($"Index = {returnedDTO.Documents.IndexOf(D) + returnedDTO.Items.Count} {D.AbbrToString()} Id = {D.itemId}");
+                returnedDTO.Documents.Remove(deleteDocument[0]);
+                Console.WriteLine($"{deleteDocument[0].AbbrToString()}  has been removed");
             }
-            foreach(Pet P in returnedDTO.Pets)
+
+            //Find and remove in Pets
+            var subsetPets = from thePet in returnedDTO.Pets
+                                where thePet.itemId == _itemId
+                                select thePet;
+
+            List<Pet> deletePet = subsetPets.ToList();
+            if(deletePet.Count > 0)
             {
-                Console.WriteLine($"Index = {returnedDTO.Pets.IndexOf(P) + returnedDTO.Items.Count + returnedDTO.Documents.Count} {P.AbbrToString()} Id = {P.itemId}");
+                returnedDTO.Pets.Remove(deletePet[0]);
+                Console.WriteLine($"{deletePet[0].AbbrToString()}  has been removed");
             }
+
+            //print out DTO
+            // foreach(Item I in returnedDTO.Items)
+            // {
+            //     Console.WriteLine($"Index = {returnedDTO.Items.IndexOf(I)} {I.AbbrToString()} Id = {I.itemId}");
+            // }
+            // foreach(Document D in returnedDTO.Documents)
+            // {
+            //     // Console.WriteLine($"Index = {VehiclesObject.Trucks.IndexOf(v) + VehiclesObject.Cars.Count} {v}");
+            //     Console.WriteLine($"Index = {returnedDTO.Documents.IndexOf(D) + returnedDTO.Items.Count} {D.AbbrToString()} Id = {D.itemId}");
+            // }
+            // foreach(Pet P in returnedDTO.Pets)
+            // {
+            //     Console.WriteLine($"Index = {returnedDTO.Pets.IndexOf(P) + returnedDTO.Items.Count + returnedDTO.Documents.Count} {P.AbbrToString()} Id = {P.itemId}");
+            // }
+
+            //Store DTO
+            DTOStorage.SerializeAllItems(returnedDTO);
+
         }else
         {
             Console.WriteLine("No items found");
