@@ -1,0 +1,59 @@
+-- data types
+
+-- numeric
+	-- integer
+		-- TINYINT (1 byte)
+		-- SMALLINT (2 byte)
+		-- INT (4 byte) (usually use INT)
+		-- BIGINT (8 byte)
+	-- floating-point
+		-- FLOAT
+		-- REAL
+		-- DECIMAL(n,p) / NUMERIC(n,p) (usually use this one)
+			-- type with parameters
+			-- e.g. DECIMAL(5,3) is a number with enough precision for 5 decimal digits
+			--   with 3 of them after the decimal point. e.g. "xx.xxx"
+			-- DECIMAL(max) - max precision
+	-- currency
+		-- MONEY
+	-- string
+		-- CHARACTER(n) / CHAR(n) (fixed-length string)
+			-- CHAR(10) has space for 10 characters in every value
+		-- VARYING CHARACTER(n) / VARCHAR(n)
+			-- doesn't waste extra space
+			-- we can put (max)
+			-- when we say 'abc', that is a VARCHAR literal
+		-- NATIONAL CHARACTER(n) / NCHAR(n)
+			-- allows any Unicode character
+		-- NVARCHAR(n) -< always use this one
+			-- allows Unicode and doesn't waste space
+			-- if i need a literal string in SQL with Unicode characters
+			-- i can use N'abc'
+	-- date/time
+		-- DATE for dates
+		-- TIME for times
+		-- DATETIME for timestamps
+			-- don't use this one, precision and domain are too small
+		-- DATETIME2(n) - precision parameter
+			-- the max is 9?
+		-- DATETIMEOFFSET - for intervals of time
+
+-- operators
+	-- equals =
+	-- not equals != or <>
+	-- and AND
+	-- or OR
+	-- < <= > >=
+		-- WHERE Year BETWEEN 2009 AND 2011
+		-- (includes both ends - <= and >=)
+		-- in SQL, we can compare strings based on how they would
+		--   sort in a dictionary.
+	-- get parts of dates and times out of their types
+		-- EXTRACT(YEAR FROM OrderDate)
+		-- btw, '2019-01-01' and similar formats - recognized as date
+	-- convert between types with CONVERT
+		-- CONVERT(789 AS VARCHAR) <- something like that
+
+-- in SQL, we have NULL
+	-- COALESCE(OrderTotal, 0)
+	-- COALESCE will convert any null values to something more useful in the moment

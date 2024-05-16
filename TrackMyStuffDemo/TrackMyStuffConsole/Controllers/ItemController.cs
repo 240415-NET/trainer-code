@@ -2,6 +2,7 @@ using TrackMyStuff.Models;
 using TrackMyStuff.Data;
 using System.Diagnostics.Contracts;
 
+
 namespace TrackMyStuff.Controllers;
 
 
@@ -17,6 +18,7 @@ public class ItemController
 
         _itemData.StoreItem(newItem);
     }
+  
     public static void CreatePet(User user, string category, double originalCost, DateTime purchaseDate, string description, string petName, string petSpecies, int petAge)
     {
         //Creating the item
@@ -24,6 +26,7 @@ public class ItemController
 
         _itemData.StorePet(newPet);
     }
+  
     public static void CreateDocument(User user, string category, double originalCost, DateTime purchaseDate, string description, string documentType, DateTime expirationDate)
     {
         //Creating the item
@@ -31,14 +34,17 @@ public class ItemController
 
         _itemData.StoreDocument(newDocument);
     }
+  
     public static List<Item> GetAllItems(Guid userID)
     {
         return _itemData.GetItems(userID, 4);
     }
+  
     public static List<Item> GetItems(Guid userID)
     {
         return _itemData.GetItems(userID, 1);
     }
+  
     public static List<Pet> GetPets(Guid userID)
     {
         List<Item> startingList = new();
@@ -50,6 +56,7 @@ public class ItemController
         }
         return returnList;
     }
+  
     public static List<Document> GetDocuments(Guid userID)
     {
         List<Item> startingList = new();
@@ -61,4 +68,5 @@ public class ItemController
         }
         return returnList;
     }
+
 }

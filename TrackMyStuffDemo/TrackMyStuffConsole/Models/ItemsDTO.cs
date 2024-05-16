@@ -12,4 +12,5 @@ public class ItemsDTO
         this.Documents = new List<Document>();
         this.Pets = new List<Pet>();
     }
+
 }
