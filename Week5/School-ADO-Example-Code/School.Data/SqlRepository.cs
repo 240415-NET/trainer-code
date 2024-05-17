@@ -39,6 +39,7 @@ namespace School.Data
                 VALUES
                 (@Id, @Name, @Email, @Phone, @Address1, @Address2, @City, @State, @Zip, @Age, @YearsCompleted)";
 
+            //So we use the parameterized string above to create a SqlCommand object. 
             using SqlCommand cmd = new SqlCommand(cmdText, connection);
 
             cmd.Parameters.AddWithValue("@ID", st1.Id);
@@ -53,7 +54,12 @@ namespace School.Data
             cmd.Parameters.AddWithValue("@Age", st1.age);
             cmd.Parameters.AddWithValue("@YearsCompleted", st1.YearsCompleted);
 
+            //We execute the above INSERT with this Execute non query. Because we are not querying the DB
+            //we will execute this as a nonquery. 
             cmd.ExecuteNonQuery();
+
+            //We then close the connection, and after line 62 - our SqlConnection object is disposed of,
+            //because we created it with that using statement above. 
             connection.Close();
         }
 
