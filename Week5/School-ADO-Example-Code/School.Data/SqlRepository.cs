@@ -22,6 +22,7 @@ namespace School.Data
         }
         //Methods
 
+        //An example of inserting into a database using ADO.NET 
         public void Insert(Student st1)
         {
             // a SQLConnection object is created to connect to the database, and is provided the connection string
@@ -74,29 +75,44 @@ namespace School.Data
             //using SqlCommand cmd = new SqlCommand("SELECT * FROM School.Students;", connection);
             //we can use a string as a parameter of the SqlCommand
 
+            //A consideration for SELECT statments... avoid using the asterisk/wildcard character to 
+            //return all values. We can't be sure things will return back to us in a certain order
+            //UNLESS we specify the order by selecting the columns how we want them to come in. 
             string cmdText = "SELECT Id, Name, Phone FROM School.Students;";
 
+            //Create the command object
             using SqlCommand cmd = new SqlCommand(cmdText, connection);
 
-            //cmd.ExecuteNonQuery();
+            //We create a SqlDataReader... so that we can read our data from the database.
             using SqlDataReader reader = cmd.ExecuteReader();
 
             Console.WriteLine("Students in the database:");
 
+            //We use this while loop, because the SqlDataReader will continue to read data, one row at a time,
+            //until we reach the end of what was returned. 
             while (reader.Read())
             {
-                // Select * From School.Students; returns...
-                // Id, Name, Email, Phone, Address1, Address2, City, State, Zip, Age
 
                 // Select Name, Id, Phone From School.Students; returns...
-                // Name, Id, Phone
+                // Id, Name, Phone
 
-                // Console.WriteLine(reader.GetInt32(0) +  reader.GetString(1));
+                //We then read from the row starting at 0 based on the order we gave it when we 
+                //created the command text above. We have to be mindful of what our datatypes are.
+                //And select the appropriate GetX method for that data type. 
                 int id = reader.GetInt32(0);
                 string name = reader.GetString(1);
                 string phone = reader.GetString(2);
+                
+                //Once datareader advances past a certain row, that's it. So Inside of this While block,
+                //you will want to do whatever you need to, to persist or work with your returned data. 
+
+                //This can be things like, creating an object based on some model, like a student, and
+                //adding them to a collection declared OUTSIDE of the while loop of type student. 
+
+                //In the case of this example, they simply print out info about the student. 
                 Console.WriteLine(id + " " + name + " " + phone);
             }
+
             connection.Close();
         }
 
