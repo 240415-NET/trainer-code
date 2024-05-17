@@ -98,7 +98,7 @@ public class JsonUserStorage : IUserStorageRepo
             //To the left of the => (lambda operator) is the input to our anonymous function or method
             //To the right, is the code that will be executed or evaluated against when the lambda runs
             foundUser = existingUsersList.FirstOrDefault(user => user.userName == usernameToFind);
-
+            return foundUser;
             //The above lambda function is essentially iterating through and querying the list for us, 
             //as if we were doing the foreach loop below
             // foreach (User user in existingUsersList){
@@ -120,7 +120,7 @@ public class JsonUserStorage : IUserStorageRepo
             Console.WriteLine(e.Message);
         }
         
-        return foundUser;
+        return null;
 
     }
 

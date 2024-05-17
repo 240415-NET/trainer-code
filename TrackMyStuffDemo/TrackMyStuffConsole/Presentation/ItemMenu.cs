@@ -5,8 +5,8 @@ namespace TrackMyStuff.Presentation;
 
 public class ItemMenu
 {
-    
-    public static void ItemFunctionMenu (User user)
+
+    public static void ItemFunctionMenu(User user)
     {
         string userInput;
         bool validInput = false;
@@ -206,7 +206,7 @@ public class ItemMenu
         }
         while (entrySuccess == false);
     }
-  
+
     public static void NewOther(User user)
     {
         //Need to add try-catch!
@@ -239,7 +239,7 @@ public class ItemMenu
         }
         while (entrySuccess == false);
     }
-  
+
     public static void ViewItemMenu(Guid userID)
     {
         Guid myReturnedGuid;
@@ -271,18 +271,18 @@ public class ItemMenu
                             myReturnedGuid = SortMenu(userID, 1, userChoice);
                             if (myReturnedGuid != Guid.Empty) { ViewSpecifiedItemDetails(userID, myReturnedGuid); }
                             break;
-                        case 2:
-                            myReturnedGuid = SortMenu(userID, 1, userChoice);
-                            if (myReturnedGuid != Guid.Empty) { ViewSpecifiedItemDetails(userID, myReturnedGuid); }
-                            break;
-                        case 3:
-                            myReturnedGuid = SortMenu(userID, 1, userChoice);
-                            if (myReturnedGuid != Guid.Empty) { ViewSpecifiedItemDetails(userID, myReturnedGuid); }
-                            break;
-                        case 4:
-                            myReturnedGuid = SortMenu(userID, 1, userChoice);
-                            if (myReturnedGuid != Guid.Empty) { ViewSpecifiedItemDetails(userID, myReturnedGuid); }
-                            break;
+                        // case 2:
+                        //     myReturnedGuid = SortMenu(userID, 1, userChoice);
+                        //     if (myReturnedGuid != Guid.Empty) { ViewSpecifiedItemDetails(userID, myReturnedGuid); }
+                        //     break;
+                        // case 3:
+                        //     myReturnedGuid = SortMenu(userID, 1, userChoice);
+                        //     if (myReturnedGuid != Guid.Empty) { ViewSpecifiedItemDetails(userID, myReturnedGuid); }
+                        //     break;
+                        // case 4:
+                        //     myReturnedGuid = SortMenu(userID, 1, userChoice);
+                        //     if (myReturnedGuid != Guid.Empty) { ViewSpecifiedItemDetails(userID, myReturnedGuid); }
+                        //     break;
                         case 5:
                             exitViewMenu = true;
                             break;
@@ -321,7 +321,7 @@ public class ItemMenu
                 Console.ReadKey();
                 exitSortMenu = false;
             }
-            else if (userInput.ToLower() == "y") 
+            else if (userInput.ToLower() == "y")
             {
                 do
                 {
@@ -381,51 +381,54 @@ public class ItemMenu
                     }
 
                 } while (!exitSortSubMenu);
-                do
+                if (!exitSortMenu)
                 {
-                    Console.Clear();
-                    Console.WriteLine("In what order would you like the list to be sorted?");
-                    Console.WriteLine("1. Ascending");
-                    Console.WriteLine("2. Descending");
-                    userInput = (Console.ReadLine() ?? "").Trim();
-                    if (String.IsNullOrEmpty(userInput))
+                    do
                     {
-                        Console.WriteLine("That was... nothing.  Spectacularly nothing. I need a number. Specifically a 1 or a 2.");
-                        Console.ReadKey();
-                        exitSortSubMenu = false;
-                    }
-                    else
-                    {
-                        try
+                        Console.Clear();
+                        Console.WriteLine("In what order would you like the list to be sorted?");
+                        Console.WriteLine("1. Ascending");
+                        Console.WriteLine("2. Descending");
+                        userInput = (Console.ReadLine() ?? "").Trim();
+                        if (String.IsNullOrEmpty(userInput))
                         {
-                            int sortChoice = Convert.ToInt32(userInput);
-                            if(sortChoice == 1)
+                            Console.WriteLine("That was... nothing.  Spectacularly nothing. I need a number. Specifically a 1 or a 2.");
+                            Console.ReadKey();
+                            exitSortSubMenu = false;
+                        }
+                        else
+                        {
+                            try
                             {
-                                sortOrder = 0;
-                                exitAscDescChoice = true;
+                                int sortChoice = Convert.ToInt32(userInput);
+                                if (sortChoice == 1)
+                                {
+                                    sortOrder = 0;
+                                    exitAscDescChoice = true;
+                                }
+                                else if (sortChoice == 2)
+                                {
+                                    sortOrder = 1;
+                                    exitAscDescChoice = true;
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Your options are 1 or 2. Enter one of those two numbers. Please.");
+                                    exitAscDescChoice = false;
+                                    Console.ReadKey();
+                                }
                             }
-                            else if(sortChoice == 2)
+                            catch (Exception e)
                             {
-                                sortOrder = 1;
-                                exitAscDescChoice = true;
-                            }
-                            else
-                            {
-                                Console.WriteLine("Your options are 1 or 2. Enter one of those two numbers. Please.");
+                                Console.WriteLine(e.Message);
+                                Console.WriteLine("Try entering a 1 or a 2 and just that...");
                                 exitAscDescChoice = false;
                                 Console.ReadKey();
                             }
                         }
-                        catch (Exception e)
-                        {
-                            Console.WriteLine(e.Message);
-                            Console.WriteLine("Try entering a 1 or a 2 and just that...");
-                            exitAscDescChoice= false;
-                            Console.ReadKey();
-                        }
-                    }
 
-                }while(!exitAscDescChoice);
+                    } while (!exitAscDescChoice);
+                }
             }
             switch (listType)
             {
@@ -454,7 +457,6 @@ public class ItemMenu
             if (sortBy != 0)
             {
                 allMyItems = SortMyItems(allMyItems, sortBy, sortOrder);
-
             }
             bool exitView = false;
             do
@@ -518,7 +520,6 @@ public class ItemMenu
             if (sortBy != 0)
             {
                 allMyItems = SortMyItems(allMyItems, sortBy, sortOrder);
-
             }
             bool exitView = false;
             do
@@ -580,7 +581,6 @@ public class ItemMenu
             if (sortBy != 0)
             {
                 allMyPets = SortMyPets(allMyPets, sortBy, sortOrder);
-
             }
             bool exitView = false;
             do
@@ -642,7 +642,6 @@ public class ItemMenu
             if (sortBy != 0)
             {
                 allMyDocuments = SortMyDocuments(allMyDocuments, sortBy, sortOrder);
-
             }
             bool exitView = false;
             do
