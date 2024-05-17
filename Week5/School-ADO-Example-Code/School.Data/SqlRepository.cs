@@ -25,9 +25,15 @@ namespace School.Data
         public void Insert(Student st1)
         {
             // a SQLConnection object is created to connect to the database, and is provided the connection string
+
+            //This using statement allows for this reference to be disposed of, and the connection closed after the 
+            //method finishes running
             using SqlConnection connection = new SqlConnection(this._connectionString);
 
+            //Once we create our SqlConnection object, we call a method off of it to open the connection to the database.
             connection.Open();
+
+            //We then create a string, for the query or statement we are going to run, that allows us to update it's parameters later.
             string cmdText =
                 @"INSERT INTO School.Students (Id, Name, Email, Phone, Address1, Address2, City, State, Zip, Age, YearsCompleted)
                 VALUES
