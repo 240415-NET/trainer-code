@@ -123,6 +123,8 @@ public class Menu
                 UserController.CreateUser(userInput);
                 Console.WriteLine("Profile created!");
                 validInput = true;
+                User user = UserController.ReturnUser(userInput);
+                ItemMenu.ItemFunctionMenu(user);
             }
 
         } while (!validInput); //Continue running the above block UNTIL input is valid
