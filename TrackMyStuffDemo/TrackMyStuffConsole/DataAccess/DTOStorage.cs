@@ -9,6 +9,33 @@ public class DTOStorage
 
 
     //Changed my methods to be instance methods instead of class methods
+    public static ItemsDTO DeserializeAllItems()
+    {
+        ItemsDTO allItems = new();
+
+         if (File.Exists(filePath)) //file exists and will read the file and then add the new Vehicle
+        {
+            string allItemsJSONFilePath = File.ReadAllText(filePath);
+
+            allItems = JsonSerializer.Deserialize<ItemsDTO>(allItemsJSONFilePath);
+
+            return allItems;
+
+        }
+        else //file doesn't exist and will be created and Vehicle will be added
+        {
+
+            return allItems;
+        }
+    }
+
+    public static void SerializeAllItems(ItemsDTO passedListOfItems)//DTO 
+    {
+ 
+        string refreshListOfItems = JsonSerializer.Serialize(passedListOfItems);
+        File.WriteAllText(filePath, refreshListOfItems);
+
+    }
 
     public static List<Item> DeserializeItem()
     {

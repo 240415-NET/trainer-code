@@ -1,6 +1,22 @@
 {
     "Items": [
         {
+            "userId": "18249e1f-e1d9-4849-8627-1875c5c169d7",
+            "itemId": "84302773-8d96-4367-9c8b-d91a85bc28a9",
+            "category": "appliance",
+            "originalCost": 2000,
+            "purchaseDate": "2019-01-01T00:00:00",
+            "description": "washer/dryer"
+        },
+        {
+            "userId": "f0a0ecd8-05c8-4e65-90b3-2c595335ac7b",
+            "itemId": "bc1207de-a207-4b71-a0d9-dbc646705b49",
+            "category": "furniture",
+            "originalCost": 250,
+            "purchaseDate": "2014-09-15T00:00:00",
+            "description": "sleeper sofa"
+        },
+        {
             "userId": "f0a0ecd8-05c8-4e65-90b3-2c595335ac7b",
             "itemId": "19c91833-2130-4610-9021-021dde9b386e",
             "category": "Furniture",
@@ -10,6 +26,26 @@
         }
     ],
     "Documents": [
+        {
+            "documentType": "will",
+            "expirationDate": "2021-12-25T00:00:00",
+            "userId": "18249e1f-e1d9-4849-8627-1875c5c169d7",
+            "itemId": "45bf35d4-25e7-4017-a474-fe1ac813b3b4",
+            "category": "Document",
+            "originalCost": 55,
+            "purchaseDate": "2001-12-25T00:00:00",
+            "description": "ron\u0027s will"
+        },
+        {
+            "documentType": "stock certificate",
+            "expirationDate": "9999-12-31T00:00:00",
+            "userId": "f0a0ecd8-05c8-4e65-90b3-2c595335ac7b",
+            "itemId": "3e9cf750-3dc0-4531-82c9-72431645a2c3",
+            "category": "Document",
+            "originalCost": 30000,
+            "purchaseDate": "2000-01-01T00:00:00",
+            "description": "3000 GE Share as of 1/1/2000"
+        },
         {
             "documentType": "birth certificate",
             "expirationDate": "2999-12-09T00:00:00",
@@ -23,6 +59,7 @@
     ],
     "Pets": [
         {
+
             "name": "Pancake",
             "species": "dog",
             "age": 4,
