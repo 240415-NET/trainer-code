@@ -7,6 +7,7 @@ public interface IItemStorageRepo
     public void StoreItem(Item newItem);
     public void StoreDocument(Document newDocument);
     public void StorePet(Pet newPet);
+
     public List<Item> GetItems(Guid userID, int listType);
 
     

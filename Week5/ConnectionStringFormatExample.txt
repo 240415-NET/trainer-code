@@ -1,0 +1,1 @@
+Data Source=[Server_Name];Initial Catalog=[db_name];Integrated Security=False;User Id=[username];Password=[password];MultipleActiveResultSets=True;TrustServerCertificate=True;

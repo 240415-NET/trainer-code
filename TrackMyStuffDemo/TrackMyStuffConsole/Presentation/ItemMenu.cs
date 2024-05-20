@@ -13,7 +13,7 @@ public class ItemMenu
 
         Console.Clear();
 
-        Console.Write("Please select from the following items:\n1. View List of Items\n2. New Item\n3. Remove Item\n4. Modify Item\n");
+        Console.WriteLine("Please select from the following items:\n1. View List of Items\n2. New Item\n3. Remove Item\n4. Modify Item\n5. Exit Program");
         try
         {
             do
@@ -37,7 +37,7 @@ public class ItemMenu
                     case "new":
                     case "new item":
                         validInput = true;
-                        NewItem(user);
+                        NewItemMenu.NewItem(user);
                         break;
                     case "3":
                     case "3.":
@@ -54,6 +54,15 @@ public class ItemMenu
                     case "modify":
                     case "modify item":
                         Console.WriteLine("This will be implemented later, sorry!");
+                        break;
+                    case "5":
+                    case "5.":
+                    case "5. exit":
+                    case "5. exit program":
+                    case "exit":
+                    case "exit program":
+                        Console.WriteLine("Thank you for using \"TrackMyStuff\"");
+                        Environment.Exit(0);
                         break;
                     default:
                         Console.WriteLine("Please key valid option");
