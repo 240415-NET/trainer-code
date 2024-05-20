@@ -126,5 +126,10 @@ public class ItemController
         Console.ReadLine();
         ItemMenu.ItemFunctionMenu(_user);
     }
+    public static void ModifyIndividualItem(Item itemToBeModified, List<string> propertiesToBeModified)
+    {
+        IItemStorageRepo repo = new JsonItemStorage();
+        repo.ModifyItem(itemToBeModified, propertiesToBeModified);  
+    }
 
 }

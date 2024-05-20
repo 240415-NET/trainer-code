@@ -10,5 +10,7 @@ public interface IItemStorageRepo
 
     public List<Item> GetItems(Guid userID, int listType);
 
+    public void ModifyItem(Item itemToBeModified, List<string> propertiesToBeModified);
+
     
 }

@@ -25,9 +25,4 @@ public class Pet : Item //Pet inherits from our Item class as well
     {
         return $"Category: {category}\nOriginal Cost: {originalCost}\nPurchase Date: {purchaseDate}\nDescription: {description}\nSpecies: {species}\nPet Name: {name}\nPet Age: {age}";
     }
-
-    public bool IsPet()
-    {
-        return true;
-    }    
 }

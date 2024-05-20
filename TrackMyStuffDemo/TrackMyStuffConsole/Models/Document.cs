@@ -16,9 +16,4 @@ public class Document : Item //Document inherits from our Item class
     {
         return $"Category: {category}\nOriginal Cost: {originalCost}\nPurchase Date: {purchaseDate}\nDescription: {description}\nDocument Type: {documentType}\nExpiration Date: {expirationDate}";
     }
-
-    public string GetItemType()
-    {
-        return "Document";
-    }    
 }
