@@ -90,11 +90,24 @@ public class JsonItemStorage : IItemStorageRepo
 
         // Read JSON file and deserialize into a list of User objects
         ItemsDTO allItems = JsonSerializer.Deserialize<ItemsDTO>(File.ReadAllText(filePath));
+        
 
         allItems = DTOStorage.DeserializeAllItems();
 
+        Item item = new();
 
-        Item item = allItems.Items.FirstOrDefault(i => i.itemId == itemToBeModified.itemId);
+        if(itemToBeModified.category == "Pet")
+        {
+             item = allItems.Pets.FirstOrDefault(i => i.itemId == itemToBeModified.itemId);
+        }
+        else if(itemToBeModified.category == "Document")
+        {
+             item = allItems.Documents.FirstOrDefault(i => i.itemId == itemToBeModified.itemId);
+        }
+        else
+        {
+             item = allItems.Items.FirstOrDefault(i => i.itemId == itemToBeModified.itemId);
+        }
 
         foreach(string property in propertiesToBeModified)
         {

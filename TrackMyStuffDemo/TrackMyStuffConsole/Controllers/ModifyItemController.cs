@@ -14,22 +14,25 @@ public static class ModifyItems
     {
         // itemToBeModified.description = newDescription;
         // itemsToBeModified.Add(itemToBeModified);
-        if(itemToBeModified.GetType() == "Item")
-        { 
-            repo.ModifyItem(itemToBeModified, propertiesToBeModified);
-        }        
-        if(itemToBeModified.GetType() == "Pet")
-        { 
-            Pet petToBeModified = (Pet) itemToBeModified;
-            repo.ModifyItem(petToBeModified, propertiesToBeModified);
-        }        
-        if(itemToBeModified.GetType() == "Document")
-        { 
-            Document docToBeModified = (Document) itemToBeModified;
-            
-        }        
 
         repo.ModifyItem(itemToBeModified, propertiesToBeModified);
+ 
+        // if(itemToBeModified.category == "Pet")
+        // { 
+        //     Pet petToBeModified = (Pet) itemToBeModified;
+        //     repo.ModifyItem(petToBeModified, propertiesToBeModified);
+        // }        
+        // if(itemToBeModified.category == "Document")
+        // { 
+        //     Document docToBeModified = (Document) itemToBeModified;
+        //     repo.ModifyItem(docToBeModified, propertiesToBeModified);
+        // }
+        // if(itemToBeModified.category == "Item")
+        // { 
+        //     repo.ModifyItem(itemToBeModified, propertiesToBeModified);
+            
+        // }               
+        
     }
 
     public static void ModifyItemsFromList(List<Item> itemsToBeModified, User user)

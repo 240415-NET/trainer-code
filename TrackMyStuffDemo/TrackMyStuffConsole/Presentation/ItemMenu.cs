@@ -12,7 +12,7 @@ public class ItemMenu
         string userInput;
         bool validInput = false;
 
-        Console.Clear();
+       // Console.Clear();
 
         Console.WriteLine("Please select from the following items:\n1. View List of Items\n2. New Item\n3. Remove Item\n4. Modify Item\n5. Exit Program");
         try
