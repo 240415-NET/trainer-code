@@ -1,0 +1,24 @@
+Converting User storage from JSON to a SQL Database!
+
+Set Up:
+	1. Make sure our SQL Server can accept TCP/IP (That was that computer managment utility stuff we did.) - DONE
+	2. We want to create a text file for our connection string. - DONE, placed outside the repo in connstring.txt
+	3. We want to place that text file, in a location that makes sense. - DONE
+		- We either want to place it *outside* of the repository.
+		- OR, we want to add it to the .gitignore, commit and push the change to the .gitignore, 
+			THEN, we create the file. 
+
+
+In our Datbase:
+	1. Create a database for our Application (In this case, TrackMyStuff.) - DONE
+	2. Create the User table, with all associated columns and matching data types. - DONE
+	2. Use the database name in our connection string to be able to log in. - DONE
+
+
+
+In our Code:
+	1. Read that connection string from whatever file we stored it in. - DONE
+	2. Run the dotnet command needed to pull the  System.Data.SqlClient package into our repo.
+		- dotnet add package System.Data.SqlClient
+	3. Use ADO.NET to create users and log them in (This will be expanded on, in demo.)
+

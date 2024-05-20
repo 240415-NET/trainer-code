@@ -14,7 +14,7 @@ public class UserController
     //We CANNOT instantiate an object representation of an interface
     //We CAN however, create an object of a class that implements that interface,
     //and store it in a variable of the interface's "type"
-    private static IUserStorageRepo _userData = new JsonUserStorage();
+    private static IUserStorageRepo _userData = new SqlUserStorage();
 
     
     //This function handles the business logic related to creating a new 
