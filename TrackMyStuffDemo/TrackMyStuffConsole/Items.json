@@ -59,26 +59,39 @@
     ],
     "Pets": [
         {
-            "name": "joe",
-            "species": "cat",
-            "age": 14,
-            "userId": "18249e1f-e1d9-4849-8627-1875c5c169d7",
-            "itemId": "9dc678ff-fcbe-493d-afe2-3115b1853564",
-            "category": "Pet",
-            "originalCost": 0,
-            "purchaseDate": "2000-07-14T00:00:00",
-            "description": "black cat"
+
+            "name": "Pancake",
+            "species": "dog",
+            "age": 4,
+            "userId": "f0a0ecd8-05c8-4e65-90b3-2c595335ac7b",
+            "itemId": "bd828fbe-56db-4fa3-b6c0-5b8a12afc020",
+            "category": "pet",
+            "originalCost": 10,
+            "purchaseDate": "2024-01-01T00:00:00",
+            "description": "dog"
         },
         {
-            "name": "pancake",
+            "name": "Rover",
             "species": "dog",
-            "age": 9,
+            "age": 7,
             "userId": "f0a0ecd8-05c8-4e65-90b3-2c595335ac7b",
-            "itemId": "9746138d-0e8c-44f5-9208-a3821f043b2d",
+            "itemId": "78b00a47-c012-4ccd-ba1b-6689d617cbca",
             "category": "Pet",
-            "originalCost": 3200,
-            "purchaseDate": "2015-05-14T00:00:00",
-            "description": "chihuahua"
+            "originalCost": 5,
+            "purchaseDate": "2021-01-01T00:00:00",
+            "description": "he\u0027s a good boy"
+        },
+        {
+            "name": "Spot",
+            "species": "dog",
+            "age": 4,
+            "userId": "f0a0ecd8-05c8-4e65-90b3-2c595335ac7b",
+            "itemId": "6bc9fd88-7ce8-430a-aaf1-b45c66e944ec",
+            "category": "Pet",
+            "originalCost": 8,
+            "purchaseDate": "2022-01-01T00:00:00",
+            "description": "he\u0027s the goodest boy"
         }
     ]
 }
+

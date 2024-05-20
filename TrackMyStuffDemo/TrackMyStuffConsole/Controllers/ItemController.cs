@@ -25,7 +25,7 @@ public class ItemController
         //Creating the item
         Pet newPet = new Pet(user.userId, category, originalCost, purchaseDate, description, petName, petSpecies, petAge);
 
-        _itemData.StoreItem(newPet);
+        _itemData.StorePet(newPet);
     }
   
     public static void CreateDocument(User user, string category, double originalCost, DateTime purchaseDate, string description, string documentType, DateTime expirationDate)
@@ -33,7 +33,7 @@ public class ItemController
         //Creating the item
         Document newDocument = new Document(user.userId, category, originalCost, purchaseDate, description, documentType, expirationDate);
 
-        _itemData.StoreItem(newDocument);
+        _itemData.StoreDocument(newDocument);
     }
   
     public static List<Item> GetAllItems(Guid userID)
