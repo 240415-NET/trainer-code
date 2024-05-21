@@ -66,6 +66,22 @@
 - As a user, I want to be able to remove items that I own - (Group 3)
 
 - As a user, I want to be able to modify the information of items that I own (Group 4)
+Presentation Layer: (Group 4's exclusively)
+Modify the main menu to allow a user to modify the menu
+Once user selects to modify, new method to ask user which items to modify
+(MVP) For now, they can only edit the name
+(Maybe later) Once they pick the item, ask what fields they want to change about it
+Create an object of that name, prompting for user changes, taking in user changes, and call the method in the Controller Layer
+Controller Layer:
+Get Item List for User: New method would calls a Data Access Layer method that gets a list of items for that user (which team owns this?)
+Take In User Changes: Create a new method that takes in user's changes (Group 4's exclusively)
+Something like ModifyItemName(string newItemName) {this itemName = newItemName;}
+Send User Changes to Data Access Layer for Storage: Create a new method that passes it to the Data Access Layer to be saved (may be able to leverage Group2's methods)
+Data Access Layer:
+Create a new method to get user's items (RetrieveItems or GetItem or something like that) (which team owns this?)
+Create a new method to save the items once they're changed (SaveItem or SaveItems or something) (may be able to leverage Group 2's methods)
+Note: Instead of creating the method ModifyItems() in Controllers Layer, could put it in the Model.
+In the controller layer, we would instantiate a new object of type Item and call the ModifyItemName method
 
 - As a user, I want to to be able to view the total list of items that I own and have entered. (Group 1)
   1. A collection of items List<Item,string> - Item, Type

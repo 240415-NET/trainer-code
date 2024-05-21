@@ -1,5 +1,6 @@
 using TrackMyStuff.Controllers;
 using TrackMyStuff.Models;
+using System.Linq;
 
 namespace TrackMyStuff.Presentation;
 
@@ -11,7 +12,7 @@ public class ItemMenu
         string userInput;
         bool validInput = false;
 
-        Console.Clear();
+       Console.Clear();
 
         Console.WriteLine("Please select from the following items:\n1. View List of Items\n2. New Item\n3. Remove Item\n4. Modify Item\n5. Exit Program");
         try
@@ -47,7 +48,7 @@ public class ItemMenu
                     case "remove item":
                         // Console.WriteLine("This will be implemented later, sorry!");
                         // Console.WriteLine(ViewAllItems(user.userId,1,"Which item would you like to delete?"));
-                        ItemController.RemoveItem(ViewAllItems(user.userId,1,"Which item would you like to delete?"), user);
+                        ItemController.RemoveItem(ViewAllItems(user.userId, 1, "Which item would you like to delete?"), user);
                         break;
                     case "4":
                     case "4.":
@@ -55,7 +56,7 @@ public class ItemMenu
                     case "4. modify item":
                     case "modify":
                     case "modify item":
-                        Console.WriteLine("This will be implemented later, sorry!");
+                        ModifyItemMenu(user);
                         break;
                     case "5":
                     case "5.":
@@ -472,7 +473,7 @@ public class ItemMenu
             bool exitView = false;
             do
             {
-                Console.Clear();
+                //Console.Clear();
                 int loopCount = 1;
                 foreach (Item item in allMyItems)
                 {
@@ -498,6 +499,7 @@ public class ItemMenu
                     }
                     else if (userChoice <= allMyItems.Count() && userChoice > 0)
                     {
+                        exitView = true;
                         return allMyItems[userChoice - 1].itemId;
                     }
                     else
@@ -892,4 +894,100 @@ public class ItemMenu
                 return listToSort;
         }
     }
+
+    public static void ModifyItemMenu(User user)
+    {
+        bool keepAlive = false;
+
+        List<Item> allUsersItems = ItemController.GetAllItems(user.userId);
+        List<Item> modifyItemList = new();
+        
+        do
+        {
+            Guid itemId = ViewAllItems(user.userId, 1, "Please select the item you'd like to modify");
+            Item? itemToBeModified = allUsersItems.FirstOrDefault(x => x.itemId.Equals(itemId));
+            ModifyIndividualItemDisplay(itemToBeModified, user);
+            //ModifyItems.ModifyItemsFromList(modifyItemList, user);
+            Console.WriteLine("Would you like modify another item?\nPress Y to continue modifying");
+            string keepModifying = Console.ReadLine() ?? "";
+            keepAlive = keepModifying.ToUpper() == "Y";
+        }
+        while (keepAlive);
+
+        ItemFunctionMenu(user);
+    }
+
+    public static void ModifyIndividualItemDisplay(Item itemToBeModified, User user)
+    {
+        bool keepModifying = true;
+        bool isValid = false;
+
+        List<string> propertiesToBeModified = new();
+        do
+        {
+            Console.WriteLine("Please select which value you'd like to modify:");
+            Console.WriteLine($"1. Description: {itemToBeModified.description}");
+            Console.WriteLine($"2. Original Cost: {itemToBeModified.originalCost}");
+            Console.WriteLine($"3. Purchase Date: {itemToBeModified.purchaseDate}");
+            Console.WriteLine("0. Finished modifying");
+            try
+            {
+                switch (Console.ReadLine())
+                {
+                    case "1":
+                        {
+                            Console.WriteLine("Please enter the new value: ");
+                            string modifiedValue = Console.ReadLine() ?? "";
+                            itemToBeModified.description = modifiedValue;
+                            propertiesToBeModified.Add("Description");
+                            isValid = true;
+                            break;
+                        }
+                    case "2":
+                        {
+                            Console.WriteLine("Please enter the new number with no currency sign");
+                            double modifiedValue = double.Parse(Console.ReadLine() ?? "");
+                            itemToBeModified.originalCost = modifiedValue;
+                            propertiesToBeModified.Add("Original Cost");
+                            isValid = true;
+                            break;
+                        }
+                    case "3":
+                        {
+                            Console.WriteLine($"Please enter the new value with proper formatting -- i.e. 12/25/2001");
+                            DateTime modifiedValue = DateTime.Parse(Console.ReadLine().Trim());
+                            itemToBeModified.purchaseDate = modifiedValue;
+                            propertiesToBeModified.Add("Purchase Date");
+                            isValid = true;
+                            break;
+                        }
+                    case "0":
+                        {
+
+                            keepModifying = false;
+                            isValid = true;
+                            break;
+
+                        }
+                    default:
+                        {
+                            isValid = false;
+                            break;
+                        }
+                }
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("You've entered an invalid value. Please verify you'd entered the correct format.\n");
+            }
+
+        }
+        while (keepModifying || !isValid);
+
+
+        //Call a method to add the modifiedItem to a List ModifyItemController.
+        ItemController.ModifyIndividualItem(itemToBeModified, propertiesToBeModified);
+
+    }
+
 }

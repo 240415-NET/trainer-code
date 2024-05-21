@@ -84,5 +84,55 @@ public class JsonItemStorage : IItemStorageRepo
         }
         return myReturnList;
     }
+
+    public void ModifyItem(Item itemToBeModified, List<string> propertiesToBeModified)
+    {
+
+        // Read JSON file and deserialize into a list of User objects
+        ItemsDTO allItems = JsonSerializer.Deserialize<ItemsDTO>(File.ReadAllText(filePath));
+        
+
+        allItems = DTOStorage.DeserializeAllItems();
+
+        Item item = new();
+
+        if(itemToBeModified.category == "Pet")
+        {
+             item = allItems.Pets.FirstOrDefault(i => i.itemId == itemToBeModified.itemId);
+        }
+        else if(itemToBeModified.category == "Document")
+        {
+             item = allItems.Documents.FirstOrDefault(i => i.itemId == itemToBeModified.itemId);
+        }
+        else
+        {
+             item = allItems.Items.FirstOrDefault(i => i.itemId == itemToBeModified.itemId);
+        }
+
+        foreach(string property in propertiesToBeModified)
+        {
+            if(property == "Description")
+            {
+                item.description = itemToBeModified.description;
+            }
+            else if(property == "Original Cost")
+            {
+                item.originalCost = itemToBeModified.originalCost;
+            }
+            else if(property == "Purchase Date")
+            {
+                item.purchaseDate = itemToBeModified.purchaseDate;
+            }
+        }
+
+   
+        // Serialize the updated list of User objects back to JSON
+        string updatedJson = JsonSerializer.Serialize(allItems);
+
+        // Write JSON back to file
+        File.WriteAllText(filePath, updatedJson);
+    }
+    
 }
+
 
