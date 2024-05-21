@@ -70,7 +70,7 @@ public class ItemController
         return returnList;
     }
 
-    public static void RemoveItem(Guid _itemId, User _user)
+    public static string RemoveItem(Guid _itemId, User _user)
     {
         //retrieve full list from JSON
         ItemsDTO returnedDTO = DTOStorage.DeserializeAllItems();
@@ -87,7 +87,9 @@ public class ItemController
             if(deleteItem.Count > 0)
             {
                 returnedDTO.Items.Remove(deleteItem[0]);
-                Console.WriteLine($"{deleteItem[0].AbbrToString()}  has been removed. Press any key to continue.");
+                //Store DTO
+                DTOStorage.SerializeAllItems(returnedDTO);
+                return $"{deleteItem[0].AbbrToString()}  has been removed. Press any key to continue.";
             }
 
             //Find and remove in Documents
@@ -99,7 +101,9 @@ public class ItemController
             if(deleteDocument.Count > 0)
             {
                 returnedDTO.Documents.Remove(deleteDocument[0]);
-                Console.WriteLine($"{deleteDocument[0].AbbrToString()}  has been removed. Press any key to continue.");
+                //Store DTO
+                DTOStorage.SerializeAllItems(returnedDTO);
+                return $"{deleteDocument[0].AbbrToString()}  has been removed. Press any key to continue.";
             }
 
             //Find and remove in Pets
@@ -111,20 +115,24 @@ public class ItemController
             if(deletePet.Count > 0)
             {
                 returnedDTO.Pets.Remove(deletePet[0]);
-                Console.WriteLine($"{deletePet[0].AbbrToString()}  has been removed. Press any key to continue.");
+                //Store DTO
+                DTOStorage.SerializeAllItems(returnedDTO);
+                return $"{deletePet[0].AbbrToString()}  has been removed. Press any key to continue.";
             }
 
 
             //Store DTO
             DTOStorage.SerializeAllItems(returnedDTO);
 
+            return "Item removed. Press any key to continue.";
+
         }else
         {
-            Console.WriteLine("No items found");
+            return "No items found. Press any key to continue.";
         }
 
-        Console.ReadLine();
-        ItemMenu.ItemFunctionMenu(_user);
+        
+        // ItemMenu.ItemFunctionMenu(_user);
     }
     public static void ModifyIndividualItem(Item itemToBeModified, List<string> propertiesToBeModified)
     {

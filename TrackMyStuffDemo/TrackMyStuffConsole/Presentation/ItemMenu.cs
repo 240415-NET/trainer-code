@@ -14,11 +14,12 @@ public class ItemMenu
 
        Console.Clear();
 
-        Console.WriteLine("Please select from the following items:\n1. View List of Items\n2. New Item\n3. Remove Item\n4. Modify Item\n5. Exit Program");
+        // Console.WriteLine("Please select from the following items:\n1. View List of Items\n2. New Item\n3. Remove Item\n4. Modify Item\n5. Exit Program");
         try
         {
             do
             {
+                Console.WriteLine("Please select from the following items:\n1. View List of Items\n2. New Item\n3. Remove Item\n4. Modify Item\n5. Exit Program");
                 userInput = Console.ReadLine().Trim().ToLower();
                 switch (userInput)
                 {
@@ -48,7 +49,10 @@ public class ItemMenu
                     case "remove item":
                         // Console.WriteLine("This will be implemented later, sorry!");
                         // Console.WriteLine(ViewAllItems(user.userId,1,"Which item would you like to delete?"));
-                        ItemController.RemoveItem(ViewAllItems(user.userId, 1, "Which item would you like to delete?"), user);
+                        Console.WriteLine(ItemController.RemoveItem(ViewAllItems(user.userId, 1, "Which item would you like to delete?"), user));
+
+                        Console.ReadLine();
+                        validInput = false;
                         break;
                     case "4":
                     case "4.":
