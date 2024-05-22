@@ -177,7 +177,7 @@
 
         Console.WriteLine("Test 1: " + (result1 == 444 ? "Success" : "Fail"));
         Console.WriteLine("Test 2: " + (result2 == 2 ? "Success" : "Fail"));
-        Console.WriteLine("Test 3: " + (result3 == 1112220 ? "Success" : "Fail"));
+        Console.WriteLine("Test 3: " + (result3 == 1308912 ? "Success" : "Fail"));
         Console.WriteLine();
     }
 

@@ -162,8 +162,10 @@ class PracticeChallenge
     // Example: 123 -> Reversed: 321 -> 321 + 123 = 444
     // You can assume the numbers will be positive and not exceed the limit of int when added.
     public static int ReverseAndAdd(int num)
-    {
-        return 0; //Placeholder return
+    {   
+        string sNum = Convert.ToString(num);
+        string rNum = new string(sNum.Reverse().ToArray());
+        return num + Convert.ToInt32(rNum); //Placeholder return
     }
 
     // 10. Convert Age into Seconds
@@ -173,7 +175,7 @@ class PracticeChallenge
     // Using long to handle higher ages.
     public static long AgeInSeconds(long age)
     {
-        return 0; //Placeholder return
+        return age * 31536000; //Placeholder return
     }
 
     // 11. Calculate the factorial of a positive integer.
@@ -181,8 +183,13 @@ class PracticeChallenge
     // Factorial of 5 = 1 * 2 * 3 * 4 * 5 = 120
     // Assume the answer fits inside of an int data type. 
     public static int Factorial(int num)
-    {
-        return 0; //Placeholder return
+    {   
+        int Ans = 1;
+        for(int i = 1; i <= num; i++)
+        {
+            Ans *= i;
+        }
+        return Ans; //Placeholder return
     }
 
 
