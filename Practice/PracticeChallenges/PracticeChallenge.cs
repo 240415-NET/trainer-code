@@ -200,7 +200,17 @@ class PracticeChallenge
     // Starting with 100, then 105, then 200, then 250.
     public static int CountRecordBreaks(List<int> scores)
     {
-        return 0; //Placeholder return
+        int topScore = 0;
+        int recordCount = 0;
+        foreach(int s in scores)
+        {
+            if(s > topScore)
+            {
+                topScore = s;
+                recordCount++;
+            }
+        }
+        return recordCount; //Placeholder return
     }
 
     // 13. Compare Apples to Oranges
@@ -214,6 +224,10 @@ class PracticeChallenge
 
         public bool CompareToOrange(Orange orange)
         {
+            if(orange.Weight == this.Weight)
+            {
+                return true;
+            }
             return false; //Placeholder return
         }
     }
@@ -230,6 +244,11 @@ class PracticeChallenge
     {
         public string? Color { get; }
 
+        public Car()
+        {
+            this.Color = "Black";
+        }
+
     }
 
     // 15. Same Numbers, Different Set
@@ -237,6 +256,8 @@ class PracticeChallenge
     // Example: set1 -> [1, 2, 3, 4] - set2 -> [3, 4, 5, 6] - returns -> [3, 4]
     public static HashSet<int> CompareSets(HashSet<int> set1, HashSet<int> set2)
     {
-        return []; // Placeholder return
+        HashSet<int> Ans = new HashSet<int>(set1);
+        Ans.IntersectWith(set2);
+        return Ans ; // Placeholder return
     }
 }
