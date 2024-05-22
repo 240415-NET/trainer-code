@@ -75,7 +75,21 @@ class PracticeChallenge
     // Return empty string, otherwise.
     public static string FizzBuzz(int n)
     {
-        return ""; // Placeholder return
+        if(n % 3 == 0 && n % 5 == 0)
+        {
+            return "FizzBuzz";
+        }else if(n % 3 == 0)
+        {
+            return "Fizz";
+        }else if(n % 5 == 0)
+        {
+            return "Buzz";
+        }else
+        {
+            return "";
+        }
+    
+        
     }
 
     // 6. Return the area of a triangle given its base and height.
@@ -89,6 +103,17 @@ class PracticeChallenge
     // An anagram of a string -> contains all the same characters, just in a different order.
     public static bool IsAnagram(string str1, string str2)
     {
+        char[]? cstr1 = str1.ToCharArray();
+        Array.Sort(cstr1);
+        str1 = new string(cstr1);
+
+        char[]? cstr2 = str2.ToCharArray();
+        Array.Sort(cstr2);
+        str2 = new string(cstr2);
+        if(str1 ==str2)
+        {
+            return true;
+        }
         return false; // Placeholder return
     }
 
@@ -98,8 +123,39 @@ class PracticeChallenge
     // Consider using split() method on 'sentence' to divide it into smaller strings/words.
     public static Dictionary<string, int> CountWordFrequency(string sentence)
     {
+        Dictionary<string, int> Freq = new();
+        string[] words = sentence.Split(' ');
+        Array.Sort(words);
+        string arrayWord = "";
+        int wordCount = 0;
 
-        return []; //Placeholder return
+        if(words[0] == "")
+        {
+            return Freq;
+        }
+
+        foreach(string word in words)
+        {
+            if(wordCount == 0)
+            {
+                arrayWord = word;
+            }
+
+            if(word == arrayWord)
+            {
+                wordCount++;
+            }else
+            {
+                Freq.Add(arrayWord, wordCount);
+                arrayWord = word;
+                wordCount = 1;
+                
+            }
+        }
+
+        Freq.Add(arrayWord, wordCount);
+
+        return Freq; //Placeholder return
     }
 
     // 9. Reverse a given integer and add it to the original number.
