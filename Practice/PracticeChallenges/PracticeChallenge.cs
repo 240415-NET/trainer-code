@@ -31,7 +31,15 @@ class PracticeChallenge
     // 'threshold' is the cutoff for a passing grade. If they are equal, then its passing.
     public static int CountPassingGrades(double[] grades, double threshold)
     {
-        return 0; // Placeholder return
+        int Ans = 0;
+        foreach(double g in grades)
+        {
+            if(g >= threshold)
+            {
+                Ans++;
+            }
+        }
+        return Ans; // Placeholder return
     }
 
     // 3. Return true if the given number is a perfect square, otherwise false.
@@ -39,6 +47,11 @@ class PracticeChallenge
     // Example: 25 is a Perfect Square -> 5 * 5 = 25.
     public static bool IsPerfectSquare(int num)
     {
+        double Sqrt = Math.Sqrt(num);
+        if(Math.Truncate(Sqrt) == Sqrt)
+        {
+            return true;
+        }
         return false; // Placeholder return
     }
 
@@ -48,7 +61,9 @@ class PracticeChallenge
     // "Hello World" contains 8 distinct characters. "H,e,l,o, ,W,r,d"
     public static int CountDistinctCharacters(string str)
     {
-        return 0; // Placeholder return
+        var dStr = new string(str.Distinct().ToArray());
+        
+        return dStr.Count(); // Placeholder return
     }
 
 
@@ -67,7 +82,7 @@ class PracticeChallenge
     // Formula is Area = (1/2) * Base * Height
     public static double AreaOfTriangle(double base1, double height)
     {
-        return 0.0; // Placeholder return
+        return 0.5*base1*height; // Placeholder return
     }
 
     // 7. Return true if the given string is an anagram of another string, otherwise false.
