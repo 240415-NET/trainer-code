@@ -1,6 +1,6 @@
 using TrackMyStuff.API.Models;
 
-namespace TrackMyStuff.API.DTO;
+namespace TrackMyStuff.API.DTOs;
 
 public class ItemsDTO
 {
