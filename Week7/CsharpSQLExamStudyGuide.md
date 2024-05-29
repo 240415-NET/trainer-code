@@ -2,7 +2,7 @@
 
 ## Git
 
-    1. What is Git?
+    1. What is Git? 
     2. What is Gitbash?
     3. How do we create a branch?
     4. How do we clone a repo?
@@ -35,13 +35,13 @@
        3. Switch
        4. Our different comparison operatos (==, !=, >=, etc)
        5. For loops vs foreach
-       6. 
+   
     7. What is an interface?
        1. How are they used?
        2. How do they compare/contrast to a class?
     8. List vs Dictionary?
        1. Both are collections, but how do they differ?
-    9. What does our .csproj contain?
+    9.  What does our .csproj contain?
        1.  Meta-data about our project (things like it's name)
        2.  Package references that we brought in via Nuget (things we dotnet add'd)
        3.  Project references to other .csproj files that we want to bundle together, such as with xUnit testing projects
