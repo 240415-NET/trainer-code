@@ -46,6 +46,12 @@ public class UserService : IUserService
         
         //At some point, we will have to call the data access layer before creating a new user and
         //check for an existing user with that name. 
+        await _userStorage.CreateUserInDBAsync(newUserSentFromController);
+        
+        //If this all goes smooth, and we successfully call the method in the data access layer to create a new user
+        //we will just echo back the object that was sent to us by the controller. Later on, we can actually worry about
+        //a more meaningful return.
+        return newUserSentFromController;
     }
 
     //Method to check if a user exists... during early development we will return a false every time.
