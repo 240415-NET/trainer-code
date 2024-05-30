@@ -6,10 +6,42 @@ using TrackMyStuff.API.DTOs;
 
 namespace TrackMyStuff.API.Controllers;
 
+//We are going to break our business logic into a Service layer outside of our controllers, to keep them
+//relatively small/lightweight. Since the controllers in an ASP.NET application ideally only handle
+//receiving and returning HTTP requests. 
+
 [ApiController]
 [Route("[controller]")]
 public class UserController : ControllerBase
 {
-    public UserController() {}
-    
+    //I know that im going to need at minimum a place to hold my UserService object, that will be
+    //given to me by the builder when the app is dotnet run. We are NOT going to instantiate this object
+    //within the controller with the usual Object myObject = new Object() style syntax. We are going to 
+    //allow the builder to handle creating and then passing in that UserService object through the controller's Constructor.
+    private readonly IUserService _userService;
+
+    //Here is my constructor where we will take in our dependencies (that are automatically passed in by the builder.)
+    public UserController(IUserService userServiceFromBuilder) 
+    {
+        _userService = userServiceFromBuilder;
+    }
+
+    //Create a User in our DB
+    //Here we are going to create our first controller method. This method needs a few things.
+    //It needs an HTTP verb tag, and a method signature that includes the "async" keyword. This 
+    //makes the method asynchronous, meaning that we won't lock up program execution across our entire app
+    //waiting for someone's potentially slow internet to respond to us. 
+
+    //This is our method to create a new user. We are using a POST request to send a new user 
+    //We DONT have to worry about serialization to JSON, or unwrapping that nested Task<ActionResult<User>>
+    //object that is eventually returned - ALL of that is handled by ASP.NET
+    //This User we call newUser actually comes in from the body of the HTTP request that is sent to this method
+    //from the front end. Whether it's us in Swagger, a full fledged website in a browser, a console app, etc. 
+    //Our controller unwraps that request, and serializes the JSON representation of our potential new user from the body
+    //of the request. We can then work with it like any other object within our code.  
+    [HttpPost]
+    public async Task<ActionResult<User>> PostNewUser(User newUser)
+    {
+        
+    }
 }
