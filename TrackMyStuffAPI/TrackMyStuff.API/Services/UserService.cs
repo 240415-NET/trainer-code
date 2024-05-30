@@ -7,11 +7,11 @@ public class UserService : IUserService
     //The same way that our UserService is given to our UserController via Dependency Injection,
     //we need something to store our data access object for database operations relating to the User model
     //Again, we will create private readonly objects that we don't create using "new" anywhere in this class
-    private readonly IUserStorageEFRepo _userStorage;
+    //private readonly IUserStorageEFRepo _userStorage;
 
-    public UserService(IUserStorageEFRepo efRepoFromBuilder)
+    public UserService()
     {
-        _userStorage = efRepoFromBuilder;
+        //_userStorage = efRepoFromBuilder;
     }
 
     //This method will hold the business logic that we decide on for creating a new user.
@@ -46,7 +46,7 @@ public class UserService : IUserService
         
         //At some point, we will have to call the data access layer before creating a new user and
         //check for an existing user with that name. 
-        await _userStorage.CreateUserInDBAsync(newUserSentFromController);
+        //await _userStorage.CreateUserInDBAsync(newUserSentFromController);
         
         //If this all goes smooth, and we successfully call the method in the data access layer to create a new user
         //we will just echo back the object that was sent to us by the controller. Later on, we can actually worry about
