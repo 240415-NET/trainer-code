@@ -42,6 +42,27 @@ public class UserController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<User>> PostNewUser(User newUser)
     {
-        
+        //Inside of our controller, we are going to call a method from our Service layer, from the UserService class.
+        //We are going to wrap this in a try-catch so that if anything goes wrong our entire API doesn't immediately go down
+        //and we can inform the user that they've messed up.
+        try
+        {   
+            //Inside of our try, we call the CreateNewUserAsync method in our service.
+            //The service layer will handle validating that this object meets our criteria
+            await _userService.CreateNewUserAsync(newUser);
+
+            //If it does, we return a 200-OK success message to the user, and echo back the object 
+            //that they gave us. 
+            return Ok(newUser);
+
+            //If for some reason the CreateNewUserAsync method fails, we will hit the catch. 
+        } 
+        catch(Exception e)
+        {
+            //If something goes wrong, the user sends a bad request, etc - we are going to return
+            //a 400 bad request response, with the exception message that it triggered.
+            return BadRequest(e.Message);
+        }
+
     }
 }

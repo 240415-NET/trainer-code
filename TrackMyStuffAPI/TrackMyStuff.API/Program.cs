@@ -13,7 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //Here are the dependencies that we are going to register. These are things we create or choose to bring in.
-builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserService, UserService>(); // This adds our UserService, that our UserController then asks for
 
 //This came in by default with the template that dotnet new gave us, we just moved it AFTER our dependencies. 
 builder.Services.AddControllers();
