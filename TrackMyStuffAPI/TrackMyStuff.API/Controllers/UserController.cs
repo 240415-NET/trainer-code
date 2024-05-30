@@ -3,6 +3,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TrackMyStuff.API.Models;
 using TrackMyStuff.API.DTOs;
+using TrackMyStuff.API.Services;
 
 namespace TrackMyStuff.API.Controllers;
 

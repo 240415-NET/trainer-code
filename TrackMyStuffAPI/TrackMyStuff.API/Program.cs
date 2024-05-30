@@ -1,3 +1,7 @@
+//In our Program.cs we still have to be mindful of the namespaces we create for things like our
+//service and data access classes/interfaces. 
+using TrackMyStuff.API.Services;
+
 // This program.cs is way different than what we are used to seeing
 // It runs almost as a script, from top to bottom, where we add services to our AppBuilder,
 // and then we build the app. After the app has been built, we can toggle different options for it.
@@ -14,6 +18,8 @@ builder.Services.AddSwaggerGen();
 
 //Here are the dependencies that we are going to register. These are things we create or choose to bring in.
 builder.Services.AddScoped<IUserService, UserService>(); // This adds our UserService, that our UserController then asks for
+builder.Services.AddScoped<IUserStorageEFRepo, UserStorageEFRepo>();// This adds our UserStorageEFRepo (data-access layer), that our UserService asks for. 
+
 
 //This came in by default with the template that dotnet new gave us, we just moved it AFTER our dependencies. 
 builder.Services.AddControllers();
