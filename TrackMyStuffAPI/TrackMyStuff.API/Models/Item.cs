@@ -1,8 +1,14 @@
+using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+
 namespace TrackMyStuff.API.Models;
 
 public class Item
 {
+
     public Guid userId {get; set;}
+    //Here we are using data annotations to set the itemId as the primary key
+    [Key]
     public Guid itemId {get; set;} 
     public string category {get; set;}
     public double originalCost {get; set;}
