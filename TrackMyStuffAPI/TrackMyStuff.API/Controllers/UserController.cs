@@ -41,20 +41,22 @@ public class UserController : ControllerBase
     //Our controller unwraps that request, and serializes the JSON representation of our potential new user from the body
     //of the request. We can then work with it like any other object within our code.  
     [HttpPost]
-    public async Task<ActionResult<User>> PostNewUser(User newUserSentFromFrontEnd)
+    public async Task<ActionResult<User>> PostNewUser(string username)
     {
         //Inside of our controller, we are going to call a method from our Service layer, from the UserService class.
         //We are going to wrap this in a try-catch so that if anything goes wrong our entire API doesn't immediately go down
         //and we can inform the user that they've messed up.
         try
         {   
+            User newUser = new User(username);
+            
             //Inside of our try, we call the CreateNewUserAsync method in our service.
             //The service layer will handle validating that this object meets our criteria
-            await _userService.CreateNewUserAsync(newUserSentFromFrontEnd);
+            await _userService.CreateNewUserAsync(newUser);
 
             //If it does, we return a 200-OK success message to the user, and echo back the object 
             //that they gave us. 
-            return Ok(newUserSentFromFrontEnd);
+            return Ok(newUser);
 
             //If for some reason the CreateNewUserAsync method fails, we will hit the catch. 
         } 
@@ -65,5 +67,30 @@ public class UserController : ControllerBase
             return BadRequest(e.Message);
         }
 
+    }
+
+    [HttpPost("/Users/list")]
+    public async Task<ActionResult<List<string>>> PostListOfUsers(List<string> usernames)
+    {
+        //Inside of our controller, we are going to call a method from our Service layer, from the UserService class.
+        //We are going to wrap this in a try-catch so that if anything goes wrong our entire API doesn't immediately go down
+        //and we can inform the user that they've messed up.
+        try
+        {   
+            foreach (string username in usernames)
+            {
+                User newUser = new User(username);
+            
+                await _userService.CreateNewUserAsync(newUser);
+            }
+
+            return Ok(usernames);
+ 
+        } 
+        catch(Exception e)
+        {
+
+            return BadRequest(e.Message);
+        }
     }
 }
