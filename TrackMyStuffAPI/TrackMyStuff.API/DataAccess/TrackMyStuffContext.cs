@@ -42,6 +42,11 @@ public class TrackMyStuffContext : DbContext
         //We explicitly named our other tables, so why not?
         modelBuilder.Entity<User>()
             .ToTable("Users");
+
+        // modelBuilder.Entity<User>()
+        //     .HasMany(e => e.items)
+        //     .WithOne(e => e.user)
+
     }
 
 }

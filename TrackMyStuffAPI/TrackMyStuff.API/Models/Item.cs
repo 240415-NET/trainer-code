@@ -6,7 +6,8 @@ namespace TrackMyStuff.API.Models;
 public class Item
 {
 
-    public Guid userId {get; set;}
+    //public Guid userId {get; set;}
+    public User user { get; set; } = new();
     //Here we are using data annotations to set the itemId as the primary key
     [Key]
     public Guid itemId {get; set;} 
