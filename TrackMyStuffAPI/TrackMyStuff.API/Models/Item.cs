@@ -19,9 +19,9 @@ public class Item
     //Constructors 
     public Item() { }
     
-    public Item(Guid _userId, string _category, double _originalCost, 
+    public Item(string _category, double _originalCost, 
         DateTime _purchaseDate, string _description) {
-            userId = _userId;
+            
             itemId = Guid.NewGuid();
             category = _category;
             originalCost = _originalCost;
