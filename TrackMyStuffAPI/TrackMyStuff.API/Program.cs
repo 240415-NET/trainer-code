@@ -1,6 +1,8 @@
 //In our Program.cs we still have to be mindful of the namespaces we create for things like our
 //service and data access classes/interfaces. 
 using TrackMyStuff.API.Services;
+using TrackMyStuff.API.Data;
+using Microsoft.EntityFrameworkCore;
 
 // This program.cs is way different than what we are used to seeing
 // It runs almost as a script, from top to bottom, where we add services to our AppBuilder,
@@ -20,6 +22,12 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserService, UserService>(); // This adds our UserService, that our UserController then asks for
 builder.Services.AddScoped<IUserStorageEFRepo, UserStorageEFRepo>();// This adds our UserStorageEFRepo (data-access layer), that our UserService asks for. 
 
+//Here, we are going add our TrackMyStuffContext class (that inherits from EF Core's DbContext) to the builder.
+//Inside of the options => options.UseSqlServer lambda function, we add in the read to our connection string file. 
+string connectionString = File.ReadAllText(@"C:\Users\JonathanDeLaCruz\Documents\Revature\240415-CC-Geico-NET\connstring.txt");
+
+builder.Services.AddDbContext<TrackMyStuffContext>(options => 
+    options.UseSqlServer(connectionString));
 
 //This came in by default with the template that dotnet new gave us, we just moved it AFTER our dependencies. 
 builder.Services.AddControllers();

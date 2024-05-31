@@ -1,4 +1,5 @@
 using TrackMyStuff.API.Models;
+using TrackMyStuff.API.Data;
 
 namespace TrackMyStuff.API.Services;
 
