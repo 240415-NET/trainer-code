@@ -16,7 +16,12 @@ public class TrackMyStuffContext : DbContext
     public DbSet<Pet> Pets {get; set;}
     public DbSet<Document> Documents{get; set;}
 
+    //Here is a parameterless constructor
     public TrackMyStuffContext () {}
+
+    //In order to create/apply a migration we need a constructor that accepts a DbContextOptions and 
+    //passes it to the base constructor that comes in from the DbContext parent class 
+    public TrackMyStuffContext(DbContextOptions options) : base (options) {}
 
     //In order to tweak EF Core's default behavior/assumptions of what we want in our database
     //whether it is with regards to things like table structure, relationships pk/fk, how it handles
