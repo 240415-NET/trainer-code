@@ -13,6 +13,15 @@ public class User
     public Guid userId {get; set;}
     public string userName {get; set;}
 
+    //Users have many items/pets/documents - each one of those items belongs to one user
+    //We store these in our models as lists of type item/pet/document
+    //Make sure you actually initialize a list by including "= new();" after the GET-SET
+    //Otherwise, when you actually ask the DB for a user object, you will not see it's
+    //associated items/pets/documents EVEN IF they are stored in the DB. 
+    public List<Item> items {get; set;} = new();
+    public List<Pet> pets {get; set;} = new();
+    public List<Document> documents{get; set;} = new();
+
     //Constructors
 
     //Default/No argument constructor
