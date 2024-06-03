@@ -55,10 +55,24 @@ public class UserService : IUserService
         return newUserSentFromController;
     }
 
+    public async Task<User> GetUserByUsernameAsync(string usernameToFindFromController)
+    {
+        if(String.IsNullOrEmpty(usernameToFindFromController))
+        {
+            throw new Exception("Cannot pass in a null or empty string!");
+        }
+
+        return await _userStorage.GetUserByUsernameAsync(usernameToFindFromController);
+
+    }
+    
+    
     //Method to check if a user exists... during early development we will return a false every time.
     //Later on, we can then flesh this our more. 
     public bool UserExists(string userName)
     {
         return false;
     } 
+
+
 }
