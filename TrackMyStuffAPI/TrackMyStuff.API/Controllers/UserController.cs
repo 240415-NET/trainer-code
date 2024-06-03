@@ -12,7 +12,6 @@ namespace TrackMyStuff.API.Controllers;
 //receiving and returning HTTP requests. 
 
 [ApiController]
-[Route("[controller]")]
 public class UserController : ControllerBase
 {
     //I know that im going to need at minimum a place to hold my UserService object, that will be
@@ -40,7 +39,7 @@ public class UserController : ControllerBase
     //from the front end. Whether it's us in Swagger, a full fledged website in a browser, a console app, etc. 
     //Our controller unwraps that request, and serializes the JSON representation of our potential new user from the body
     //of the request. We can then work with it like any other object within our code.  
-    [HttpPost]
+    [HttpPost("Users/{username}")]
     public async Task<ActionResult<User>> PostNewUser(string username)
     {
         //Inside of our controller, we are going to call a method from our Service layer, from the UserService class.
@@ -96,7 +95,7 @@ public class UserController : ControllerBase
 
     //Now we are going to write a GET method, to return a single user from our database based on the username passed in
     //from swagger/postman/thunderclient/etc or whatever our front-end happens to be.
-    [HttpGet] 
+    [HttpGet("/Users/{usernameToFindFromFrontEnd}")] 
     public async Task<ActionResult<User>> GetUserByUsername(string usernameToFindFromFrontEnd)
     {   
         //Again, we are going to start with a try catch, so that we can NOT crash our API if something goes wrong,
