@@ -62,7 +62,19 @@ public class UserService : IUserService
             throw new Exception("Cannot pass in a null or empty string!");
         }
 
-        return await _userStorage.GetUserByUsernameAsync(usernameToFindFromController);
+        try
+        {
+            return await _userStorage.GetUserFromDBByUsernameAsync(usernameToFindFromController);
+        }
+        catch(Exception e)
+        {
+            throw new Exception("Username doesn't exist!");
+        }
+
+
+
+
+        
 
     }
     

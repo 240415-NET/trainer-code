@@ -30,5 +30,20 @@ public class UserStorageEFRepo : IUserStorageEFRepo
 
         return newUserSentFromUserService;
     }
+
+    public async Task<User?> GetUserFromDBByUsernameAsync (string usernameToFindFromUserService)
+    {
+
+
+        //We are going to attempt to find a User based on the string passed in using LINQ
+        //In this method call, we ask using LINQ for the a single user based on it's username matching the usernameToFind we passed in
+        User? foundUser = await _context.Users.SingleOrDefaultAsync(user => user.userName == usernameToFindFromUserService);
+
+
+        return foundUser;
+
+
+
+    }
 }
 
