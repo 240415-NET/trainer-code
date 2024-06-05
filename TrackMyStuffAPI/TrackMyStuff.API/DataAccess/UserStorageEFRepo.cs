@@ -42,5 +42,17 @@ public class UserStorageEFRepo : IUserStorageEFRepo
         //Checking for a null in our application will be part of the business logic. 
         return foundUser;
     }
+
+    //New Method, using the .Any() LINQ method to check if a user exists on our DB. 
+    //This method will return a boolean, it does not care about returning any sort of user object
+    //or information on a user if they exist. Just whether or not they exist at all.
+    public async Task<bool> DoesThisUserExistOnDBAsync (string usernameToFindFromUserService)
+    {
+        //We are just going to call the .Any() method, which returns a boolean true/false.
+        //If the user exists in the DB, it resolves to true
+        //Otherwise it resolves to false
+        return await _context.Users.AnyAsync(user => user.userName == usernameToFindFromUserService);
+
+    }
 }
 
