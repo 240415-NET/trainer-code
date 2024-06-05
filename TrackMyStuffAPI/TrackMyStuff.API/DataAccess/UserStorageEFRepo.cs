@@ -55,7 +55,7 @@ public class UserStorageEFRepo : IUserStorageEFRepo
 
     }
 
-    public async void DeleteUserFromDBAsync(string usernameToDeleteFromUserService)
+    public async Task<string> DeleteUserFromDBAsync(string usernameToDeleteFromUserService)
     {
         //So in this one line, we do a few things.
         //We KNOW coming into this method, that we already checked if the user exists. So by definition, 
@@ -75,6 +75,8 @@ public class UserStorageEFRepo : IUserStorageEFRepo
         //Just like a POST, we then need to call SaveChanges or SaveChangesAsync using our _context object to persist this 
         //deletion to the DB
         await _context.SaveChangesAsync();
+
+        return usernameToDeleteFromUserService;
     }
 }
 

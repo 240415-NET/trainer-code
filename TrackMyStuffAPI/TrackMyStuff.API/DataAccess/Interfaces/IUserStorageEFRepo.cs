@@ -8,5 +8,5 @@ public interface IUserStorageEFRepo
     public Task<User?> GetUserFromDBByUsernameAsync (string usernameToFindFromUserService);
     public Task<bool> DoesThisUserExistOnDBAsync (string usernameToFindFromUserService);
 
-    public void DeleteUserFromDBAsync(string usernameToDeleteFromUserService);
+    public Task<string> DeleteUserFromDBAsync(string usernameToDeleteFromUserService);
 }

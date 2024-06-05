@@ -12,14 +12,15 @@ using TrackMyStuff.API.Data;
 namespace TrackMyStuff.API.Migrations
 {
     [DbContext(typeof(TrackMyStuffContext))]
-    [Migration("20240531162252_InitialDBCreation")]
-    partial class InitialDBCreation
+    [Migration("20240605182229_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
+                .UseCollation("SQL_Latin1_General_CP1_CS_AS")
                 .HasAnnotation("ProductVersion", "8.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
@@ -54,7 +55,7 @@ namespace TrackMyStuff.API.Migrations
 
                     b.ToTable("Items", (string)null);
 
-                    b.UseTpcMappingStrategy();
+                    b.UseTptMappingStrategy();
                 });
 
             modelBuilder.Entity("TrackMyStuff.API.Models.User", b =>
@@ -83,11 +84,6 @@ namespace TrackMyStuff.API.Migrations
                     b.Property<DateTime>("expirationDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<Guid?>("userId1")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasIndex("userId1");
-
                     b.ToTable("Documents", (string)null);
                 });
 
@@ -105,11 +101,6 @@ namespace TrackMyStuff.API.Migrations
                     b.Property<string>("species")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("userId1")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasIndex("userId1");
-
                     b.ToTable("Pets", (string)null);
                 });
 
@@ -126,25 +117,25 @@ namespace TrackMyStuff.API.Migrations
 
             modelBuilder.Entity("TrackMyStuff.API.Models.Document", b =>
                 {
-                    b.HasOne("TrackMyStuff.API.Models.User", null)
-                        .WithMany("documents")
-                        .HasForeignKey("userId1");
+                    b.HasOne("TrackMyStuff.API.Models.Item", null)
+                        .WithOne()
+                        .HasForeignKey("TrackMyStuff.API.Models.Document", "itemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TrackMyStuff.API.Models.Pet", b =>
                 {
-                    b.HasOne("TrackMyStuff.API.Models.User", null)
-                        .WithMany("pets")
-                        .HasForeignKey("userId1");
+                    b.HasOne("TrackMyStuff.API.Models.Item", null)
+                        .WithOne()
+                        .HasForeignKey("TrackMyStuff.API.Models.Pet", "itemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("TrackMyStuff.API.Models.User", b =>
                 {
-                    b.Navigation("documents");
-
                     b.Navigation("items");
-
-                    b.Navigation("pets");
                 });
 #pragma warning restore 612, 618
         }

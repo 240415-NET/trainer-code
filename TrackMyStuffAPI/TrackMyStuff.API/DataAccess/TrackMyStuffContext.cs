@@ -43,6 +43,7 @@ public class TrackMyStuffContext : DbContext
         modelBuilder.Entity<User>()
             .ToTable("Users");
 
+        modelBuilder.UseCollation("SQL_Latin1_General_CP1_CS_AS");
         // modelBuilder.Entity<User>()
         //     .HasMany(e => e.items)
         //     .WithOne(e => e.user)
