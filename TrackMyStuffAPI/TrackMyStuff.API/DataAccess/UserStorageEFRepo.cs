@@ -54,5 +54,20 @@ public class UserStorageEFRepo : IUserStorageEFRepo
         return await _context.Users.AnyAsync(user => user.userName == usernameToFindFromUserService);
 
     }
+
+    public async void DeleteUserFromDBAsync(string usernameToDeleteFromUserService)
+    {
+        //So in this one line, we do a few things.
+        //We KNOW coming into this method, that we already checked if the user exists. So by definition, 
+        //we WILL be deleting someone here. We call the .Remove() EF Core method, to remove the user object passed
+        //into it from the database. 
+        //Instead of going through the steps to find a user again, we simply call the GetUserFromDBByUsernameAsync method 
+        //that we already created, and resuse it to provide our user to be deleted. 
+        _context.Users.Remove(await GetUserFromDBByUsernameAsync(usernameToDeleteFromUserService));
+
+        //Just like a POST, we then need to call SaveChanges or SaveChangesAsync using our _context object to persist this 
+        //deletion to the DB
+        await _context.SaveChangesAsync();
+    }
 }
 
