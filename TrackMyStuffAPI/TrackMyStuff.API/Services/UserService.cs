@@ -103,13 +103,22 @@ public class UserService : IUserService
         //Let's leverage UserExistsAsync
         //IF the user exists, we delete it.
 
-        if(await UserExistsAsync(usernameToDeleteFromController) == true)
+        
+
+        try
         {
-            _userStorage.DeleteUserFromDBAsync(usernameToDeleteFromController);
+            if(await UserExistsAsync(usernameToDeleteFromController) == true)
+            {
+                _userStorage.DeleteUserFromDBAsync(usernameToDeleteFromController);
+            }
+            else
+            {
+                throw new Exception("User doesn't exist! Can't be deleted.");
+            }
         }
-        else
+        catch(Exception e)
         {
-            throw new Exception("User doesn't exist! Can't be deleted.");
+            throw new Exception(e.Message);
         }
         //If not, we throw an exception to enter the controller's catch block
 

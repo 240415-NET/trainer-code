@@ -43,6 +43,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+//Editing our apps CORS settings to allow us to use DELETE and other destructive HTTP methods
+app.UseCors(policy => policy.AllowAnyMethod());
+
 app.UseAuthorization();
 
 app.MapControllers();

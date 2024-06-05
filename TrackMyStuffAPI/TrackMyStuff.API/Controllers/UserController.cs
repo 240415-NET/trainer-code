@@ -110,7 +110,7 @@ public class UserController : ControllerBase
         }
     }
 
-    [HttpDelete("Users/{username}")]
+    [HttpDelete("Users/{usernameToDeleteFromFrontEnd}")]
     public async Task<ActionResult> DeleteUserByUsername(string usernameToDeleteFromFrontEnd)
     {
 

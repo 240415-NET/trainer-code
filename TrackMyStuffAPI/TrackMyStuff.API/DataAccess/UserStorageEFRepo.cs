@@ -63,7 +63,14 @@ public class UserStorageEFRepo : IUserStorageEFRepo
         //into it from the database. 
         //Instead of going through the steps to find a user again, we simply call the GetUserFromDBByUsernameAsync method 
         //that we already created, and resuse it to provide our user to be deleted. 
-        _context.Users.Remove(await GetUserFromDBByUsernameAsync(usernameToDeleteFromUserService));
+        User userToDelete = await GetUserFromDBByUsernameAsync(usernameToDeleteFromUserService);
+
+        if (userToDelete == null)
+        {
+            throw new Exception("Thrown from the db layer, userToDelete was null");
+        }
+    
+        _context.Users.Remove(userToDelete);
 
         //Just like a POST, we then need to call SaveChanges or SaveChangesAsync using our _context object to persist this 
         //deletion to the DB
