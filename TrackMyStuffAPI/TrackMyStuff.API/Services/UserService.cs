@@ -133,5 +133,9 @@ public class UserService : IUserService
         return await _userStorage.DoesThisUserExistOnDBAsync(usernameToFindFromController);
     } 
 
+    public async Task<string> UpdateUsernameAsync (UsernameUpdateDTO usernamesToSwapFromUserController)
+    {
+        return await _userStorage.UpdateUserInDBAsync(usernamesToSwapFromUserController);
+    }
 
 }

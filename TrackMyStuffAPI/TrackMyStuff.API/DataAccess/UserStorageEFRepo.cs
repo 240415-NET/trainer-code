@@ -63,7 +63,7 @@ public class UserStorageEFRepo : IUserStorageEFRepo
         //into it from the database. 
         //Instead of going through the steps to find a user again, we simply call the GetUserFromDBByUsernameAsync method 
         //that we already created, and resuse it to provide our user to be deleted. 
-        User userToDelete = await GetUserFromDBByUsernameAsync(usernameToDeleteFromUserService);
+        User? userToDelete = await GetUserFromDBByUsernameAsync(usernameToDeleteFromUserService);
 
         if (userToDelete == null)
         {
@@ -78,5 +78,27 @@ public class UserStorageEFRepo : IUserStorageEFRepo
 
         return usernameToDeleteFromUserService;
     }
+
+    public async Task<string> UpdateUserInDBAsync(UsernameUpdateDTO usernamesToSwapFromUserService)
+    {
+
+        User? userToUpdate = await _context.Users.SingleOrDefaultAsync(user => user.userName == usernamesToSwapFromUserService.oldUserName);
+
+        if (userToUpdate == null)
+        {
+            throw new Exception("User to update not found!");
+        }
+        else
+        {
+            userToUpdate.userName = usernamesToSwapFromUserService.newUserName;
+        }
+
+        await _context.SaveChangesAsync();
+
+        return usernamesToSwapFromUserService.newUserName;
+    }
+
+
+
 }
 

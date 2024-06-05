@@ -9,4 +9,6 @@ public interface IUserStorageEFRepo
     public Task<bool> DoesThisUserExistOnDBAsync (string usernameToFindFromUserService);
 
     public Task<string> DeleteUserFromDBAsync(string usernameToDeleteFromUserService);
+
+    public Task<string> UpdateUserInDBAsync(UsernameUpdateDTO usernamesToSwapFromUserService);
 }

@@ -110,7 +110,7 @@ public class UserController : ControllerBase
         }
     }
 
-    [HttpDelete("Users/{usernameToDeleteFromFrontEnd}")]
+    [HttpDelete("/Users/{usernameToDeleteFromFrontEnd}")]
     public async Task<ActionResult> DeleteUserByUsername(string usernameToDeleteFromFrontEnd)
     {
 
@@ -130,4 +130,19 @@ public class UserController : ControllerBase
 
     }
     
+    [HttpPatch("Users")]
+    public async Task<ActionResult> UpdateUserByUsername(UsernameUpdateDTO usernamesToSwap)
+    {
+        try
+        {
+            await _userService.UpdateUsernameAsync(usernamesToSwap);
+
+            return Ok($"{usernamesToSwap.oldUserName}'s username has been changed to: {usernamesToSwap.newUserName}");
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
 }

@@ -2,7 +2,7 @@ namespace TrackMyStuff.API.Models;
 
 public class Pet : Item //Pet inherits from our Item class as well
 {
-    public string name {get; set;}
+    public string? name {get; set;}
 
     //Question mark allows this to be a string OR null
     public string? species {get; set;}

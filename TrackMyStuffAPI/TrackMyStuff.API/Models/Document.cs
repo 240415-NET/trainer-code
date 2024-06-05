@@ -2,8 +2,10 @@ namespace TrackMyStuff.API.Models;
 
 public class Document : Item //Document inherits from our Item class
 {
-    public string documentType {get; set;}
-    public DateTime expirationDate {get; set;}
+    public string? documentType {get; set;}
+    public DateTime? expirationDate {get; set;}
+
+    public Document() {}
 
     public Document(string category, double originalCost, 
         DateTime purchaseDate, string description, string documentType, DateTime expirationDate) : 

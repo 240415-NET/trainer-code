@@ -13,8 +13,8 @@ public class User
     //We are using a prebuilt data type from the default System library to generate a truly unique
     //userId
     [Key]
-    public Guid userId {get; set;}
-    public string userName {get; set;}
+    public Guid? userId {get; set;}
+    public string? userName {get; set;}
 
     //Users have many items/pets/documents - each one of those items belongs to one user
     //We store these in our models as lists of type item/pet/document
