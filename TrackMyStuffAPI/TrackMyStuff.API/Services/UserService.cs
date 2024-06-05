@@ -32,7 +32,9 @@ public class UserService : IUserService
         //We can throw specific exceptions here, that can trigger different try blocks in our UserController's method.
 
         //Checking if a user already exists, via the username and the UserExists() method. 
-        if(await UserExists(newUserSentFromController.userName) == true)
+        //Here, for readability, I checked for the return with "== true"
+        //But since it already returns a boolean, I can omit that. 
+        if(await UserExistsAsync(newUserSentFromController.userName) == true)
         {
             //If this returns a true, and we enter this code block, we will manually THROW an exception.
             //This will trigger the catch in the UserController, and send our message to the user. 
@@ -99,7 +101,7 @@ public class UserService : IUserService
     
     //Method to check if a user exists... during early development we will return a false every time.
     //Later on, we can then flesh this our more. 
-    public async Task<bool> UserExists(string usernameToFindFromController)
+    public async Task<bool> UserExistsAsync(string usernameToFindFromController)
     {
         return await _userStorage.DoesThisUserExistOnDBAsync(usernameToFindFromController);
     } 
