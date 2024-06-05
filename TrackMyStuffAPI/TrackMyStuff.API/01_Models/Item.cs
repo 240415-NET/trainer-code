@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using TrackMyStuff.API.DTOs;
 
 namespace TrackMyStuff.API.Models;
 
@@ -19,14 +20,15 @@ public class Item
     //Constructors 
     public Item() { }
     
-    public Item(string _category, double _originalCost, 
-        DateTime _purchaseDate, string _description) {
+    //Creating a mapping controller that maps items -> ItemDTOs
+    public Item(ItemDTO item, User owner) {
             
+            user = owner;
             itemId = Guid.NewGuid();
-            category = _category;
-            originalCost = _originalCost;
-            purchaseDate = _purchaseDate;
-            description = _description;
+            category = item.category;
+            originalCost = item.originalCost;
+            purchaseDate = DateTime.Now;
+            description = item.description;
     }
 
     public override string ToString()
