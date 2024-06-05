@@ -21,8 +21,8 @@ builder.Services.AddSwaggerGen();
 //Here are the dependencies that we are going to register. These are things we create or choose to bring in.
 builder.Services.AddScoped<IUserService, UserService>(); // This adds our UserService, that our UserController then asks for
 builder.Services.AddScoped<IUserStorageEFRepo, UserStorageEFRepo>();// This adds our UserStorageEFRepo (data-access layer), that our UserService asks for. 
-builder.Services.AddScoped<IItemService, ItemService>(); // This adds our UserService, that our UserController then asks for
-builder.Services.AddScoped<IItemStorageEFRepo, ItemStorageEFRepo>();// This adds our UserStorageEFRepo (data-access layer), that our UserService asks for. 
+builder.Services.AddScoped<IItemService, ItemService>(); 
+builder.Services.AddScoped<IItemStorageEFRepo, ItemStorageEFRepo>();
 
 //Here, we are going add our TrackMyStuffContext class (that inherits from EF Core's DbContext) to the builder.
 //Inside of the options => options.UseSqlServer lambda function, we add in the read to our connection string file. 
