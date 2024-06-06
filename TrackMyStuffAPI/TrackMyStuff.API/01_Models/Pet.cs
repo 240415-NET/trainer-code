@@ -9,7 +9,7 @@ public class Pet : Item //Pet inherits from our Item class as well
     public int? age {get; set;}
 
     // Constructors
-    public Pet() : base() { }
+    public Pet() { }
 
 
     // An example of calling the base class constructor (ALL POSSIBLE ARGUMENTS in this case)
