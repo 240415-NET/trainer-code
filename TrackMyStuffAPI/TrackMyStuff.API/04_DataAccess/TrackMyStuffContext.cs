@@ -43,9 +43,10 @@ public class TrackMyStuffContext : DbContext
         modelBuilder.Entity<User>()
             .ToTable("Users");
 
-        // modelBuilder.Entity<User>()
-        //     .HasMany(e => e.items)
-        //     .WithOne(e => e.user)
+        //In this line, we tell our SQL database to become case sensitive. MS SQL Server, for some reason or another,
+        //is case insensitive for strings, by default. By including this in our OnModelCreating override, we have EF
+        //toggle this setting so that our strings in our DB obey case sensitivity. 
+        modelBuilder.UseCollation("SQL_Latin1_General_CP1_CS_AS");
 
     }
 

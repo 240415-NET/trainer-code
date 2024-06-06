@@ -16,14 +16,23 @@ public class User
     public Guid userId {get; set;}
     public string userName {get; set;}
 
-    //Users have many items/pets/documents - each one of those items belongs to one user
-    //We store these in our models as lists of type item/pet/document
+    //Users have many items - each one of those items belongs to one user
+    //We store these in our models as a list of type items
     //Make sure you actually initialize a list by including "= new();" after the GET-SET
     //Otherwise, when you actually ask the DB for a user object, you will not see it's
     //associated items/pets/documents EVEN IF they are stored in the DB. 
+
+    //IF you choose to use inheritance, we only require a list of the parent class for each hierarchy. 
+    //In our case, since pets and documents inherit from items, we will only store a list of items.
+    //Entity Framework will see this, and see that pets and documents are child classes of items,
+    //and when it generates a database schema for us, pets and documents will in effect inherit the FK
+    //relationship with the userId for that pet/document's owner
+    //If you see something in the terminal about shadow properties or shadow keys, check to make sure
+    //you didn't add a list of child classes or something like that. As that "double applies" the relationship. 
     public List<Item> items {get; set;} = new();
-    public List<Pet> pets {get; set;} = new();
-    public List<Document> documents{get; set;} = new();
+
+    // public List<Pet> pets {get; set;} = new();
+    // public List<Document> documents{get; set;} = new();
 
     //Constructors
 
