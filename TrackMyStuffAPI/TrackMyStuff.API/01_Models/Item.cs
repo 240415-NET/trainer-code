@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using TrackMyStuff.API.DTOs;
 
 namespace TrackMyStuff.API.Models;
 
@@ -19,6 +20,19 @@ public class Item
     //Constructors 
     public Item() { }
     
+    //Creating a mapping constructor to map an item from an ItemDTO and a user object
+    public Item(ItemDTO item, User owner) 
+    {
+        user = owner;
+        itemId = Guid.NewGuid();
+        category = item.category;
+        originalCost = item.originalCost;
+        purchaseDate = item.purchaseDate;
+        description = item.description;
+    }
+
+    //This is my full argument constructor - in our API rendition of trackMyStuff it is vestigial, and doesn't
+    //really do anything. 
     public Item(string _category, double _originalCost, 
         DateTime _purchaseDate, string _description) {
             

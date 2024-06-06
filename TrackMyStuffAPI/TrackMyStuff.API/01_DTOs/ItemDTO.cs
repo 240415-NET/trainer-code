@@ -2,17 +2,14 @@ using TrackMyStuff.API.Models;
 
 namespace TrackMyStuff.API.DTOs;
 
-public class ItemsDTO
+public class ItemDTO
 {
-    public List<Item>? Items {get; set;}
-    public List<Document>? Documents {get; set;}
-    public List<Pet>? Pets {get; set;}
+    public Guid userId { get; set; }
+    public string category {get; set;}
+    public double originalCost {get; set;}
+    public DateTime purchaseDate {get; set;}
+    public string description {get; set;}
 
-    public ItemsDTO()
-    {
-        this.Items = new List<Item>();
-        this.Documents = new List<Document>();
-        this.Pets = new List<Pet>();
-    }
+    public ItemDTO() {}
 
 }
