@@ -132,6 +132,7 @@ public class UserController : ControllerBase
     //This method will update a user object on our database in place. 
     //We are going to use it to update someone's username without having to recreate a 
     //new user object.
+    [HttpPatch("Users")]
     public async Task<ActionResult> UpdateUserByUsername(UsernameUpdateDTO usernamesToSwap)
     {
         try
