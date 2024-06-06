@@ -6,5 +6,5 @@ namespace TrackMyStuff.API.Services;
 public interface IItemService
 {
     public Task<ItemDTO> CreateNewItemAsync(ItemDTO newItemFromController);
-    
+    public Task<List<ItemDTO>> GetAllItemsForUserAsync(Guid userIdFromController);
 }

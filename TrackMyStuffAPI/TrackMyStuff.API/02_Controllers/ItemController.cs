@@ -30,5 +30,21 @@ public class ItemController : ControllerBase
             return BadRequest(e.Message);
         }
     }
+
+    [HttpGet("/Items")]
+    public async Task<ActionResult<List<ItemDTO>>> GetAlItemsForAUser(Guid userId)
+    {
+        try
+        {
+            //Creating a list to eventually *hopefully* return to our front end
+            List<ItemDTO> itemsFound = await _itemService.GetAllItemsForUserAsync(userId);
+
+            return Ok(itemsFound);
+        }
+        catch(Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
     
 }
