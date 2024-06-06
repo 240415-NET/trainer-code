@@ -117,7 +117,7 @@ public class UserController : ControllerBase
         try
         {   
             //We will call the delete method in our service layer
-            _userService.DeleteUserByUsernameAsync(usernameToDeleteFromFrontEnd);
+            await _userService.DeleteUserByUsernameAsync(usernameToDeleteFromFrontEnd);
             //If all goes well, we will return a 200 OK to the front end with a message inside telling the user
             //the DELETE worked
             return Ok($"{usernameToDeleteFromFrontEnd} was deleted in the database!");
