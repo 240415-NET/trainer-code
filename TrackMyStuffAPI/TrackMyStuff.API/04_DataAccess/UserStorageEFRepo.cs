@@ -78,5 +78,30 @@ public class UserStorageEFRepo : IUserStorageEFRepo
 
         return usernameToDeleteFromUserService;
     }
+
+    //This method will update the username for a given user object in our DB
+    //It is called from the service layer and takes in a UsernameUpdateDTO
+    public async Task<string> UpdateUserInDBAsync(UsernameUpdateDTO usernamesToSwapFromUserService)
+    {
+        //We create a nullable user object to hold our database return
+        //We will query the database for a user who corresponds to the UsernameUpdateDTO's oldUsername string
+        User? userToUpdate = await _context.Users
+            .SingleOrDefaultAsync(user => user.userName == usernamesToSwapFromUserService.oldUserName);
+
+        if(userToUpdate == null)
+        {
+            throw new Exception("User to update not found!");
+        }
+        else
+        {
+            userToUpdate.userName = usernamesToSwapFromUserService.newUserName;
+        }
+
+        await _context.SaveChangesAsync();
+
+        return usernamesToSwapFromUserService.newUserName;
+
+    }
+
 }
 

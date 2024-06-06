@@ -136,5 +136,11 @@ public class UserService : IUserService
         return await _userStorage.DoesThisUserExistOnDBAsync(usernameToFindFromController);
     } 
 
+    //Method in our service layer called by our controller to update a user's username.
+    //It will call the data access layer for a method to do so
+    public async Task<string> UpdateUsernameAsync(UsernameUpdateDTO usernamesToSwapFromController)
+    {
+        return await _userStorage.UpdateUserInDBAsync(usernamesToSwapFromController);
+    }
 
 }

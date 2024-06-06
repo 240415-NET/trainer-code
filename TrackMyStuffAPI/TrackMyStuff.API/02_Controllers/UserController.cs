@@ -126,8 +126,25 @@ public class UserController : ControllerBase
         {
             return NotFound(e.Message);
         }
-
-
     }
+
+    //Here, we will create an HTTP PATCH method for our controller
+    //This method will update a user object on our database in place. 
+    //We are going to use it to update someone's username without having to recreate a 
+    //new user object.
+    public async Task<ActionResult> UpdateUserByUsername(UsernameUpdateDTO usernamesToSwap)
+    {
+        try
+        {
+            await _userService.UpdateUsernameAsync(usernamesToSwap);
+
+            return Ok($"{usernamesToSwap.oldUserName}'s username has been changed to: {usernamesToSwap.newUserName}");
+        }
+        catch (Exception e)
+        {
+            return BadRequest(e.Message);
+        }
+    }
+
     
 }
