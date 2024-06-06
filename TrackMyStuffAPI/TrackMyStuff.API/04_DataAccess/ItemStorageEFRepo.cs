@@ -32,5 +32,17 @@ public class ItemStorageEFRepo : IItemStorageEFRepo
         return newItemFromService;
 
     }
+
+    public async Task<List<Item>> GetAllItemsForUserFromDBAsync(Guid userIdFromService)
+    {
+        //Here we will ask the database for all items associated with the user who's guid matches
+        //the userIdFromService, using LINQ methods (and lambdas :c )
+
+        return await _context.Items //So we ask our context for the collection of Item objects in the database
+            .Include(item => item.user) //We ask entity framework to also grab the associated User object from the User table
+            .Where(item => item.user.userId == userIdFromService) //We then ask for every item who's owner's UserId matches the userIdFromService
+            .ToListAsync(); //Finally, we turn those items into a list
+
+    }
     
 }
