@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jon's Test Site!</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<!-- This is an example of internal CSS or internal styling, using the style tags
+  inside of my tags, I will can write CSS for my document. -->
+<style>
+
+    h1 {
+        color: red;
+    }
+
+</style>
+
+<body>
+
+    <h1 id="my-first-h1">This is a heading tag, we can see that it alters the way the browser renders this text.</h1>
+    <p>This is the text inside of my "p" tag, it tells my browser to treat this as a paragraph.</p>
+    
+    <h1 id="my-second-h1">This is my second H1 heading</h1>
+    <h6>This is an h2</h6>
+
+    <div>
+        <p>This is my P tag that is inside of a div. Notably, neither of these have any sort of class or id attributes given.</p>
+    </div>
+
+    <!-- This is a comment inside my HTML file, this text will never be rendered. -->
+     
+    <!-- The <p> and </p> are my tags-->
+    <!-- The tags along with the text content inside comprise an element. -->
+
+    
+    <p>Everything we put on our page will be contained in some sort of tag</p>
+
+    This text is outside of a tag. This is not ideal, even though it will render.
+
+    <div class="my-lists">
+        <h4 style="color: blue;">This is my first ordered list</h4>
+        <ol id="first-ol">
+            <li>This is my first item</li>
+            <li>This is my second item</li>
+        </ol>
+
+        <ol id="second-ol">
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>Fourth</li>
+        </ol>
+
+        <ul id="first-ul">
+            <li>This is my first unordered item</li>
+            <li>Second</li>
+            <li>Third</li>
+        </ul>
+    </div>
+
+    <!-- <img src="/Images/DOM-model.jpg" alt="This is a diagram of the Document_Object_Model"> -->
+    <!-- Im going to use this img tag with our DOM diagram to show off inline styling or inline CSS-->
+    <img src="https://www.guru99.com/images/JavaScript/javascript8_1.png" alt="DOM diagram" style="height: 200px;">
+
+    <!-- This will link me using an a tag to my second page-->
+    <a href="/AdditonalPages/second.html">Go to my second page!</a>
+
+</body>
+</html>

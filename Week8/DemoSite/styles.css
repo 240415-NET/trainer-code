@@ -1,0 +1,20 @@
+    
+    /*This is an example of a CSS comment. You notice that because
+    im inside the style tag, and in here we write CSS, the comment syntax is different.
+    Here im going to use an id selector to recolor my first h1 tag */
+    #my-first-h1 { /*To select an ID, we use a hash infront of the name */
+        color: blue;
+    }
+
+    .my-lists{ /* To select a class we use a . infront of the name*/
+        background-color: goldenrod;
+    }
+
+    #first-ol{
+        background-color: brown;
+    }
+
+    div p { /*We can chain tag selectors together, so in this case we are selecting
+        every p tag that is inside of a div tag */
+        background-color: darkgray;
+    }
