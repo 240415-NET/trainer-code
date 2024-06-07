@@ -5,7 +5,7 @@ namespace TrackMyStuff.API.DTOs;
 public class ItemDTO
 {
     public Guid userId { get; set; }
-    public Guid itemId { get; set; }
+    public Guid itemId { get; set; } = Guid.Empty;
     public string category {get; set;}
     public double originalCost {get; set;}
     public DateTime purchaseDate {get; set;}
