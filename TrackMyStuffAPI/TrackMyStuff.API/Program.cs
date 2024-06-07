@@ -45,10 +45,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//This is an example of middleware, this specifically is the HTTPS redirection middleware.
+//All this would do, is route a request using the http scheme to use https automatically
 app.UseHttpsRedirection();
 
 //Editing our apps CORS settings to allow us to use DELETE and other destructive HTTP methods
 app.UseCors(policy => policy.AllowAnyMethod());
+
 
 app.UseAuthorization();
 
