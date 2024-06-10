@@ -100,3 +100,36 @@ console.log(numbers);
 numbers.push(33); // adding a new item to my array
 numbers.pop();
 
+//Dates - dates in javascript are *TECHNICALLY* represented under the hood by an integer
+//This integer denotes the time IN MILLISECONDS that has passed since the beginning of the UNIX epoch
+//So, it's the time in milliseconds since Jan 1st 1970 UTC time. 
+
+let firstDate = new Date("2004");
+console.log(firstDate);
+
+//Maps - equivalent to a C# dictionary stores things in key value pairs
+//We can use the .get() function to lookup via a key
+let myMap = new Map();
+myMap.set("2", "ellie");
+myMap.set(2, "the value of 2");
+
+console.log(myMap.get("2"));
+
+//Sets - collection of unique values (cannot have duplicates)
+let mySet = new Set([1, 3,5, 6]);
+console.log(mySet);
+
+mySet.add(1);
+console.log(mySet);
+
+//Note - In Javascript, functions themselves are first-class objects like all the others above.
+//That means, we can do some weirder stuff. We can assign a function to a variable, we can pass
+//functions as arguments to other functions, and we can even return a function as the result of a function
+
+//We do have a way to check type in Javascript, similar to C#
+//using "typeof"
+
+console.log(typeof 5);
+console.log(typeof 'hello');
+console.log(typeof true);
+console.log(typeof firstDate);
