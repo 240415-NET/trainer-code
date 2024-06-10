@@ -171,3 +171,58 @@ if(mySet) {
 
 
 //Functions in javascript
+//Functions in javascript allow us to re-use code, the same way as C#
+//Functions declared as part of an object are referred to as methods
+//There are a few different ways to create functions in Javascript
+
+//Function declarations - using the keyword function
+function Greet(name) {
+    console.log(`Hello ${name}!`);
+};
+
+Greet("Yenny");
+
+//Function expressions - defining a function as part of an expression 
+//(looks similar to variable declaration)
+const AddTwoNumbers = function (x, y) {
+    return x + y;
+};
+
+let sum = AddTwoNumbers(5, 8.89);
+console.log(sum);
+
+//We can declare a function using arrow syntax as a shorthand. This is really popular,
+//and you will probably encounter it in existing codebases that you go on to work within
+
+const NewGreet = (newName) => {
+    console.log(`Hello ${newName}, welcome from my arrow greeting function!`);
+};
+
+NewGreet("Fernando");
+
+//Classes in JS
+
+//Constructor functions/methods
+//we declare our class using the class keyword, it serves as a template for objects
+//...same as C#
+class Person2 {
+    //Lets create a constructor method! - In JS we only get one constructor 
+    //and if you don't create one you get the default no-arg constructor
+    personName;
+    hobby;
+    vehicle = {
+        make,
+        model
+    }
+
+    constructor (personName, hobby, make, model) {
+        this.personName = personName;
+        this.hobby = hobby;
+        this.vehicle.make = make;
+        this.vehicle.model = model;
+    }
+};
+
+let josh = new Person2("Josh", "volleyball", "Ford", "1972 Pinto");
+
+console.log(josh);
