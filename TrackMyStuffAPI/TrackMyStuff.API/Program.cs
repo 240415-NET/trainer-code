@@ -9,6 +9,20 @@ using Microsoft.EntityFrameworkCore;
 // and then we build the app. After the app has been built, we can toggle different options for it.
 // All of this is done, when we dotnet run our webapi
 var builder = WebApplication.CreateBuilder(args);
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+
+//Adding CORS policy to allow us to use the front end to send requests to the backend
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy  =>
+                      {
+                          policy.AllowAnyOrigin();
+                          policy.AllowAnyMethod();
+                          policy.AllowAnyHeader();
+                      });
+});
+
 
 // Adding services to the container - these below came in from the template.
 //By default, you will have AddControllers(), AddEndpointsApiExplorer(), and AddSwaggerGen() in your
@@ -50,7 +64,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 //Editing our apps CORS settings to allow us to use DELETE and other destructive HTTP methods
-app.UseCors(policy => policy.AllowAnyMethod());
+app.UseCors(MyAllowSpecificOrigins);
 
 
 app.UseAuthorization();
