@@ -205,24 +205,62 @@ NewGreet("Fernando");
 //Constructor functions/methods
 //we declare our class using the class keyword, it serves as a template for objects
 //...same as C#
-class Person2 {
+
+//Create a vehicle class, that is then called to create a vehilce object in my person
+class Vehicle {
+
+    //Unlike C#, we set the properties of our class within the constructor itself
+    //We do not do things like declaring properties to hold those values
+    //I.e. 
+    //No let make;
+    //No let model;
+    //We just take them as arguments for our constructor method, and then set them
+    //using this.propertyName = argumentFromConstructor
+    constructor (make, model)
+    {
+        this.make = make;
+        this.model = model;
+    }
+}
+
+class DefaultPerson {
     //Lets create a constructor method! - In JS we only get one constructor 
     //and if you don't create one you get the default no-arg constructor
-    personName;
-    hobby;
-    vehicle = {
-        make,
-        model
-    }
-
     constructor (personName, hobby, make, model) {
         this.personName = personName;
         this.hobby = hobby;
-        this.vehicle.make = make;
-        this.vehicle.model = model;
+        this.vehicle = new Vehicle(make, model);
+    }
+    AboutMe() { // We can also store functions inside of classes, like in C#
+        //A function that belongs to a class is referred to as a method 
+        console.log(`My name is ${this.personName}, my vehicle is a 
+            ${this.vehicle.make} ${this.vehicle.model}`);
     }
 };
 
-let josh = new Person2("Josh", "volleyball", "Ford", "1972 Pinto");
+let josh = new DefaultPerson("Josh", "volleyball", "Ford", "1972 Pinto");
 
 console.log(josh);
+
+//Inhertiance in JS - instead of the C# colon notation, we use the "extends" keyword
+class Employee extends DefaultPerson {
+    //When I create a constructor for Employee, I will call the parent class constructor
+    //using super()
+    constructor (personName, hobby, make, model, jobTitle) {
+        //This is how we use super() to call the parent class constructor
+        super(personName, hobby, make, model);
+        //We must call the super() (parent class constructor) before setting any new properties
+        //in the child with the normal this.property syntax
+        this.jobTitle = jobTitle;
+    }
+    //Lets say I want to override and provide a new implementation of AboutMe() in my employee class
+    AboutMe() {
+        console.log(`My name is ${this.personName}, my job is ${this.jobTitle}`);
+    }
+}
+
+let marcus = new Employee("marcus", "sleeping", "reliant", "robin", "Trust fund baby");
+
+console.log(marcus);
+josh.AboutMe(); //josh is a default person object
+marcus.AboutMe(); //marcus is an employee object
