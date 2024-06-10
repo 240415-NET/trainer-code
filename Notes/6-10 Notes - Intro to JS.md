@@ -1,40 +1,58 @@
 
 ## Intro to JS
+
 ### C# vs. JavaScript - Differences between C# and JS
+
 C# and JavaScript are both powerful programming languages used in different contexts and for different purposes. Below are key comparisons and contrasts between the two:
 
 #### 1. **Type System**
+
 - **C#**: Strongly typed language with static typing. This means that type checking is done at compile time, and variables must be declared with a type.
 - **JavaScript**: Weakly typed language with dynamic typing. Variables can hold any type of data and their type can change at runtime.
+
 #### 2. **Execution Environment**
+
 - **C#**: Runs on the .NET framework, primarily used for backend development. It can also be used for desktop and mobile applications via frameworks like Xamarin.
 - **JavaScript**: Originally designed to run in web browsers for front-end development. It can also run on servers via Node.js and in various other environments thanks to its versatility.
+
 #### 3. **Use Cases
+
 **
+
 - **C#**: Commonly used for developing Windows applications, enterprise applications, web applications (using ASP.NET), games (using Unity), and more.
 - **JavaScript**: Primarily used for adding interactivity to web pages, developing web applications, and server-side development using Node.js. It is also used in frameworks like React, Angular, and Vue.js for building front-end applications.
+
 #### 4. **Object-Oriented Programming (OOP)**
+
 - **C#**: Fully object-oriented with strong support for encapsulation, inheritance, and polymorphism. It uses classes and objects.
 - **JavaScript**: Prototype-based object-oriented language. It doesn't have traditional classes (though ES6 introduced the `class` syntax, it's syntactic sugar over JavaScript's prototypal inheritance).
+
 #### 5. **Compilation**
+
 - **C#**: Compiled language. Code is compiled into intermediate language (IL) which is then run on the .NET runtime.
 - **JavaScript**: Interpreted language (though modern JavaScript engines like V8 compile JavaScript to machine code at runtime for performance optimization).
+
 #### 6. **Libraries and Frameworks**
+
 - **C#**: Extensive libraries and frameworks within the .NET ecosystem, including ASP.NET for web development, Entity Framework for ORM, and Xamarin for mobile development.
 - **JavaScript**: Rich ecosystem of libraries and frameworks like React, Angular, Vue.js for front-end development, and Express.js for back-end development with Node.js.
+
 #### 7. **Community and Support**
+
 - **C#**: Backed by Microsoft, with strong community support and extensive documentation. It is widely used in enterprise environments.
 - **JavaScript**: Massive community with a plethora of resources, tutorials, and forums. It is the most widely used language on the web.
 
 ## JS conventions
 
-- https://www.w3schools.com/js/js_conventions.asp
+- <https://www.w3schools.com/js/js_conventions.asp>
 
 ## Let vs Const
+
 ### `let`
 
 1. **Reassignable**:
    Variables declared with `let` can be reassigned.
+
    ```javascript
    let x = 10;
    x = 20; // Valid
@@ -43,6 +61,7 @@ C# and JavaScript are both powerful programming languages used in different cont
 
 2. **Block Scope**:
    `let` is block-scoped, meaning it is only accessible within the block it is defined in.
+
    ```javascript
    if (true) {
        let y = 30;
@@ -53,6 +72,7 @@ C# and JavaScript are both powerful programming languages used in different cont
 
 3. **Temporal Dead Zone**:
    Variables declared with `let` are in a "temporal dead zone" from the start of the block until the declaration is encountered, which means they cannot be accessed before they are declared.
+
    ```javascript
    // console.log(z); // Error: Cannot access 'z' before initialization
    let z = 40;
@@ -62,6 +82,7 @@ C# and JavaScript are both powerful programming languages used in different cont
 
 1. **Immutable Binding**:
    Variables declared with `const` cannot be reassigned. However, this does not make the value immutable if the value is an object or array.
+
    ```javascript
    const a = 50;
    // a = 60; // Error: Assignment to constant variable.
@@ -73,6 +94,7 @@ C# and JavaScript are both powerful programming languages used in different cont
 
 2. **Block Scope**:
    `const` is also block-scoped, similar to `let`.
+
    ```javascript
    if (true) {
        const b = 70;
@@ -83,6 +105,7 @@ C# and JavaScript are both powerful programming languages used in different cont
 
 3. **Temporal Dead Zone**:
    Variables declared with `const` are also subject to the temporal dead zone.
+
    ```javascript
    // console.log(c); // Error: Cannot access 'c' before initialization
    const c = 80;
@@ -90,6 +113,7 @@ C# and JavaScript are both powerful programming languages used in different cont
 
 4. **Initialization**:
    `const` variables must be initialized at the time of declaration.
+
    ```javascript
    // const d; // Error: Missing initializer in const declaration
    const d = 90;
@@ -109,6 +133,7 @@ C# and JavaScript are both powerful programming languages used in different cont
 ### Examples
 
 #### Using `let`
+
 ```javascript
 let counter = 0;
 if (true) {
@@ -119,6 +144,7 @@ console.log(counter); // 0
 ```
 
 #### Using `const`
+
 ```javascript
 const MAX_SIZE = 100;
 const array = [1, 2, 3];
@@ -135,6 +161,7 @@ console.log(array); // [1, 2, 3, 4]
 - **`const`**: Use `const` when you need to declare constants or variables that should not be reassigned. It is ideal for configuration values, fixed references, and constants.
 
 ## Data Types in JS
+
 ### Primitive Data Types
 
 1. **Number**
@@ -169,6 +196,7 @@ console.log(array); // [1, 2, 3, 4]
 1. **Object**
    - Represents a collection of properties, where each property is a key-value pair.
    - Examples:
+
      ```javascript
      let person = {
          name: 'John',
@@ -179,6 +207,7 @@ console.log(array); // [1, 2, 3, 4]
 2. **Array**
    - Represents an ordered collection of elements.
    - Example:
+
      ```javascript
      let numbers = [1, 2, 3, 4, 5];
      ```
@@ -186,6 +215,7 @@ console.log(array); // [1, 2, 3, 4]
 3. **Function**
    - Represents a callable object.
    - Example:
+
      ```javascript
      function greet() {
          console.log('Hello');
@@ -195,6 +225,7 @@ console.log(array); // [1, 2, 3, 4]
 4. **Date**
    - Represents dates and times.
    - Example:
+
      ```javascript
      let now = new Date();
      ```
@@ -202,6 +233,7 @@ console.log(array); // [1, 2, 3, 4]
 5. **Map**
    - Represents a collection of key-value pairs where keys can be of any type.
    - Example:
+
      ```javascript
      let map = new Map();
      map.set('key', 'value');
@@ -210,6 +242,7 @@ console.log(array); // [1, 2, 3, 4]
 7. **Set**
    - Represents a collection of unique values.
    - Example:
+
      ```javascript
      let set = new Set([1, 2, 3, 4, 5]);
      ```
@@ -222,6 +255,7 @@ console.log(array); // [1, 2, 3, 4]
 ### Type Checking
 
 - Use `typeof` to check the type of a variable:
+
   ```javascript
   typeof 42;            // "number"
   typeof 'Hello';       // "string"
@@ -248,14 +282,18 @@ Type coercion in JavaScript is the automatic or implicit conversion of values fr
 Implicit coercion happens automatically by JavaScript when it expects a certain type. This can lead to some surprising results and bugs if not properly understood. Here are some common scenarios:
 
 #### 1. **String Coercion**
+
 - When a non-string value is added to a string, JavaScript converts the non-string value to a string.
+
   ```javascript
   let result = 'The number is ' + 5; // "The number is 5"
   let result2 = '5' + 5;             // "55"
   ```
 
 #### 2. **Number Coercion**
+
 - When a string or boolean is used in a mathematical operation, JavaScript converts it to a number.
+
   ```javascript
   let result = '5' - 3;  // 2
   let result2 = '5' * 3; // 15
@@ -266,7 +304,9 @@ Implicit coercion happens automatically by JavaScript when it expects a certain 
   ```
 
 #### 3. **Boolean Coercion**
+
 - When a value is used in a boolean context, JavaScript converts it to a boolean. Values considered false are called "falsy", and values considered true are called "truthy".
+
   ```javascript
   if ('') { // Falsy
     console.log('This will not run');
@@ -287,38 +327,50 @@ Implicit coercion happens automatically by JavaScript when it expects a certain 
 Explicit coercion is done manually by the programmer using functions or operators to convert a value to a desired type.
 
 #### 1. **String Conversion**
+
 - Using `String()` function:
+
   ```javascript
   let num = 123;
   let str = String(num); // "123"
   ```
+
 - Using `toString()` method:
+
   ```javascript
   let num = 123;
   let str = num.toString(); // "123"
   ```
 
 #### 2. **Number Conversion**
+
 - Using `Number()` function:
+
   ```javascript
   let str = '123';
   let num = Number(str); // 123
   ```
+
 - Using unary `+` operator:
+
   ```javascript
   let str = '123';
   let num = +str; // 123
   ```
 
 #### 3. **Boolean Conversion**
+
 - Using `Boolean()` function:
+
   ```javascript
   let str = 'Hello';
   let bool = Boolean(str); // true
   let emptyStr = '';
   let boolEmpty = Boolean(emptyStr); // false
   ```
+
 - Using double negation `!!`:
+
   ```javascript
   let str = 'Hello';
   let bool = !!str; // true
@@ -329,33 +381,44 @@ Explicit coercion is done manually by the programmer using functions or operator
 ### Examples and Edge Cases
 
 #### Comparison Operations
+
 - `==` (Equality) vs. `===` (Strict Equality):
+
   ```javascript
   5 == '5';  // true (due to type coercion)
   5 === '5'; // false (no type coercion, different types)
   ```
 
 #### Arithmetic Operations
+
 - Addition with strings:
+
   ```javascript
   5 + '5'; // "55" (number 5 is coerced to string)
   ```
+
 - Subtraction with strings:
+
   ```javascript
   '5' - 3; // 2 (string '5' is coerced to number)
   ```
 
 ## Arrays
+
 ### Creating Arrays
 
 #### 1. **Using Array Literals**
+
 - This is the most common and straightforward way to create an array.
+
   ```javascript
   let fruits = ['Apple', 'Banana', 'Cherry'];
   ```
 
 #### 2. **Using the Array Constructor**
+
 - You can also create arrays using the `Array` constructor.
+
   ```javascript
   let fruits = new Array('Apple', 'Banana', 'Cherry');
   ```
@@ -363,6 +426,7 @@ Explicit coercion is done manually by the programmer using functions or operator
 ### Accessing Array Elements
 
 - Elements in an array can be accessed using their index.
+
   ```javascript
   let fruits = ['Apple', 'Banana', 'Cherry'];
   console.log(fruits[0]); // 'Apple'
@@ -374,6 +438,7 @@ Explicit coercion is done manually by the programmer using functions or operator
 
 - **Adding Elements**:
   - Using `push()` to add elements to the end of the array.
+
     ```javascript
     let fruits = ['Apple', 'Banana'];
     fruits.push('Cherry');
@@ -381,6 +446,7 @@ Explicit coercion is done manually by the programmer using functions or operator
     ```
 
   - Using `unshift()` to add elements to the beginning of the array.
+
     ```javascript
     let fruits = ['Apple', 'Banana'];
     fruits.unshift('Cherry');
@@ -389,6 +455,7 @@ Explicit coercion is done manually by the programmer using functions or operator
 
 - **Removing Elements**:
   - Using `pop()` to remove the last element.
+
     ```javascript
     let fruits = ['Apple', 'Banana', 'Cherry'];
     let lastFruit = fruits.pop();
@@ -397,6 +464,7 @@ Explicit coercion is done manually by the programmer using functions or operator
     ```
 
   - Using `shift()` to remove the first element.
+
     ```javascript
     let fruits = ['Apple', 'Banana', 'Cherry'];
     let firstFruit = fruits.shift();
@@ -405,6 +473,7 @@ Explicit coercion is done manually by the programmer using functions or operator
     ```
 
 - **Modifying Specific Elements**:
+
   ```javascript
   let fruits = ['Apple', 'Banana'];
   fruits[1] = 'Cherry';
@@ -414,14 +483,18 @@ Explicit coercion is done manually by the programmer using functions or operator
 ### Array Properties and Methods
 
 #### 1. **Length Property**
+
 - The `length` property returns the number of elements in an array.
+
   ```javascript
   let fruits = ['Apple', 'Banana', 'Cherry'];
   console.log(fruits.length); // 3
   ```
 
 #### 2. **concat()**
+
 - Combines two or more arrays.
+
   ```javascript
   let fruits = ['Apple', 'Banana'];
   let vegetables = ['Carrot', 'Lettuce'];
@@ -430,7 +503,9 @@ Explicit coercion is done manually by the programmer using functions or operator
   ```
 
 #### 3. **slice()**
+
 - Returns a shallow copy of a portion of an array.
+
   ```javascript
   let fruits = ['Apple', 'Banana', 'Cherry', 'Date'];
   let sliced = fruits.slice(1, 3);
@@ -438,7 +513,9 @@ Explicit coercion is done manually by the programmer using functions or operator
   ```
 
 #### 4. **splice()**
+
 - Adds/removes elements from an array.
+
   ```javascript
   let fruits = ['Apple', 'Banana', 'Cherry'];
   fruits.splice(1, 1, 'Orange'); // Removes 'Banana' and adds 'Orange'
@@ -446,8 +523,10 @@ Explicit coercion is done manually by the programmer using functions or operator
   ```
 
 #### 5. **indexOf() and lastIndexOf()**
+
 - `indexOf()` returns the first index of the specified element.
 - `lastIndexOf()` returns the last index of the specified element.
+
   ```javascript
   let fruits = ['Apple', 'Banana', 'Cherry', 'Banana'];
   console.log(fruits.indexOf('Banana')); // 1
@@ -455,7 +534,9 @@ Explicit coercion is done manually by the programmer using functions or operator
   ```
 
 #### 6. **forEach()**
+
 - Executes a provided function once for each array element.
+
   ```javascript
   let fruits = ['Apple', 'Banana', 'Cherry'];
   fruits.forEach((fruit) => {
@@ -468,7 +549,9 @@ Explicit coercion is done manually by the programmer using functions or operator
   ```
 
 #### 7. **map()**
+
 - Creates a new array with the results of calling a provided function on every element in the array.
+
   ```javascript
   let numbers = [1, 2, 3];
   let doubled = numbers.map(num => num * 2);
@@ -476,7 +559,9 @@ Explicit coercion is done manually by the programmer using functions or operator
   ```
 
 #### 8. **filter()**
+
 - Creates a new array with all elements that pass the test implemented by the provided function.
+
   ```javascript
   let numbers = [1, 2, 3, 4, 5];
   let even = numbers.filter(num => num % 2 === 0);
@@ -484,7 +569,9 @@ Explicit coercion is done manually by the programmer using functions or operator
   ```
 
 #### 9. **reduce()**
+
 - Executes a reducer function on each element of the array, resulting in a single output value.
+
   ```javascript
   let numbers = [1, 2, 3, 4, 5];
   let sum = numbers.reduce((acc, num) => acc + num, 0);
@@ -492,41 +579,54 @@ Explicit coercion is done manually by the programmer using functions or operator
   ```
 
 ## Functions
+
 ### Creating Functions
 
 #### 1. **Function Declaration**
+
 A function declaration defines a named function.
+
 ```javascript
 function greet(name) {
     console.log(`Hello, ${name}!`);
 }
 ```
+
 - **Hoisting**: Function declarations are hoisted to the top of their scope, meaning they can be called before they are defined in the code.
 
 #### 2. **Function Expression**
+
 A function expression defines a function as part of an expression.
+
 ```javascript
 const greet = function(name) {
     console.log(`Hello, ${name}!`);
 };
 ```
+
 - **Anonymous vs Named**: Function expressions can be anonymous (as above) or named.
 - **Hoisting**: Function expressions are not hoisted, meaning they cannot be called before they are defined.
 
 #### 3. **Arrow Functions**
+
 Arrow functions provide a shorter syntax and lexically bind the `this` value.
+
 ```javascript
 const greet = (name) => {
     console.log(`Hello, ${name}!`);
 };
 ```
+
 - **Short Syntax**: If the function body contains only a single expression, you can omit the curly braces and the `return` keyword.
+
   ```javascript
   const greet = name => console.log(`Hello, ${name}!`);
   ```
 
 #### 4. **Constructor Function**
+
 Functions can be used as constructors to create objects.
+
 ```javascript
 function Person(name, age) {
     this.name = name;
@@ -534,12 +634,15 @@ function Person(name, age) {
 }
 const person1 = new Person('Alice', 30);
 ```
+
 - **Prototype**: Constructor functions are typically used with the `new` keyword to create new objects.
 
 ### Function Parameters and Arguments
 
 #### 1. **Default Parameters**
+
 You can set default values for parameters.
+
 ```javascript
 function greet(name = 'Guest') {
     console.log(`Hello, ${name}!`);
@@ -548,7 +651,9 @@ greet(); // Hello, Guest!
 ```
 
 #### 2. **Rest Parameters**
+
 The `...` syntax allows you to represent an indefinite number of arguments as an array.
+
 ```javascript
 function sum(...numbers) {
     return numbers.reduce((acc, num) => acc + num, 0);
@@ -559,6 +664,7 @@ console.log(sum(1, 2, 3, 4)); // 10
 ### Returning Values
 
 Functions can return values using the `return` statement.
+
 ```javascript
 function add(a, b) {
     return a + b;
@@ -569,7 +675,9 @@ let result = add(2, 3); // 5
 ### Function Scope
 
 #### 1. **Local Scope**
+
 Variables declared within a function are local to that function.
+
 ```javascript
 function greet() {
     let message = 'Hello!';
@@ -580,7 +688,9 @@ greet();
 ```
 
 #### 2. **Global Scope**
+
 Variables declared outside of functions are global and can be accessed from any function.
+
 ```javascript
 let message = 'Hello, world!';
 function greet() {
@@ -592,6 +702,7 @@ greet(); // Hello, world!
 ### Higher-Order Functions
 
 Functions that take other functions as arguments or return functions as their result are called higher-order functions.
+
 ```javascript
 function higherOrderFunction(callback) {
     callback();
@@ -604,7 +715,8 @@ function sayHello() {
 higherOrderFunction(sayHello); // Hello!
 ```
 
-### Functions that are properties of objects are called methods.
+### Functions that are properties of objects are called methods
+
 ```javascript
 const obj = {
     greet: function(name) {
@@ -621,13 +733,15 @@ Arrow functions in JavaScript are a concise way to write function expressions. I
 ### Basic Syntax
 
 The basic syntax of an arrow function is:
+
 ```javascript
 (param1, param2, ..., paramN) => { /* function body */ }
 ```
 
-#### Examples:
+#### Examples
 
 1. **Basic Arrow Function**
+
 ```javascript
 const add = (a, b) => {
     return a + b;
@@ -637,6 +751,7 @@ console.log(add(2, 3)); // 5
 
 2. **Implicit Return**
 If the function body consists of a single expression, you can omit the curly braces and the `return` keyword. The value of the expression will be returned automatically.
+
 ```javascript
 const add = (a, b) => a + b;
 console.log(add(2, 3)); // 5
@@ -644,6 +759,7 @@ console.log(add(2, 3)); // 5
 
 3. **No Parameters**
 For functions with no parameters, use an empty set of parentheses.
+
 ```javascript
 const greet = () => console.log('Hello!');
 greet(); // 'Hello!'
@@ -651,6 +767,7 @@ greet(); // 'Hello!'
 
 4. **Single Parameter**
 For functions with a single parameter, the parentheses around the parameter list are optional.
+
 ```javascript
 const greet = name => console.log(`Hello, ${name}!`);
 greet('Alice'); // 'Hello, Alice!'
@@ -703,6 +820,7 @@ Assignment operators in JavaScript are used to assign values to variables. The m
 ### Basic Assignment Operator
 
 - **`=`**: Assigns the value on the right to the variable on the left.
+
   ```javascript
   let x = 10;
   ```
@@ -712,6 +830,7 @@ Assignment operators in JavaScript are used to assign values to variables. The m
 Compound assignment operators perform an operation on a variable and assign the result back to that variable.
 
 1. **Addition Assignment (`+=`)**
+
    ```javascript
    let x = 5;
    x += 3; // Equivalent to x = x + 3
@@ -719,6 +838,7 @@ Compound assignment operators perform an operation on a variable and assign the 
    ```
 
 2. **Subtraction Assignment (`-=`)**
+
    ```javascript
    let x = 5;
    x -= 3; // Equivalent to x = x - 3
@@ -726,6 +846,7 @@ Compound assignment operators perform an operation on a variable and assign the 
    ```
 
 3. **Multiplication Assignment (`*=`)**
+
    ```javascript
    let x = 5;
    x *= 3; // Equivalent to x = x * 3
@@ -733,12 +854,12 @@ Compound assignment operators perform an operation on a variable and assign the 
    ```
 
 4. **Division Assignment (`/=`)**
+
    ```javascript
    let x = 9;
    x /= 3; // Equivalent to x = x / 3
    console.log(x); // 3
    ```
-
 
 Let's break down each of these topics in JavaScript: logical operators, template literals, class declarations, and loops/iterations.
 
@@ -748,6 +869,7 @@ Logical operators are used to combine multiple conditions or to invert a conditi
 
 1. **Logical AND (`&&`)**
    - Returns `true` if both operands are `true`. Otherwise, returns `false`.
+
    ```javascript
    const a = true;
    const b = false;
@@ -757,6 +879,7 @@ Logical operators are used to combine multiple conditions or to invert a conditi
 
 2. **Logical OR (`||`)**
    - Returns `true` if at least one of the operands is `true`. Otherwise, returns `false`.
+
    ```javascript
    const a = true;
    const b = false;
@@ -766,6 +889,7 @@ Logical operators are used to combine multiple conditions or to invert a conditi
 
 3. **Logical NOT (`!`)**
    - Inverts the boolean value of its operand.
+
    ```javascript
    const a = true;
    console.log(!a); // false
@@ -779,6 +903,7 @@ Template literals are a way to work with strings in JavaScript. They allow for e
 
 1. **Basic Usage**
    - Enclosed by backticks (`` ` ``) instead of single or double quotes.
+
    ```javascript
    const name = 'Alice';
    console.log(`Hello, ${name}!`); // Hello, Alice!
@@ -786,6 +911,7 @@ Template literals are a way to work with strings in JavaScript. They allow for e
 
 2. **Multiline Strings**
    - Preserve the formatting of multi-line strings without the need for concatenation.
+
    ```javascript
    const message = `This is a
    multi-line string`;
@@ -796,6 +922,7 @@ Template literals are a way to work with strings in JavaScript. They allow for e
 
 3. **Expression Interpolation**
    - Embed expressions inside `${}`.
+
    ```javascript
    const a = 10;
    const b = 20;
@@ -807,6 +934,7 @@ Template literals are a way to work with strings in JavaScript. They allow for e
 Classes in JavaScript are templates for creating objects. They encapsulate data with code to work on that data. ES6 introduced a more convenient syntax for class declarations.
 
 1. **Basic Class Declaration**
+
    ```javascript
    class Person {
        constructor(name, age) {
@@ -825,6 +953,7 @@ Classes in JavaScript are templates for creating objects. They encapsulate data 
 
 2. **Inheritance**
    - Classes can extend other classes.
+
    ```javascript
    class Employee extends Person {
        constructor(name, age, jobTitle) {
@@ -847,6 +976,7 @@ Classes in JavaScript are templates for creating objects. They encapsulate data 
 JavaScript provides several ways to iterate over data structures.
 
 1. **for Loop**
+
    ```javascript
    for (let i = 0; i < 5; i++) {
        console.log(i);
@@ -855,6 +985,7 @@ JavaScript provides several ways to iterate over data structures.
    ```
 
 2. **while Loop**
+
    ```javascript
    let i = 0;
    while (i < 5) {
@@ -865,6 +996,7 @@ JavaScript provides several ways to iterate over data structures.
    ```
 
 3. **do...while Loop**
+
    ```javascript
    let i = 0;
    do {
@@ -876,6 +1008,7 @@ JavaScript provides several ways to iterate over data structures.
 
 4. **for...of Loop**
    - Iterates over iterable objects (like arrays).
+
    ```javascript
    const array = ['a', 'b', 'c'];
    for (const item of array) {
@@ -886,6 +1019,7 @@ JavaScript provides several ways to iterate over data structures.
 
 5. **for...in Loop**
    - Iterates over the enumerable properties of an object.
+
    ```javascript
    const obj = { name: 'Alice', age: 30 };
    for (const key in obj) {
@@ -896,6 +1030,7 @@ JavaScript provides several ways to iterate over data structures.
 
 6. **Array.prototype.forEach()**
    - Executes a provided function once for each array element.
+
    ```javascript
    const array = [1, 2, 3];
    array.forEach(item => {
@@ -904,15 +1039,14 @@ JavaScript provides several ways to iterate over data structures.
    // 1, 2, 3
    ```
 
-
 ## Conditional Operators
-
 
 ### 1. `if...else` Statements
 
 The `if...else` statement executes a block of code if a specified condition is true. If the condition is false, another block of code can be executed using `else`.
 
 **Syntax:**
+
 ```javascript
 if (condition) {
     // block of code to be executed if the condition is true
@@ -922,6 +1056,7 @@ if (condition) {
 ```
 
 **Example:**
+
 ```javascript
 const age = 18;
 
@@ -937,6 +1072,7 @@ if (age >= 18) {
 The `else if` statement allows you to specify a new condition if the first condition is false.
 
 **Syntax:**
+
 ```javascript
 if (condition1) {
     // block of code to be executed if condition1 is true
@@ -948,6 +1084,7 @@ if (condition1) {
 ```
 
 **Example:**
+
 ```javascript
 const score = 85;
 
@@ -967,11 +1104,13 @@ if (score >= 90) {
 The ternary operator is a shorthand way to write an `if...else` statement. It takes three operands: a condition, an expression to execute if the condition is true, and an expression to execute if the condition is false.
 
 **Syntax:**
+
 ```javascript
 condition ? expr1 : expr2
 ```
 
 **Example:**
+
 ```javascript
 const age = 18;
 const canVote = (age >= 18) ? "Yes, you can vote." : "No, you cannot vote.";
@@ -983,6 +1122,7 @@ console.log(canVote); // "Yes, you can vote."
 The `switch` statement is used to perform different actions based on different conditions. It can be used as an alternative to multiple `if...else if` statements.
 
 **Syntax:**
+
 ```javascript
 switch (expression) {
     case value1:
@@ -998,6 +1138,7 @@ switch (expression) {
 ```
 
 **Example:**
+
 ```javascript
 const fruit = "apple";
 
