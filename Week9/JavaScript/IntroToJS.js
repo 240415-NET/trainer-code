@@ -169,3 +169,5 @@ if(mySet) {
     console.log("Again, this should run as it's not a in the list of falsy values");
 }
 
+
+//Functions in javascript
