@@ -133,3 +133,39 @@ console.log(typeof 5);
 console.log(typeof 'hello');
 console.log(typeof true);
 console.log(typeof firstDate);
+
+
+//Type coercion in Javascript
+
+//Strings - when a non-string is added to a string, Javascript converts the non-string into a string
+//and concats the value
+let example = "5" + 5;
+console.log(example);
+console.log(typeof example);
+
+//Numbers - when a string or boolean is used in a math operation (except using +), JS converts it to a number
+//For booleans, true will convert to 1 and false to 0
+
+let result = '5' - 3;
+console.log(result);
+console.log(typeof result);
+
+let result2 = 1 + true; // Since true evaluates to the number 1, this resolves to 2
+console.log(result2);
+
+//Boolean coercion - everything in JS is either "truthy" or "falsy"
+//Truthy - literally everything that is note "falsy"
+//Falsy - false, 0, -0, 0n, "" (empty string), null, undefined, Nan.
+
+if('') {
+    console.log("This will not run, because empty strings are falsy");
+}
+
+if(27) {
+    console.log("This should run, as any number besides 0 and -0 is truthy");
+}
+
+if(mySet) {
+    console.log("Again, this should run as it's not a in the list of falsy values");
+}
+
