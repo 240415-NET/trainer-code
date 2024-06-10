@@ -87,9 +87,16 @@ console.log(person.vehicle.model);
 
 //Arrays - Arrays in JS behave like lists in C#. They are dynamic and have their own built in
 //functions. We can also access specific indexs using the myArray[3] syntax
+//They are last in - first out with things like push (add an element to the end), and pop (remove the last element)
 
 let numbers = [2, 5, 7, 10 , 1];
 
+//This method sorts an array... alphabetically. 
 numbers.sort();
 
 console.log(numbers);
+
+//I can also add to arrays and remove items from arrays dynamically
+numbers.push(33); // adding a new item to my array
+numbers.pop();
+
