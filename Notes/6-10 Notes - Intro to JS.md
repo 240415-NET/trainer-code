@@ -5,19 +5,17 @@
 
 C# and JavaScript are both powerful programming languages used in different contexts and for different purposes. Below are key comparisons and contrasts between the two:
 
-#### 1. **Type System**
+#### 1. Type System
 
 - **C#**: Strongly typed language with static typing. This means that type checking is done at compile time, and variables must be declared with a type.
 - **JavaScript**: Weakly typed language with dynamic typing. Variables can hold any type of data and their type can change at runtime.
 
-#### 2. **Execution Environment**
+#### 2. Execution Environment
 
 - **C#**: Runs on the .NET framework, primarily used for backend development. It can also be used for desktop and mobile applications via frameworks like Xamarin.
 - **JavaScript**: Originally designed to run in web browsers for front-end development. It can also run on servers via Node.js and in various other environments thanks to its versatility.
 
-#### 3. **Use Cases
-
-**
+#### 3. **Use Cases**
 
 - **C#**: Commonly used for developing Windows applications, enterprise applications, web applications (using ASP.NET), games (using Unity), and more.
 - **JavaScript**: Primarily used for adding interactivity to web pages, developing web applications, and server-side development using Node.js. It is also used in frameworks like React, Angular, and Vue.js for building front-end applications.
