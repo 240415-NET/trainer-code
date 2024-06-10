@@ -1,4 +1,6 @@
 
+# JavaScript Notes
+
 ## Intro to JS
 
 ### C# vs. JavaScript - Differences between C# and JS
