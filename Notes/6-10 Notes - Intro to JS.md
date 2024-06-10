@@ -15,27 +15,27 @@ C# and JavaScript are both powerful programming languages used in different cont
 - **C#**: Runs on the .NET framework, primarily used for backend development. It can also be used for desktop and mobile applications via frameworks like Xamarin.
 - **JavaScript**: Originally designed to run in web browsers for front-end development. It can also run on servers via Node.js and in various other environments thanks to its versatility.
 
-#### 3. **Use Cases**
+#### 3. Use Cases
 
 - **C#**: Commonly used for developing Windows applications, enterprise applications, web applications (using ASP.NET), games (using Unity), and more.
 - **JavaScript**: Primarily used for adding interactivity to web pages, developing web applications, and server-side development using Node.js. It is also used in frameworks like React, Angular, and Vue.js for building front-end applications.
 
-#### 4. **Object-Oriented Programming (OOP)**
+#### 4. Object-Oriented Programming (OOP)
 
 - **C#**: Fully object-oriented with strong support for encapsulation, inheritance, and polymorphism. It uses classes and objects.
 - **JavaScript**: Prototype-based object-oriented language. It doesn't have traditional classes (though ES6 introduced the `class` syntax, it's syntactic sugar over JavaScript's prototypal inheritance).
 
-#### 5. **Compilation**
+#### 5. Compilation
 
 - **C#**: Compiled language. Code is compiled into intermediate language (IL) which is then run on the .NET runtime.
 - **JavaScript**: Interpreted language (though modern JavaScript engines like V8 compile JavaScript to machine code at runtime for performance optimization).
 
-#### 6. **Libraries and Frameworks**
+#### 6. Libraries and Frameworks
 
 - **C#**: Extensive libraries and frameworks within the .NET ecosystem, including ASP.NET for web development, Entity Framework for ORM, and Xamarin for mobile development.
 - **JavaScript**: Rich ecosystem of libraries and frameworks like React, Angular, Vue.js for front-end development, and Express.js for back-end development with Node.js.
 
-#### 7. **Community and Support**
+#### 7. Community and Support
 
 - **C#**: Backed by Microsoft, with strong community support and extensive documentation. It is widely used in enterprise environments.
 - **JavaScript**: Massive community with a plethora of resources, tutorials, and forums. It is the most widely used language on the web.
