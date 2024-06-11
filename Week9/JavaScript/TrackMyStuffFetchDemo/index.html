@@ -15,12 +15,21 @@
         <!-- This input tag of type text will take our user inputted username
          Notice, inputs are self closing.-->
         <input type="text" id="username" placeholder="username">
+        <br> <!-- Added a break tag to satisfy mikes desire to have the login button below the text box!-->
         <button id="login-button">Login</button>
 
     </div>
 
-    <div>
-        
+    <!-- This div will be used to display user information, that we eventually get back from our
+     ASP.NET backend API for trackmystuff-->
+    <div id="user-container" style="display: none;">
+
+        <!-- This will greet the user once logged in-->
+        <h2 id="welcome-message"></h2>
+        <button id="logout-button">Logout</button>
+
+        <!-- Eventually I will add a list of items belonging to the user down below-->
+
     </div>
 
 
