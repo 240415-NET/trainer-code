@@ -9,9 +9,17 @@
 //We reference our document object, then use dot notation to run a function to add an event listener.
 //The event we are going to listen for, is 'DOMContentLoaded'.
 document.addEventListener('DOMContentLoaded', (event) => {
-    
+    //All of our DOM manipulation will be done within this lamba within addEventListener
 
+    //So now, we will start to work with our HTML elements as Javascript variables/objects
+    //To select our button (in our HTML) we will use getElementById()
+    const changeTextButton = document.getElementById("changeTextButton");
 
+    //Now we will add a listener to that button we selected and stored in changeTextButton above
+    changeTextButton.addEventListener('click', () => {
 
+        
 
-}); //Closing the addEventListener method
+    });//Closing the button.addEventListener() method
+
+}); //Closing the document.addEventListener() method
