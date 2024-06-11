@@ -71,14 +71,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     };//end updateUIForLoggedInUser
 
-    //TODO - fetch user items from API
+    //Function that fetches user items from our backend, and then calls the renderUserItems function
+    //to reflec the changes on our page
     async function fetchUserItems(userId) {
         try{
             //Sending a request for our logged in user's items based on their userId
             const response = await fetch(`http://localhost:5192/Items?userId=${userId}`);
             
             //Store the list of items - parsing the response into our const items
-            const items = response.json();
+            const items = await response.json();
 
             //Call to a function to render our items in our HTML that our browser sees
             renderItemsList(items);
