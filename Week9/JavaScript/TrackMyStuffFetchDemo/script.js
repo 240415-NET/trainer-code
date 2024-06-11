@@ -13,8 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeMessage = document.getElementById('welcome-message');
     const itemsList = document.getElementById('items-list');
 
-    //TODO - Check if a user is already logged in
-
+    //Checking if a user is already logged in
+    //First, im going to create something to hold my logged in user (if they exist, otherwise its null)
+    const storedUser = JSON.parse(localStorage.getItem('user'));
+    if(storedUser) { //if storedUser is not empty
+       updateUIForLoggedInUser(storedUser);
+    }
 
     //Listening for a click event on our login button, that will send an HTTP request to GET
     //a user from our API using Fetch
@@ -54,7 +58,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }//End if to check username has anything in it
     });//end of the loginButton event listener
 
-    //TODO - add logout button event listener
+    //This will fire off when a user is logged in AND THEN chooses to log out via our logout button
+    logoutButton.addEventListener('click', () => {
+        //Upon logout, we get rid of the localStorage item with the key "user"
+        localStorage.removeItem('user');
+
+        //We unhide the login-container div
+        loginContainer.style.display = 'block';
+
+        //We hide the user-container div
+        userContainer.style.display = 'none';
+    });//end of the logoutButton event listener
 
     //This function will update the UI for my logged in user, once they are found
     function updateUIForLoggedInUser(user) {
