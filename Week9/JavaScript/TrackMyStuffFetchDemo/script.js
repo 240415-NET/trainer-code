@@ -11,7 +11,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
     const welcomeMessage = document.getElementById('welcome-message');
-    const itemsList = document.getElementById('items-list');
+    const itemsList = document.getElementById('items-list');    
+    const addItemButton = document.getElementById('add-item-button');
+
+    //Fields for POST item
+    //Getting my fields
+    const itemCategory = document.getElementById('item-category').value;
+    const itemCost = document.getElementById('item-original-cost').value;
+    const itemDatePurchased = document.getElementById('item-purchase-date').value;
+    const itemDescription = document.getElementById('item-description').value;
+    const emptyGuid = '00000000-0000-0000-0000-000000000000';
+    const userId = JSON.parse(localStorage.getItem('user')).userId;
 
     //Checking if a user is already logged in
     //First, im going to create something to hold my logged in user (if they exist, otherwise its null)
@@ -129,6 +139,55 @@ document.addEventListener('DOMContentLoaded', () => {
 
     };//end renderItemsList
 
+    //Adding post functionality
+    addItemButton.addEventListener('click', async () => {
+        
 
+        //Boolean flag to check if user filled out my form
+        let flag = false;
+        let itemToAdd = 'empty';
+
+        if(itemCategory && itemCost && itemDatePurchased && itemDescription && userId){
+            flag = true;
+            itemToAdd = JSON.stringify({ 
+                userId: userId, 
+                itemId: emptyGuid,
+                category: itemCategory,
+                originalCost: Number(itemCost),
+                purchaseDate: itemDatePurchased,
+                description: itemDescription
+             });
+             console.log(itemToAdd);
+        }
+
+        if (flag) {
+            try {
+                const response = await fetch(`http://localhost:5192/Item`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: itemToAdd
+                });
+                //Reloading my list
+                fetchUserItems(userId);
+                
+
+            } catch (error) {
+                console.error('Error adding item:', error);
+            }
+
+            
+
+        } else {
+            alert("Please finish adding your item information!");
+        }
+        
+        itemCategory.value = '';
+        itemCost.value = 0;
+        itemDatePurchased.value = '';
+        itemDescription.value = '';
+        
+    });
 
 });// End DOMContentLoaded Listener
