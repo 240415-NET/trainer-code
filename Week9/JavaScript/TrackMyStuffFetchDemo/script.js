@@ -39,20 +39,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 //string representation of our user we got from the API above.
                 localStorage.setItem('user', JSON.stringify(user));
 
+                //Calling our UI update function
+                updateUIForLoggedInUser(user);
+
                 //Here im going to add a call to a function that will update the UI if a user is found
 
             } catch (error) {
                 console.error('Error logging in: ', error);
             }
-
-
         }//End if to check username has anything in it
-
-
-
-
     });//end of the loginButton event listener
 
+    //This function will update the UI for my logged in user, once they are found
+    function updateUIForLoggedInUser(user) {
+        //Selecting my loginContainer div, and updating so that its style is display: none;
+        loginContainer.style.display = 'none';
+        //Updating the welcome message based on the username
+        welcomeMessage.textContent = `Welcome ${user.userName}!`;
+        //Un-hiding the user container
+        userContainer.style.display = 'block';
 
+    };//end updateUIForLoggedInUser
 
 });// End DOMContentLoaded Listener

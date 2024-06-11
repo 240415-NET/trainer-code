@@ -9,18 +9,20 @@ using Microsoft.EntityFrameworkCore;
 // and then we build the app. After the app has been built, we can toggle different options for it.
 // All of this is done, when we dotnet run our webapi
 var builder = WebApplication.CreateBuilder(args);
-var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
-//Adding CORS policy to allow us to use the front end to send requests to the backend
-builder.Services.AddCors(options =>
-{
-    options.AddPolicy(name: MyAllowSpecificOrigins,
-                      policy  =>
-                      {
-                          policy.AllowAnyOrigin();
-                          policy.AllowAnyMethod();
-                          policy.AllowAnyHeader();
-                      });
+//First im going to use var to create an object to store the CORS policy
+var myBadCorsPolicy = "_myBadCorsPolicy";
+
+builder.Services.AddCors(options => {
+
+    options.AddPolicy(name: myBadCorsPolicy,
+                       policy => 
+                       {
+                            policy.AllowAnyOrigin(); //This allows incoming requests from ANYWHERE
+                            policy.AllowAnyMethod(); //This allows any methods to be used 
+                            policy.AllowAnyHeader(); //this allows any headers
+                       });
+
 });
 
 
@@ -63,9 +65,9 @@ if (app.Environment.IsDevelopment())
 //All this would do, is route a request using the http scheme to use https automatically
 app.UseHttpsRedirection();
 
-//Editing our apps CORS settings to allow us to use DELETE and other destructive HTTP methods
-app.UseCors(MyAllowSpecificOrigins);
 
+//Here we will actually tell our app to use the CORS policy we created above
+app.UseCors(myBadCorsPolicy);
 
 app.UseAuthorization();
 
