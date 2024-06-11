@@ -11,6 +11,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginButton = document.getElementById('login-button');
     const logoutButton = document.getElementById('logout-button');
     const welcomeMessage = document.getElementById('welcome-message');
+    const itemsList = document.getElementById('items-list');
+
+    //TODO - Check if a user is already logged in
+
 
     //Listening for a click event on our login button, that will send an HTTP request to GET
     //a user from our API using Fetch
@@ -50,6 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }//End if to check username has anything in it
     });//end of the loginButton event listener
 
+    //TODO - add logout button event listener
+
     //This function will update the UI for my logged in user, once they are found
     function updateUIForLoggedInUser(user) {
         //Selecting my loginContainer div, and updating so that its style is display: none;
@@ -59,6 +65,55 @@ document.addEventListener('DOMContentLoaded', () => {
         //Un-hiding the user container
         userContainer.style.display = 'block';
 
+        //So when we update the UI for a logged in user, we are going to call our fetchUserItems function
+        //and grab their items for them
+        fetchUserItems(user.userId);
+
     };//end updateUIForLoggedInUser
+
+    //TODO - fetch user items from API
+    async function fetchUserItems(userId) {
+        try{
+            //Sending a request for our logged in user's items based on their userId
+            const response = await fetch(`http://localhost:5192/Items?userId=${userId}`);
+            
+            //Store the list of items - parsing the response into our const items
+            const items = response.json();
+
+            //Call to a function to render our items in our HTML that our browser sees
+            renderItemsList(items);
+
+        }catch (error) {
+            console.error('Error fetching items: ', error);
+        }
+
+
+
+    };//end FetchUserItems
+
+    //Here is a function that will use DOM manipulation to display our list of items on our page
+    function renderItemsList(items) {
+        //set the innerHTML of our itemsList to an empty string
+        itemsList.innerHTML = '';
+
+        //For each item in our items list, we will update the HTML to display that item within
+        //the ol element of our html file
+        items.forEach(item => {
+            //For each item, we create an li (list item) element within our ordered list 
+            const listItem = document.createElement('li');
+
+            //We give the list item text content related to our item that we want to display
+            //We use dot notation to access the fields of our item
+            //We need the fields to match with the json that comes back, so this is case sensitive
+            listItem.textContent = `${item.category} - ${item.description} - $${item.originalCost}`;
+            
+            //Once we've created our list item, and given it relevant text content from our json return
+            //We need to actually stick it into the list
+            itemsList.appendChild(listItem);
+        });
+
+    };//end renderItemsList
+
+
 
 });// End DOMContentLoaded Listener
