@@ -13,6 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeMessage = document.getElementById('welcome-message');
     const itemsList = document.getElementById('items-list');
 
+    //Adding form elements
+    const itemForm = document.getElementById('item-form');
+    const itemCategoryInput = document.getElementById('item-category');
+    const itemOriginalCostInput = document.getElementById('item-original-cost');
+    const itemPurchaseDateInput = document.getElementById('item-purchase-date');
+    const itemDescriptionInput = document.getElementById('item-description');
+
+
     //Checking if a user is already logged in
     //First, im going to create something to hold my logged in user (if they exist, otherwise its null)
     const storedUser = JSON.parse(localStorage.getItem('user'));
@@ -129,6 +137,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     };//end renderItemsList
 
+    itemForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const user = JSON.parse(localStorage.getItem('user'));
 
+        if (user) {
+            const newItem = {
+                userId: user.userId,
+                itemId: "00000000-0000-0000-0000-000000000000",
+                category: itemCategoryInput.value,
+                originalCost: parseFloat(itemOriginalCostInput.value),
+                purchaseDate: itemPurchaseDateInput.value,
+                description: itemDescriptionInput.value
+            };
+
+            try {
+                const response = await fetch(`http://localhost:5192/Item`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(newItem)
+                });
+                
+                // Add the new item to the list 
+                fetchUserItems(user.userId);
+                // Clear the form inputs
+                itemForm.reset();
+            } catch (error) {
+                console.error('Error adding item:', error);
+            }
+        }
+    });
 
 });// End DOMContentLoaded Listener

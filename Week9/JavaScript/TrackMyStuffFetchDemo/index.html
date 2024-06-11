@@ -27,18 +27,23 @@
         <!-- This will greet the user once logged in-->
         <h2 id="welcome-message"></h2>
         
+        <h3>Add New Item</h3>
+        <form id="item-form">
+            <input type="text" id="item-category" placeholder="Category" required>
+            <input type="number" id="item-original-cost" placeholder="Original Cost" required>
+            <input type="date" id="item-purchase-date" required>
+            <input type="text" id="item-description" placeholder="Description" required>
+            <button type="submit">Add Item</button>
+        </form>
 
         <!-- Eventually I will add a list of items belonging to the user down below-->
         <h4>Your Items:</h4>
-        <br>
         <ol id="items-list"></ol>
         <br>
-        <button id="logout-button">Logout</button>
 
+        <button id="logout-button">Logout</button>
     </div>
 
-
-    
     <!-- Adding my script tag to the bottom of the body!-->
     <script src="script.js"></script>
 </body>
