@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };//end updateUIForLoggedInUser
 
     //Function that fetches user items from our backend, and then calls the renderUserItems function
-    //to reflec the changes on our page
+    //to reflect the changes on our page
     async function fetchUserItems(userId) {
         try{
             //Sending a request for our logged in user's items based on their userId
@@ -191,7 +191,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         }
 
-    });
+    });//end item form listener
 
+    //Down here are going to be my listeners and/or functions for my create user feature
+    //This listener will take us from the login-container to the create-user-container
+    showCreateUserButton.addEventListener('click', () => {
+        loginContainer.style.display = 'none';
+        createUserContainer.style.display = 'block';
+    });//End create user button listener
+
+    //This listener will take us from the create-user-container back to the login-container
+    cancelCreateUserButton.addEventListener('click', () => {
+        loginContainer.style.display = 'block';
+        createUserContainer.style.display = 'none';
+    });//End cancel create user button listener
 
 });// End DOMContentLoaded Listener
