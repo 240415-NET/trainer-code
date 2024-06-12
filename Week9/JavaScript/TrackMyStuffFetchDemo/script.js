@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     };//end renderItemsList
 
+    //Event listener for form submit
     itemForm.addEventListener('submit', async (event) => {
         event.preventDefault();
         const user = JSON.parse(localStorage.getItem('user'));
