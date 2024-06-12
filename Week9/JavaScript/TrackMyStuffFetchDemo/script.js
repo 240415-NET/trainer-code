@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //Selecting my div containers, by their id
     const loginContainer = document.getElementById('login-container');
     const userContainer = document.getElementById('user-container');
+    const createUserContainer = document.getElementById('create-user-container');
 
     //Select my elements, such as buttons and text to update 
     const loginButton = document.getElementById('login-button');
@@ -19,7 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const itemCost = document.getElementById('new-item-cost');
     const itemDate = document.getElementById('new-item-date');
     const itemDescription = document.getElementById('new-item-description');
-    const submitItemFormButton = document.getElementById('submit-item-button');
+    //We never ended up using this selector due to HTML Form behavior, having the button as type="submit" was enough
+    //const submitItemFormButton = document.getElementById('submit-item-button');
+
+    //Here are my elements that are related to my create user functionality
+    const showCreateUserButton = document.getElementById('show-create-user-button');
+    const newUsername = document.getElementById('new-username');
+    const createUserButton = document.getElementById('create-user-button');
+    const cancelCreateUserButton = document.getElementById('cancel-create-user-button');
+
 
     //Checking if a user is already logged in
     //First, im going to create something to hold my logged in user (if they exist, otherwise its null)
