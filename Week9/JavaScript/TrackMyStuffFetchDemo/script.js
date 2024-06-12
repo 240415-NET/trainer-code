@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //Here are my elements that are related to my create user functionality
     const showCreateUserButton = document.getElementById('show-create-user-button');
-    const newUsername = document.getElementById('new-username');
+    const newUsernameInput = document.getElementById('new-username');
     const createUserButton = document.getElementById('create-user-button');
     const cancelCreateUserButton = document.getElementById('cancel-create-user-button');
 
@@ -205,5 +205,22 @@ document.addEventListener('DOMContentLoaded', () => {
         loginContainer.style.display = 'block';
         createUserContainer.style.display = 'none';
     });//End cancel create user button listener
+
+    //This listener will use fetch to send a POST request to our API and create our user
+    createUserButton.addEventListener('click', () => {
+        //Taking whatever is in the new username input when the button is clicked
+        const newUsername = newUsernameInput.value;
+
+        //We check using JS "truthy/falsy" weirdness to make sure they actually entered something in the text input
+        if(newUsername) {
+
+        } else {
+            //If the username is blank, we forcibly/violently alert the user with a popup telling them
+            //what they did wrong
+            alert("Username cannot be blank!");
+        }
+
+
+    });//End the create user button listener
 
 });// End DOMContentLoaded Listener
