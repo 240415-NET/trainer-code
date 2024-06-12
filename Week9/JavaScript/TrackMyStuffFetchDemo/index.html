@@ -26,7 +26,17 @@
 
         <!-- This will greet the user once logged in-->
         <h2 id="welcome-message"></h2>
-        
+
+        <!-- Here, we will use a form to hold user input for the item to be created-->
+        <h4>Add new item</h4>
+        <form id="add-item-form">
+                <input type="text" id="new-item-category" placeholder="Category" required>
+                <input type="number" id="new-item-cost" placeholder="Original Cost" required>
+                <input type="date" id="new-item-date" required>
+                <input type="text" id="new-item-description" placeholder="Description" required>
+                <button type="submit" id="submit-item-button">Add Item</button>
+        </form>
+
 
         <!-- Eventually I will add a list of items belonging to the user down below-->
         <h4>Your Items:</h4>
