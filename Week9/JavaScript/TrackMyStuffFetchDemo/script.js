@@ -13,6 +13,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeMessage = document.getElementById('welcome-message');
     const itemsList = document.getElementById('items-list');
 
+    //These elements belong to my add item form
+    const itemForm = document.getElementById('add-item-form');
+    const itemCategory = document.getElementById('new-item-category');
+    const itemCost = document.getElementById('new-item-cost');
+    const itemDate = document.getElementById('new-item-date');
+    const itemDescription = document.getElementById('new-item-description');
+    const submitItemFormButton = document.getElementById('submit-item-button');
+
     //Checking if a user is already logged in
     //First, im going to create something to hold my logged in user (if they exist, otherwise its null)
     const storedUser = JSON.parse(localStorage.getItem('user'));
