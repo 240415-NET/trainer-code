@@ -137,6 +137,47 @@ document.addEventListener('DOMContentLoaded', () => {
 
     };//end renderItemsList
 
+    //Adding a listener for the submission of my new item form
+    itemForm.addEventListener('submit', async (event) => {
+        //This tells our page to ignore the default behavior of the form submission event
+        event.preventDefault()
+
+        //Bringing in the userId that is stored in our localStorage if a user is logged in
+        const loggedInUserId = JSON.parse(localStorage.getItem('user')).userId;
+        
+        if(userId) {
+            //here we will create the item object in our Javascipt that will eventually be translated to JSON and sent off
+            //to our backend API
+            const newItem = {
+                userId: loggedInUserId,
+                itemId: "00000000-0000-0000-0000-000000000000",
+                category: itemCategory.value,
+                originalCost: parseFloat(itemCost.value), //Parsing this one into a decimal number
+                purchaseDate: itemDate.value,
+                description: itemDescription.value
+            };
+
+            //Here we will use Fetch to send our POST request to our API, notice how there are some additional steps
+            //required versus a GET request using fetch.
+            try{
+
+                //Here we use fetch to create our request object and then send it off to our API as a POST
+                const itemPostResponse = await fetch(`http://localhost:5192/Item`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type' : 'application/json'
+                    },
+                    body: JSON.stringify(newItem)
+                });
+
+
+            } catch (error) {
+                console.error('Error adding item: ', error)
+            }
+
+        }
+
+    });
 
 
 });// End DOMContentLoaded Listener
