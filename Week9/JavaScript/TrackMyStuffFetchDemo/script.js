@@ -213,6 +213,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //We check using JS "truthy/falsy" weirdness to make sure they actually entered something in the text input
         if(newUsername) {
+            //We send our fetch, and under the hood a Promise is created.
+            //A promise is JS's analog to a C# task
+            fetch(`http://localhost:5192/Users/${newUsername}`, {
+                method: 'POST'
+            })//Once the promise is resolved, we call .then() to do something with its result
+            .then(responseFromNewUser => responseFromNewUser.json())
+            .then(newlyCreatedUser => { //We can keep chaining .then() as long as we need, to continue doing more work on subsequent promises
+                localStorage.setItem('user', JSON.stringify(newlyCreatedUser));
+                updateUIForLoggedInUser(newlyCreatedUser);
+                createUserContainer.style.display = 'none';
+                userContainer.style.display = 'block';
+            })
+            .catch(error => {
+                console.error("Error creating user: ", error)
+                alert();
+            });
+
 
         } else {
             //If the username is blank, we forcibly/violently alert the user with a popup telling them
