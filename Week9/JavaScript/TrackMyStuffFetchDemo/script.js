@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
         //Bringing in the userId that is stored in our localStorage if a user is logged in
         const loggedInUserId = JSON.parse(localStorage.getItem('user')).userId;
         
-        if(userId) {
+        if(loggedInUserId) {
             //here we will create the item object in our Javascipt that will eventually be translated to JSON and sent off
             //to our backend API
             const newItem = {
