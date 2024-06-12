@@ -169,7 +169,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     },
                     body: JSON.stringify(newItem)
                 });
+                
+                //Refreshing the item list
+                fetchUserItems(loggedInUserId);
 
+                //Resetting the fields in our add-item-form in our HTML
+                itemForm.reset();
 
             } catch (error) {
                 console.error('Error adding item: ', error)
