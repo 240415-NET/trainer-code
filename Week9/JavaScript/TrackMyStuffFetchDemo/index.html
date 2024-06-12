@@ -10,23 +10,28 @@
     <!-- Creating a div element to act as a container for all of my HTML related to user log in stuff
      Things like, an input tag to take in a username to find, and a button to send off the login request -->
     <div id="login-container">
-
         <h2>Login</h2>
         <!-- This input tag of type text will take our user inputted username
          Notice, inputs are self closing.-->
         <input type="text" id="username" placeholder="username">
         <br> <!-- Added a break tag to satisfy mikes desire to have the login button below the text box!-->
         <button id="login-button">Login</button>
+        <button id="show-create-user-button">Create User</button>
+    </div>
 
+    <div id="create-user-container" style="display: none;">
+        <h2>Create User</h2>
+        <input type="text" id="new-username" placeholder="New Username">
+        <br>
+        <button id="create-user-button">Create</button>
+        <button id="cancel-create-user-button">Cancel</button>
     </div>
 
     <!-- This div will be used to display user information, that we eventually get back from our
      ASP.NET backend API for trackmystuff-->
     <div id="user-container" style="display: none;">
-
         <!-- This will greet the user once logged in-->
         <h2 id="welcome-message"></h2>
-
         <!-- Here, we will use a form to hold user input for the item to be created-->
         <h4>Add new item</h4>
         <form id="add-item-form">
@@ -37,8 +42,7 @@
                 <button type="submit" id="submit-item-button">Add Item</button>
         </form>
 
-
-        <!-- Eventually I will add a list of items belonging to the user down below-->
+        <!-- Here we render a list of items belonging to the user down below-->
         <h4>Your Items:</h4>
         <br>
         <ol id="items-list"></ol>
