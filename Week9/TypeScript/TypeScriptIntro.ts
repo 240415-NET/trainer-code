@@ -17,3 +17,10 @@ let username = "jon123";
 //username = 143; - This results in an error because TS is still enforcing it's type system even for variables
 //who's type was inferred
 
+//Tuples
+//Tuples are useful when you want an array with both a fixed number of elements within it
+//and different but defined types for each element
+let myFirstTuple: [string, number, boolean];
+myFirstTuple = ["This is inside my tuple, at element 0. It HAS to be a string", 23, false];
+
+console.log(myFirstTuple);
