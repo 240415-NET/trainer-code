@@ -31,3 +31,33 @@ function addTwoNumbers(x, y) {
 }
 console.log(addTwoNumbers(3.67, 113.7));
 console.log(sum);
+//Arrays
+//Arrays in TS are going to work the same as in JS with the added benefit of type safety
+//(behaves like a C# list)
+var numberList = [12, 45, 88];
+numberList.push(55);
+var petNameList = ['pancake', 'ellie'];
+console.log(numberList);
+console.log(petNameList);
+petNameList.forEach(function (petName) {
+    console.log(petName);
+});
+//Enums 
+//A special data structure (also in many other languages such as C# and Java) that represent a group of constants
+//They can be either string or numeric
+var stringCardinals;
+(function (stringCardinals) {
+    stringCardinals["North"] = "north";
+    stringCardinals["East"] = "east";
+    stringCardinals["South"] = "south";
+    stringCardinals["West"] = "west";
+})(stringCardinals || (stringCardinals = {}));
+console.log(stringCardinals.East);
+var numericCardinals;
+(function (numericCardinals) {
+    numericCardinals[numericCardinals["North"] = 1] = "North";
+    numericCardinals[numericCardinals["East"] = 2] = "East";
+    numericCardinals[numericCardinals["South"] = 4] = "South";
+    numericCardinals[numericCardinals["West"] = 8] = "West";
+})(numericCardinals || (numericCardinals = {}));
+console.log(numericCardinals.West);

@@ -54,3 +54,32 @@ let petNameList: string[] = ['pancake', 'ellie'];
 
 console.log(numberList);
 console.log(petNameList);
+
+petNameList.forEach((petName) => {
+    console.log(petName)
+});
+
+//Enums 
+//A special data structure (also in many other languages such as C# and Java) that represent a group of constants
+//They can be either string or numeric
+
+enum stringCardinals {
+    North = 'north',
+    East = 'east',
+    South = 'south',
+    West = 'west'
+}
+
+console.log(stringCardinals.East);
+
+enum numericCardinals {
+    North = 1, 
+    East = 2,
+    South = 4,
+    West = 8
+}
+
+console.log(numericCardinals.West);
+
+
+
