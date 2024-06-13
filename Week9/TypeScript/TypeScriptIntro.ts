@@ -24,3 +24,23 @@ let myFirstTuple: [string, number, boolean];
 myFirstTuple = ["This is inside my tuple, at element 0. It HAS to be a string", 23, false];
 
 console.log(myFirstTuple);
+
+//This sum is outside the scope of the addTwoNumbers function
+let sum: number = 9;
+
+//Functions
+//Functions work similarly to JS, but we can do things like define return and argument types
+function addTwoNumbers(x : number, y : number): number {
+
+    let sum : number = 0;
+
+    sum = x + y;
+
+    return sum;
+}
+
+console.log(addTwoNumbers(3.67, 113.7));
+
+
+
+console.log(sum);
