@@ -107,4 +107,4 @@ interface User{
 
 let josh : User = {userId: "123-345", userName: 'Josh'};
 
-
+console.log(josh);
