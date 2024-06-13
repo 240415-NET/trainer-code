@@ -81,5 +81,30 @@ enum numericCardinals {
 
 console.log(numericCardinals.West);
 
+//Type Aliases
+//Type aliases are used to create a new name for a user defined type
+//Here we say that we have a 'pet' type and it MUST be either 'cat' or 'dog'
+//If we try to give a variable of type 'pet' a value of 'gator' it will complain
+type pet = 'cat' | 'dog';
+
+let ellie: pet = 'dog';
+//let pancake: pet = 'gator'; - Cant do this!
+
+//Here we define a user defined type of type userId, and say that it MUST be a number
+type userId = number;
+
+let myUserId: userId = 789798;
+
+//Interfaces 
+//Interfaces are used to define the structure of the an object
+//They provide a way to ensure that an object adheres to a specific "shape" 
+//(this can be leveraged to make sure we get specific types of JSON return for example)
+interface User{
+    userId: string;
+    userName: string;
+    age?: number; //We can use the question mark to mark a property in an interface as optional. 
+} //It is not that the property will be null, it's that it's not required to be in the objects of this interface at all
+
+let josh : User = {userId: "123-345", userName: 'Josh'};
 
 
