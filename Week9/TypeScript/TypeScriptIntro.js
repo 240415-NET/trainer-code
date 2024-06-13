@@ -61,3 +61,7 @@ var numericCardinals;
     numericCardinals[numericCardinals["West"] = 8] = "West";
 })(numericCardinals || (numericCardinals = {}));
 console.log(numericCardinals.West);
+var ellie = 'dog';
+var myUserId = 789798;
+var josh = { userId: "123-345", userName: 'Josh' };
+console.log(josh);

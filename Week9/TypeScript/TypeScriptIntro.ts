@@ -107,4 +107,37 @@ interface User{
 
 let josh : User = {userId: "123-345", userName: 'Josh'};
 
+
 console.log(josh);
+
+//Classes 
+//Classes can provide implementation details like methods and constructors, whereas interfaces are used 
+//to define only the structure of the object. Classes form the blueprint for objects and their behaviors, and can
+//be instantiated, interfaces cannot.
+
+interface Animal {
+    species: string;
+}
+
+class Bird implements Animal{
+    species: string;
+    birdHeight: number;
+    birdWeight: number;
+    birdColor: string;
+
+    constructor(species: string, height: number, weight: number, color: string){
+        this.species = species;
+        this.birdHeight = height;
+        this.birdWeight = weight;
+        this.birdColor = color;
+    }
+
+    //Unlike interfaces we can define methods that belong to objects of this class
+    birdCall(): string {
+        return `I am a ${this.species}`;
+    }
+}
+
+let yellowWarbler = new Bird('yellow warbler', 5, .36, 'yellow');
+
+console.log(yellowWarbler.birdCall());
