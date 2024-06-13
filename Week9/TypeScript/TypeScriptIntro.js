@@ -65,3 +65,18 @@ var ellie = 'dog';
 var myUserId = 789798;
 var josh = { userId: "123-345", userName: 'Josh' };
 console.log(josh);
+var Bird = /** @class */ (function () {
+    function Bird(species, height, weight, color) {
+        this.species = species;
+        this.birdHeight = height;
+        this.birdWeight = weight;
+        this.birdColor = color;
+    }
+    //Unlike interfaces we can define methods that belong to objects of this class
+    Bird.prototype.birdCall = function () {
+        return "I am a ".concat(this.species);
+    };
+    return Bird;
+}());
+var yellowWarbler = new Bird('yellow warbler', 5, .36, 'yellow');
+console.log(yellowWarbler.birdCall());
