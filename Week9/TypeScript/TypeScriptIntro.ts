@@ -41,6 +41,16 @@ function addTwoNumbers(x : number, y : number): number {
 
 console.log(addTwoNumbers(3.67, 113.7));
 
-
-
 console.log(sum);
+
+//Arrays
+//Arrays in TS are going to work the same as in JS with the added benefit of type safety
+//(behaves like a C# list)
+
+let numberList: number[] = [12, 45, 88];
+numberList.push(55);
+
+let petNameList: string[] = ['pancake', 'ellie'];
+
+console.log(numberList);
+console.log(petNameList);
