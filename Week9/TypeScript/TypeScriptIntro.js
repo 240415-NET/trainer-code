@@ -80,6 +80,11 @@ var ellie = 'dog';
 var myUserId = 789798;
 var josh = { userId: "123-345", userName: 'Josh' };
 console.log(josh);
+//Classes can have access modifiers
+//public - can be seen from anywhere in our code
+//Private - can ONLY be seen from within the class the field is declared in (not its children)
+//Protected - can be seen from the class it was declared in AS WELL AS it's child classes
+//Default in Typescript is public
 var Bird = /** @class */ (function () {
     function Bird(species, height, weight, color) {
         this.species = species;
@@ -101,7 +106,7 @@ var Dunlin = /** @class */ (function (_super) {
         return _super.call(this, species, height, weight, color) || this; // Calling the constructor inherited from Bird
     }
     Dunlin.prototype.dunlinActivities = function () {
-        return '*Things that dunlins like to do!*';
+        return "*Things that ".concat(this.species, " like to do!*");
     };
     return Dunlin;
 }(Bird));
@@ -110,3 +115,32 @@ var Dunlin = /** @class */ (function (_super) {
 var myDunlin = new Dunlin('Dunlin', 7, 3, 'grey');
 console.log(myDunlin.birdCall());
 console.log(myDunlin.dunlinActivities());
+//Casting 
+var num = 12;
+console.log(num);
+//that gets the properties of both of the types that compose it. 
+//In our SuperEmployee, the name fields collapse into a single field
+var ross = {
+    name: 'Ross',
+    adminDuties: [
+        'change diapers',
+        'drive daycare boss to/from school',
+        'lord over corey',
+        'solve rubiks cube'
+    ],
+    startDate: new Date()
+};
+console.log(ross);
+var unionRoss = ross;
+//Type guard 
+//A function that does stuff based on what input type it gets
+function comparableTypeGuard(arg) {
+    if (typeof arg === 'string') {
+        return 'stuff related to arg being a string';
+    }
+    if (typeof arg === 'number') {
+        return arg * arg;
+    }
+}
+var myComparable = 'Thank goodness it is friday';
+console.log(comparableTypeGuard(myComparable));

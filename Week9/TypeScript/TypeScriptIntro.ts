@@ -119,9 +119,14 @@ interface Animal {
     species: string;
 }
 
+//Classes can have access modifiers
+//public - can be seen from anywhere in our code
+//Private - can ONLY be seen from within the class the field is declared in (not its children)
+//Protected - can be seen from the class it was declared in AS WELL AS it's child classes
+//Default in Typescript is public
 class Bird implements Animal{
     species: string;
-    birdHeight: number;
+    protected birdHeight: number;
     birdWeight: number;
     birdColor: string;
 
@@ -149,7 +154,7 @@ class Dunlin extends Bird {
     }
 
     dunlinActivities(): string {
-        return '*Things that dunlins like to do!*'
+        return `*Things that ${this.species} like to do!*`
     }
 }
 
@@ -160,3 +165,59 @@ let myDunlin = new Dunlin('Dunlin', 7, 3, 'grey');
 
 console.log(myDunlin.birdCall());
 console.log(myDunlin.dunlinActivities());
+
+//Casting 
+let num : number = 12;
+console.log(num as unknown as string);
+
+
+type Admin = {
+    name: string;
+    adminDuties: string[];
+}
+
+type NormalEmployee = {
+    name: string;
+    startDate: Date;
+}
+
+type SuperEmployee = Admin & NormalEmployee; //This would be an example of an intersection type, 
+//that gets the properties of both of the types that compose it. 
+//In our SuperEmployee, the name fields collapse into a single field
+
+let ross : SuperEmployee = {
+    name: 'Ross',
+    adminDuties: [
+        'change diapers',
+        'drive daycare boss to/from school',
+        'lord over corey',
+        'solve rubiks cube'
+    ],
+    startDate: new Date()
+}
+
+console.log(ross);
+
+//Union Type
+type UnionDemo = string | number;
+
+type Employee = Admin | NormalEmployee;
+
+let unionRoss : Employee = ross;
+
+type Comparable = string | number;
+
+//Type guard 
+//A function that does stuff based on what input type it gets
+function comparableTypeGuard(arg: Comparable){
+    if(typeof arg ===  'string'){
+        return 'stuff related to arg being a string';
+    }
+    if(typeof arg === 'number'){
+        return arg * arg;
+    }
+}
+
+let myComparable : Comparable = 'Thank goodness it is friday';
+
+console.log(comparableTypeGuard(myComparable));
