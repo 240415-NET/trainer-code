@@ -4,6 +4,21 @@
 //Then you can node <NameOfMyFile>.js to run that generated JavaScript file
 //If you intend to work with .ts in your P2, you would generate the .js file and attach 
 //that via the script tag in your HTML file's body
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 //Simple/Variable types - These come in from JS. They are things like string, number, boolean, etc.
 //We can use typescript's explicit typing on these variables via the following syntax.
 var myBoolean = true;
@@ -80,3 +95,18 @@ var Bird = /** @class */ (function () {
 }());
 var yellowWarbler = new Bird('yellow warbler', 5, .36, 'yellow');
 console.log(yellowWarbler.birdCall());
+var Dunlin = /** @class */ (function (_super) {
+    __extends(Dunlin, _super);
+    function Dunlin(species, height, weight, color) {
+        return _super.call(this, species, height, weight, color) || this; // Calling the constructor inherited from Bird
+    }
+    Dunlin.prototype.dunlinActivities = function () {
+        return '*Things that dunlins like to do!*';
+    };
+    return Dunlin;
+}(Bird));
+//Now if we create a new Dunlin object, it has access to all the methods and fields from both bird and Dunlin,
+//and it inherits the implementation of the Animal interface implemented in Bird
+var myDunlin = new Dunlin('Dunlin', 7, 3, 'grey');
+console.log(myDunlin.birdCall());
+console.log(myDunlin.dunlinActivities());

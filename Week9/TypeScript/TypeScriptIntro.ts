@@ -141,3 +141,22 @@ class Bird implements Animal{
 let yellowWarbler = new Bird('yellow warbler', 5, .36, 'yellow');
 
 console.log(yellowWarbler.birdCall());
+
+class Dunlin extends Bird {
+
+    constructor(species: string, height: number, weight: number, color: string){
+        super(species, height, weight, color); // Calling the constructor inherited from Bird
+    }
+
+    dunlinActivities(): string {
+        return '*Things that dunlins like to do!*'
+    }
+}
+
+//Now if we create a new Dunlin object, it has access to all the methods and fields from both bird and Dunlin,
+//and it inherits the implementation of the Animal interface implemented in Bird
+
+let myDunlin = new Dunlin('Dunlin', 7, 3, 'grey');
+
+console.log(myDunlin.birdCall());
+console.log(myDunlin.dunlinActivities());
