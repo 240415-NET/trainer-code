@@ -57,6 +57,8 @@ class ClassBasedCounter extends Component<{}, CounterClassState> {
         </div>
         );
     }
+}//End ClassBasedCounter
 
-
-}
+//Outside the class's scope/code block, we will again export our component, 
+//so that we can import and use it elsewhere. Otherwise we can't see it anywhere outside this file.
+export default ClassBasedCounter;
