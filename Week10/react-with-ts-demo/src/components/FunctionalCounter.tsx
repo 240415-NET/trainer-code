@@ -35,6 +35,8 @@ function FunctionalCounter() {
             {/* Inside of return for my component, it expects HTML. We can "break out" of our HTML and call upon 
             TypeScript by using these braces {}*/}
             <p>Count: {count}</p>
+            <button onClick={increment}>Increment the count!</button>
+            <button onClick={decrement}>Decrement the count :c </button>
         </div>
     );
 
