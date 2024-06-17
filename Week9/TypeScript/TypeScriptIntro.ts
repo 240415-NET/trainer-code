@@ -209,7 +209,7 @@ type Comparable = string | number;
 
 //Type guard 
 //A function that does stuff based on what input type it gets
-function comparableTypeGuard(arg: Comparable){
+function comparableTypeGuard (arg: Comparable) {
     if(typeof arg ===  'string'){
         return 'stuff related to arg being a string';
     }
