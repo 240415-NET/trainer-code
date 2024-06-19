@@ -56,19 +56,31 @@ function Login() {
                 console.error('Error logging in: ', error);
             }
 
-
-
-
         }//end if-block to check if username is still empty
-
-
-
     }//end handleUserLogin()
 
   //Here in the return, we will render what the User will see, as well as call any of our logic written above
-  return (
-    <div>Login</div>
-  )
+  //We will use conditional rendering in our return. IF the user is logged in, we will render NOTHING for our login
+  //component. If a user is NOT logged in, we will actually render the login form
+
+  //if NOT userObject, using the logical not (!) operator
+  return !userObject ? (
+    <div id='login-container'>
+        <h2>Login</h2>
+        <input 
+            type='text' 
+            id='username'
+            placeholder='username'
+            value={username}
+            onChange={(userNameFromInputField) => setUsername(userNameFromInputField.target.value)}
+        />{/*Again, we need to close our normally self closing tags for React*/}
+        <br />
+        {/*This is our login button. When it is clicked, we will call handleUserLogin(), from above*/}
+        <button onClick={handleUserLogin}>Login</button>
+    </div>
+  ) : null; //If a userObject is found, if userObject IS NOT NULL, we render null (nothing at all)
+  //We do not want this component rendering if we have a logged in user
+  
 }
 
 export default Login;
