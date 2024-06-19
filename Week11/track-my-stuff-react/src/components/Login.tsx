@@ -41,11 +41,16 @@ function Login() {
         if (username) {
             //If username is NOT empty or null, we will use a try-catch to send our GET request
             try{
-                
-            
+                //Fetch GET to our API for our user 
+                const response = await fetch(`http://localhost:5192/Users/${username}`);
 
+                //Parse our response body as json, we must remember to await this as it is asynchronous
+                const userFromAPI = await response.json(); 
 
-
+                //Storing our userObject data. We need to store it in localStorage (browser)
+                //and we need to store it in our State for our component's use
+                localStorage.setItem('user', JSON.stringify(userFromAPI));
+                setUserObject(userFromAPI);
 
             } catch (error) { //If the fetch goes wrong, we will send the error message to the console like before
                 console.error('Error logging in: ', error);
