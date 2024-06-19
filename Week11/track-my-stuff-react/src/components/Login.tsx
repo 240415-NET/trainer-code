@@ -11,8 +11,12 @@ import React, { useState, useEffect} from 'react';
 //I will write my log in logic including my localStorage logic and API calls to my backend.
 function Login() {
 
+    //First, I will initialize our state when a user first arrives at our application
+    //We can think of username as our "field" and setUsername as our "setter"
+    const [username, setUsername] = useState(''); //Storing our username input string, setting it to an empty string
+    const [userObject, setUserObject] = useState<any>(null); //Storing our user object, setting it to null if nobody is logged in
 
-
+    
 
 
   //Here in the return, we will render what the User will see, as well as call any of our logic written above
