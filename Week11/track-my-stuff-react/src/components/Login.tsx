@@ -30,8 +30,9 @@ function Login() {
         if (userFromLocalStorage) {
             setUserObject(userFromLocalStorage);
         }
-
-    });
+        //If you call useState from within useEffect, remember to pass in an empty array before closing the final parenthesis
+        //This is due to the behavior of useEffect
+    }, []);
 
     //Here, we will create a function that we will call when our login button is clicked 
     //that will make the fetch request to our API
