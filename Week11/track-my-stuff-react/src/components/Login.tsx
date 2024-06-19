@@ -33,6 +33,32 @@ function Login() {
 
     });
 
+    //Here, we will create a function that we will call when our login button is clicked 
+    //that will make the fetch request to our API
+    async function handleUserLogin() {
+        //First, we check to see if the username in our state is still null
+        //When the user clicks our login button, the username should be stored in our state
+        if (username) {
+            //If username is NOT empty or null, we will use a try-catch to send our GET request
+            try{
+                
+            
+
+
+
+
+            } catch (error) { //If the fetch goes wrong, we will send the error message to the console like before
+                console.error('Error logging in: ', error);
+            }
+
+
+
+
+        }//end if-block to check if username is still empty
+
+
+
+    }//end handleUserLogin()
 
   //Here in the return, we will render what the User will see, as well as call any of our logic written above
   return (
