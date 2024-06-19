@@ -16,7 +16,22 @@ function Login() {
     const [username, setUsername] = useState(''); //Storing our username input string, setting it to an empty string
     const [userObject, setUserObject] = useState<any>(null); //Storing our user object, setting it to null if nobody is logged in
 
-    
+    //Here, we will use our useEffect hook that is built into react and imported above 
+    //to check localStorage and see if there is a user object stored in there
+    useEffect(() => {
+        //First, we will create a variable to store our user (if they exist!)
+        //We call JSON.parse() to try to create an object based on the user json in local storage
+        //If the user exists, they are parsed and brought in
+        //If they DO NOT exist, we will store a null inside of our userFromLocalStorage variable
+        const userFromLocalStorage = JSON.parse(localStorage.getItem('user') || 'null');
+        
+        //if there is an actual value (so, we found a user afterall) in userFromLocalStorage, 
+        //we will store that in our state, by calling the setUserObject "setter" that we declared above
+        if (userFromLocalStorage) {
+            setUserObject(userFromLocalStorage);
+        }
+
+    });
 
 
   //Here in the return, we will render what the User will see, as well as call any of our logic written above
