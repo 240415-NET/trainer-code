@@ -81,7 +81,6 @@ function Login() {
     </div>
   ) : null; //If a userObject is found, if userObject IS NOT NULL, we render null (nothing at all)
   //We do not want this component rendering if we have a logged in user
-  
 }
 
 export default Login;
