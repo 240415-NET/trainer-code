@@ -18,7 +18,11 @@ function UserInfo() {
         const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
         if (storedUser) {
             setUser(storedUser);
+            fetchUserItems(storedUser.userId);
         }
+
+
+
     }, []); //Empty array of dependencies for useEffect, otherwise this will fire off forever
 
     //Function to fetch a user's item list from the API
@@ -31,7 +35,7 @@ function UserInfo() {
             //Call the setItemList "setter" for our state, to store our item list there
             setItemList(itemList);
         }catch (error) {
-            console.error('Error fetching user items: ', error)
+            console.error('Error fetching user items: ', error);
         }
 
 

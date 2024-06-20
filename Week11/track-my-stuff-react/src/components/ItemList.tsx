@@ -21,10 +21,20 @@ interface ItemListProps {
 //ItemList receives an "argument", called a Prop in react, from it's parent UserInfo
 function ItemList({itemsFromUserInfo}: ItemListProps) {
 
-
-
   return (
-    <div>ItemList</div>
+    <div id='item-list-container'>
+      <ol id='item-list'>
+        {/* Here I will use the javascript array.map() method to render my line items based on the item list 
+        that is passed in as a prop when this component is rendered. */}
+        {/* Lists in react expect something from each item in the list - a key. Think of it as a primary key
+        that react can use to refer to each item that we are going to dynamically render */}
+        {itemsFromUserInfo.map((individualItem)  => (
+            <li key={individualItem.itemId}>
+              {individualItem.category} - {individualItem.description} - {individualItem.originalCost}
+            </li>
+        ))}
+      </ol>
+    </div>
   )
 }
 
