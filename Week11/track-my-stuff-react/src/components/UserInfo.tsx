@@ -47,7 +47,14 @@ function UserInfo() {
         <h2 id="welcome-message">Welcome {userFromLocalStorage.userName} </h2>
         <br />
         <h4>Your items:</h4>
-        <ItemList />
+        {/*So here, we call the ItemList child component. Since we explicitly stated that it expects a prop,
+        we will get an error if we do not pass it the props it expects (Just like our other functions!)
+        Here we set the itemsFromUserInfo prop equal to the itemListFromAPI that we stored in THIS component's 
+        state.
+        
+        In this case, we have passed state information from one component to another, by passing it as a prop
+        */}
+        <ItemList itemsFromUserInfo={itemListFromAPI}/> 
     </div>
   ) : null; //Render nothing if a user is not currently logged in
 }
