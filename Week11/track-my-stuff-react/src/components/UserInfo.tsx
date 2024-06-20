@@ -1,4 +1,7 @@
 import React, { useState, useEffect} from 'react'
+//If I have a child component (that will only be rendered from within it's parent)
+//I will import it here, the same way that i've been importing things to render within App.tsx
+import ItemList from './ItemList';
 
 
 function UserInfo() {
@@ -18,6 +21,22 @@ function UserInfo() {
         }
     }, []); //Empty array of dependencies for useEffect, otherwise this will fire off forever
 
+    //Function to fetch a user's item list from the API
+    async function fetchUserItems(userId: string) {
+        try{
+            //Fetch to get the items list for the logged in user
+            const response = await fetch(`http://localhost:5192/Items?userId=${userId}`);
+            const itemList = await response.json();
+
+            //Call the setItemList "setter" for our state, to store our item list there
+            setItemList(itemList);
+        }catch (error) {
+            console.error('Error fetching user items: ', error)
+        }
+
+
+    }//end fetchUserItems
+
 
 
     //Using conditional rendering via a ternary operation
@@ -28,6 +47,7 @@ function UserInfo() {
         <h2 id="welcome-message">Welcome {userFromLocalStorage.userName} </h2>
         <br />
         <h4>Your items:</h4>
+        <ItemList />
     </div>
   ) : null; //Render nothing if a user is not currently logged in
 }
