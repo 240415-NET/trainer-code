@@ -21,8 +21,6 @@ function UserInfo() {
             fetchUserItems(storedUser.userId);
         }
 
-
-
     }, []); //Empty array of dependencies for useEffect, otherwise this will fire off forever
 
     //Function to fetch a user's item list from the API
