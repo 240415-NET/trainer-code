@@ -34,6 +34,7 @@ function App() {
       checks to see if our userObject in App.tsx's state exists, if it does, we don't render the login component */}
       {!userObject && <Login setUserFromApp={setUserObject}/>}
       {/* <UserInfo loggedInUser={userObject}/> */}
+      {userObject && <UserInfo loggedInUserFromApp={userObject}/>}
     </div>
   );
 }

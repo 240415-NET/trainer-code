@@ -3,11 +3,17 @@ import React, { useState, useEffect} from 'react'
 //I will import it here, the same way that i've been importing things to render within App.tsx
 import ItemList from './ItemList';
 
+//Create an interface to type my props, thanks typescript
+interface UserInfoProps {
+    loggedInUserFromApp: any;
+}
 
-function UserInfo() {
+function UserInfo( {loggedInUserFromApp}: UserInfoProps) {
 
     //Creating a spot in our component's state to hold the logged in user that we pull from localStorage
-    const [userFromLocalStorage, setUser] = useState<any>(null);
+    //const [userFromLocalStorage, setUser] = useState<any>(null);
+
+    
     //This time, we will set the itemList to be of type "any[]", so that our state knows to store
     //a array of objects for us. We ten initialize it to an empty array.
     const [itemListFromAPI, setItemList] = useState<any[]>([]);
@@ -15,13 +21,14 @@ function UserInfo() {
     //useEffect to check local storage for a logged-in user
     useEffect(() => {
         //Storing our user pulled from localStorage
-        const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
-        if (storedUser) {
-            setUser(storedUser);
-            fetchUserItems(storedUser.userId);
-        }
-
-    }, []); //Empty array of dependencies for useEffect, otherwise this will fire off forever
+        //const storedUser = JSON.parse(localStorage.getItem('user') || 'null');
+        //if (storedUser) {
+            //setUser(storedUser);
+        fetchUserItems(loggedInUserFromApp.userId);
+        //}
+        //Now that useEffect takes in a dependency (in this case, the loggedInUserFromApp prop that came in from App.tsx)
+        //we actually use it's dependency array, and don't leave it empty.
+    }, [loggedInUserFromApp]); //Empty array of dependencies for useEffect, otherwise this will fire off forever
 
     //Function to fetch a user's item list from the API
     async function fetchUserItems(userId: string) {
@@ -44,9 +51,9 @@ function UserInfo() {
     //Using conditional rendering via a ternary operation
     //if userFromLocalStorage has a value (i.e., is not null) we render this component
     //otherwise, (i.e. before someone has logged in at all) it is not rendered on our page
-  return userFromLocalStorage ? (
+  return  ( //Switched from using conditional rendering here, and moved the conditional logic to App.tsx
     <div id="user-container">
-        <h2 id="welcome-message">Welcome {userFromLocalStorage.userName} </h2>
+        <h2 id="welcome-message">Welcome {loggedInUserFromApp.userName} </h2>
         <br />
         <h4>Your items:</h4>
         {/*So here, we call the ItemList child component. Since we explicitly stated that it expects a prop,
@@ -58,7 +65,7 @@ function UserInfo() {
         */}
         <ItemList itemsFromUserInfo={itemListFromAPI}/> 
     </div>
-  ) : null; //Render nothing if a user is not currently logged in
+  ) //: null; //Render nothing if a user is not currently logged in
 }
 
 export default UserInfo
