@@ -25,7 +25,7 @@ function Home() {
     <div>
       <h2>Home</h2>
       {/* In my p tag below, I will display the message from context */}
-      <p></p>
+      <p>{message}</p>
       {/* Input field that will update my ref */}
       <input type="text" ref={inputRef}/>
       {/* Button that will update my message */}
