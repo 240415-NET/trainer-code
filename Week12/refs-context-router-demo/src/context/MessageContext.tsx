@@ -10,7 +10,7 @@ interface MessageContextType {
 
 //Create a context with some (or null) default value that is then exported
 //In order to use context, we create and export 2 things: The context, and it's contextProvider
-export const MessageContext = createContext<MessageContextType | undefined>(undefined);
+export const MessageContext = createContext<MessageContextType | null>(null);
 
 //Here we will define props for our context provider 
 //We are going to use the ReactNode type (comes in with React) to simplify this
