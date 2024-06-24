@@ -4,13 +4,17 @@ import Home from './components/Home';
 import About from './components/About';
 import Dashboard from './components/Dashboard';
 //Im going to import my router, that I downloaded with that npm install
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter> 
       <NavBar />
-
+      <Routes>
+        <Route path="/" Component={Home}/> 
+        <Route path="/about" Component={About}/>
+        <Route path="/dashboard" Component={Dashboard}/>
+      </Routes>
     </BrowserRouter>
   );
 }
