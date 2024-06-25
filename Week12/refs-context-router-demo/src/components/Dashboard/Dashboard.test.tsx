@@ -9,5 +9,5 @@ import { render, screen } from '@testing-library/react'
 test('Correctly renders About component', () => {
     render(<Dashboard/>);
     expect(screen.getByText('Dashboard')).toBeInTheDocument();
-    expect(screen.getByText('Welcome to the dashboard.')).toBeInTheDocument();
+    expect(screen.getByText('Welcome to the dashboard.', {exact: false})).toBeInTheDocument();
 });

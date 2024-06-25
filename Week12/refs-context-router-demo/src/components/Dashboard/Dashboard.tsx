@@ -10,8 +10,8 @@ function Dashboard() {
     <div>
       <h2>Dashboard</h2>
       <p>{message}... but this time in my Dashboard component!</p>
-      <p>Welcome to the dashboard.</p>
-      <p>Imagine some cool business stuff here 
+      {/* <p>Welcome to the dashboard.</p> */}
+      <p>Welcome to the dashboard. Imagine some cool business stuff here 
         with graphs and all that.
       </p>
     </div>
