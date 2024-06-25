@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from './components/NavBar';
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import About from './components/About/About';
 import Dashboard from './components/Dashboard/Dashboard';
 //Im going to import my router, that I downloaded with that npm install
