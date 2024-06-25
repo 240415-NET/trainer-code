@@ -34,6 +34,11 @@ test('Updates context message on button click', () => {
     const messageUpdateInput = screen.getByRole('textbox'); //Selecting our text box
     const messageUpdateButton = screen.getByRole('button', {name: /update message/}); //select our button
 
+    //Using fire event to update our textbox
+    fireEvent.change(messageUpdateInput, { target: {value: 'New Message Added'}});
+    //Then firing our click event on our update button
+    fireEvent.click(messageUpdateButton); 
 
+    expect(screen.getByText('New Message Added')).toBeInTheDocument();
 
 });
