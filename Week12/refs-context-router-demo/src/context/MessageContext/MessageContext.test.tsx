@@ -18,5 +18,16 @@ function TestComponent() {
         //It should contain the "Test Message" that we set above
         <div>{message}</div>
     );
-}
+};
 
+//Writing our test that uses our TestComponent that we wrote above
+test('provides "Test Message" context message on render', () => {
+    //We render our test component, wrapped by the provider so it can access the context
+    render(
+        <MessageContextProvider>
+            <TestComponent />
+        </MessageContextProvider>
+    );
+
+    expect(screen.getByText('Test Message')).toBeInTheDocument();
+});
