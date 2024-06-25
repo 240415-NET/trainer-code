@@ -8,9 +8,16 @@ interface MessageContextType {
     setMessage: (message: string) => void; //Function that acts as a setter to update our message
 }
 
+//Creating a default context value, so that our context can not be null or undefined
+const defaultMessageContextValue: MessageContextType = {
+  message: 'Hello from context!',
+  setMessage: () => {}
+}
+
 //Create a context with some (or null) default value that is then exported
 //In order to use context, we create and export 2 things: The context, and it's contextProvider
-export const MessageContext = createContext<MessageContextType | null>(null);
+//Creating our message context, and passing it the default value to avoid null or undefined in the context
+export const MessageContext = createContext<MessageContextType>(defaultMessageContextValue);
 
 //Here we will define props for our context provider 
 //We are going to use the ReactNode type (comes in with React) to simplify this
