@@ -10,7 +10,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 //In our Home (and in any other child components of App.tsx that want to see the context) they import 
 //the context itself
 //In our App.tsx parent, we import the context provider
-import MessageContextProvider from './context/MessageContext';
+import MessageContextProvider from './context/MessageContext/MessageContext';
 
 function App() {
   return (

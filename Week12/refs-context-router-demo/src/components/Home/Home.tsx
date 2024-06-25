@@ -2,7 +2,7 @@
 import React, { useContext , useRef } from 'react'
 
 //I also have to import my context (hint: not the provider! Just the context.)
-import { MessageContext } from '../../context/MessageContext'
+import { MessageContext } from '../../context/MessageContext/MessageContext'
 
 function Home() {
 

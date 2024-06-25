@@ -4,7 +4,7 @@ import Home from './Home';
 import { render, screen, fireEvent, queryByAttribute } from '@testing-library/react';
 //Importing our message context provider, so we can render our component with the Message context 
 //available/given to it
-import MessageContextProvider from '../../context/MessageContext';
+import MessageContextProvider from '../../context/MessageContext/MessageContext';
 
 
 //Our first test, will ensure our component is rendering properly.
@@ -32,7 +32,9 @@ test('Updates context message on button click', () => {
 
     //Now we will select our input field and out button so that we can work with them using fireEvent()
     const messageUpdateInput = screen.getByRole('textbox'); //Selecting our text box
-    const messageUpdateButton = screen.getByRole('button', {name: /update message/}); //select our button
+    //select our button - the "red" highlighted text is a regular expression, we added the "i" to make it
+    //case insensitive
+    const messageUpdateButton = screen.getByRole('button', {name: /update message/i});
 
     //Using fire event to update our textbox
     fireEvent.change(messageUpdateInput, { target: {value: 'New Message Added'}});
