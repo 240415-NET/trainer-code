@@ -1,0 +1,21 @@
+# Use the official .NET SDK image as the base image
+# This image contains the .NET SDK which includes tools to build, test, and publish .NET applications
+FROM mcr.microsoft.com/dotnet/sdk:8.0
+
+# Set the working directory inside the container to /app
+# All subsequent commands will be executed in this directory
+WORKDIR /app
+
+# Copy all files from the current directory on the host machine to the /app directory inside the container
+# This includes your source code, project files, and any other necessary files
+COPY . /app
+
+# Run the dotnet publish command to build and publish the application
+# -c Release specifies that the build configuration should be set to Release
+# -o ./app/publish specifies the output directory for the published application
+RUN dotnet publish -c Release -o ./app/publish
+
+# Set the entry point for the container
+# This specifies the command that will be run when the container starts
+# In this case, it runs the MyWebApi.dll file using the dotnet runtime
+ENTRYPOINT ["dotnet", "./publish/NAME_OF_APPLICATION.dll"]
