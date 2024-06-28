@@ -18,4 +18,4 @@ RUN dotnet publish -c Release -o ./app/publish
 # Set the entry point for the container
 # This specifies the command that will be run when the container starts
 # In this case, it runs the MyWebApi.dll file using the dotnet runtime
-ENTRYPOINT ["dotnet", "./publish/NAME_OF_APPLICATION.dll"]
+ENTRYPOINT ["dotnet", "./publish/ContainerizedApi.dll"]
